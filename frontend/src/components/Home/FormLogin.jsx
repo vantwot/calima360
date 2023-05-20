@@ -21,7 +21,7 @@ const FormLogin = () => {
                <label htmlFor="password" className="_label">Contraseña</label>
                <input type="password" name="password" id="password" />
                <div className="_container_a">
-                   <a href="/singIn">¿No tienes cuenta? Registrate</a>
+                   <a href="#">¿No tienes cuenta? Registrate</a>
                </div>
                <button 
                     type="submit"
