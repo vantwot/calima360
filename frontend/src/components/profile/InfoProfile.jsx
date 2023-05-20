@@ -42,7 +42,7 @@ const InfoProfile = (props) => {
                         <h2>{email}</h2>
                   </div>
 
-                  <div className='_container_progress'>
+                  {/* <div className='_container_progress'>
 
                         <div className='_container_progress_item'>
                                 <span>PROGRESO: </span>
@@ -56,11 +56,11 @@ const InfoProfile = (props) => {
                                         <span className='_porcentaje'>50%</span>
                                     </div>
                                 )
-                            })
+                            }) 
                         }
 
                   </div>
-                  <a className='_edit_action'>EDITAR</a>
+                  <a className='_edit_action'>EDITAR</a> */}
             </div>
         </div>
         
