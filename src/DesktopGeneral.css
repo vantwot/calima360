@@ -31,13 +31,6 @@ html,body {
     padding: 2%;
     overflow: hidden;
     background: var(--color-primary);
-    & div:first-child {
-        padding-left: 2em;
-    }
-    & div:last-child {
-        padding-right: 2em;
-    }
-
 }
 
 ._header_container div {
@@ -78,7 +71,7 @@ html,body {
 ._container_form form h2 {
     place-self: center;
     /* font-family: var(--typografy-secundary); */
-    color: var(--background-primary);
+    color: var(--color-black);
     text-transform: uppercase;
     font-style: normal;
     font-weight: 600;
