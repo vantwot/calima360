@@ -52,6 +52,7 @@ html,body {
     object-fit: contain;
 }
 
+._container_singIn ,
 ._container_form {
     place-self: center;
     width: 90%;
@@ -61,7 +62,7 @@ html,body {
     overflow: hidden;
 }
 
-
+._container_singIn form ,
 ._container_form form {
     display: grid;
     padding: 0em 3em 2em 3em;
@@ -73,6 +74,7 @@ html,body {
     box-shadow:  20px 20px 60px #d1d1d1;
 }
 
+._container_singIn form h2 ,
 ._container_form form h2 {
     place-self: center;
     /* font-family: var(--typografy-secundary); */
@@ -83,6 +85,7 @@ html,body {
     font-size: 2em;
 }
 
+._container_singIn form div._container_inputs div label,
 ._container_form form label {
     /* font-family: var(--typografy-secundary); */
     color: var(--color-black);
@@ -92,6 +95,8 @@ html,body {
     font-size: 2em;
 }
 
+
+._container_singIn form div._container_inputs div input,
 ._container_form form input[type="email"] ,
 ._container_form form input[type="password"] {
     box-sizing: border-box;
@@ -116,6 +121,7 @@ html,body {
       padding-top: 0.7em;
 }
 
+._container_singIn form div._container_a a,
 ._container_form form div._container_a a {
     color: var(--color-black);
     text-transform: uppercase;
@@ -133,6 +139,7 @@ html,body {
     width: 100%;
 }
 
+._container_singIn form div._container_a button[type="submit"],
 ._container_form form button[type="submit"] {
    justify-self: center;
    width: 70%;
@@ -144,7 +151,53 @@ html,body {
    text-transform: uppercase;
    font-weight: 600;
    font-size: 2em;
-   height: 2.5em;
+   height: 2em;
+   cursor: pointer;
+}
+
+._container_singIn {
+    max-width: 50em;
+}
+
+
+._container_singIn form h2 {
+    color: var(--color-black);
+}
+
+._container_singIn form div._container_inputs {
+    display: grid;
+    grid-auto-rows: auto;
+    grid-template-columns: 50% 50%;
+    gap: 1em;
+}
+
+._container_singIn form div._container_inputs div {
+    display: grid;
+}
+
+._container_singIn form div._container_inputs div input {
+    width: 90%;
+}
+
+._container_singIn form div._container_a {
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 1em 0 1em;
+}
+
+
+._container_singIn form div._container_a a {
+    font-size: 1em;
+    height: 1em;
+}
+
+._container_singIn form div._container_a button[type="submit"]  {
+    width: 30%;
+    height: 2.6em;
+    font-size: 1.5em;
+    cursor: pointer;
 }
 
 /*

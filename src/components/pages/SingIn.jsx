@@ -1,22 +1,22 @@
 //importar Librerias
 import React from 'react';
 import Header from '../Home/Header';
-import FormLogin from '../Home/FormLogin';
+import FormSingIn from '../Home/FormSingIn';
 
 /*  
   *  @author <cristian.machado@correounivalle.edu.co>  
   *  @version 0.0.1
   *  @returns Home
 **/
-const Home = () => {
+const SignIn = () => {
 
     return (
         <>
-           <Header />
-           <FormLogin />
+            <Header />
+            <FormSingIn />
         </>
-    );
+    )
 
-};
+}
 
-export default Home;
+export default SignIn;

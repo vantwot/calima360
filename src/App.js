@@ -1,6 +1,7 @@
 import './DesktopGeneral.css';
 import './MobileGeneral.css';
 import Home from './components/pages/Home';
+import SignIn from './components/pages/SingIn';
 
 import {
   BrowserRouter as Router,
@@ -14,6 +15,7 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/singIn" element={<SignIn />} />
         </Routes>
       </Router>
     </>
