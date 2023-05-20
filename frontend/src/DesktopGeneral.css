@@ -432,6 +432,12 @@ div._container_progress_item span._progress_ {
     margin-block-end: 0.3em;
 }
 
+.canvas_3d {
+    width: 100%;
+    height: 25em;
+}
+
+
 /*
    Variables
 */
