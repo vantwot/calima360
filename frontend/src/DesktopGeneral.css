@@ -5,7 +5,7 @@ html,body {
    background: var(--background-primary);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400');
 
 /*
     Desktop
@@ -20,6 +20,8 @@ html,body {
     overflow: hidden;
     width: 100%;
     height: auto;
+    font-family: 'PT Sans', sans-serif !important;
+
 }
 
 ._header_container {
@@ -31,13 +33,6 @@ html,body {
     padding: 2%;
     overflow: hidden;
     background: var(--color-primary);
-    & div:first-child {
-        padding-left: 2em;
-    }
-    & div:last-child {
-        padding-right: 2em;
-    }
-
 }
 
 ._header_container div {
@@ -71,14 +66,14 @@ html,body {
     width: calc(100% - 6em);
     background: var(--color-background-secundary);
     border-radius: 30px;
-    box-shadow:  20px 20px 60px #d1d1d1;
+    box-shadow:  20px 20px 60px #333333;
 }
 
 ._container_singIn form h2 ,
 ._container_form form h2 {
     place-self: center;
     /* font-family: var(--typografy-secundary); */
-    color: var(--background-primary);
+    color: var(--color-black);
     text-transform: uppercase;
     font-style: normal;
     font-weight: 600;
@@ -153,6 +148,8 @@ html,body {
    font-size: 2em;
    height: 2em;
    cursor: pointer;
+   --typografy-secundary: 'PT Sans', sans-serif !important;
+
 }
 
 ._container_singIn {
@@ -198,6 +195,8 @@ html,body {
     height: 2.6em;
     font-size: 1.5em;
     cursor: pointer;
+    --typografy-secundary: 'PT Sans', sans-serif !important;
+
 }
 
 ._container_profile a img {
@@ -445,7 +444,7 @@ div._container_progress_item span._progress_ {
     --color-primary: #ECA814;  
     --background-primary: #F5EFD7;
     --color-background-secundary: #FFF9E3;
-    --typografy-secundary: 'Roboto', sans-serif;
+    --typografy-secundary: 'PT Sans', sans-serif !important;
     --color-black: #000000;
     --color-secundary-black: #333333;
     --color-white: #FFFFFF;
