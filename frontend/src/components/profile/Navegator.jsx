@@ -3,11 +3,10 @@ import React from 'react';
 const images_content = require.context("../../assets/item_menu/", true);
 
 const ICONS_NAV = [
-    'house.svg',
     'carnet.svg',
-    'quiz.svg',
+    'house.svg',
+    // 'quiz.svg',
 ]
-
 
 /*  
   *  @author <cristian.machado@correounivalle.edu.co>  

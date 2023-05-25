@@ -148,8 +148,6 @@ html,body {
    font-size: 2em;
    height: 2em;
    cursor: pointer;
-   --typografy-secundary: 'PT Sans', sans-serif !important;
-
 }
 
 ._container_singIn {
@@ -195,8 +193,7 @@ html,body {
     height: 2.6em;
     font-size: 1.5em;
     cursor: pointer;
-    --typografy-secundary: 'PT Sans', sans-serif !important;
-
+    
 }
 
 ._container_profile a img {
@@ -319,8 +316,16 @@ div._conatiner_info_data div._item_info span {
 
 ._conatiner_info-profile 
 div._conatiner_info_data div._item_info h2 {
-    font-size: 1.8em;
-    font-weight: 700;
+    font-size: 1.5em;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+._conatiner_info-profile 
+div._conatiner_info_data div._item_info h1 {
+    font-size: 1.5em;
+    font-weight: 500;
+    text-transform: lowercase;
 }
 
 ._conatiner_info-profile 
