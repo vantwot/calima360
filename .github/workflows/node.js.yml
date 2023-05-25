@@ -15,7 +15,7 @@ jobs:
     steps:
     
       - name: Change directory to frontend
-        run: cd frontend
+        run: cd ./frontend
         
       - name: Checkout code
         uses: actions/checkout@v2
