@@ -15,18 +15,17 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          path: './frontend' # Ruta de la carpeta frontend en tu repositorio
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 14
 
+      - name: Change directory to frontend
+        run: cd frontend
+
       - name: Install dependencies
-        working-directory: frontend # Cambio de directorio a frontend
         run: npm ci
 
       - name: Run tests
-        working-directory: frontend # Cambio de directorio a frontend
         run: npm test
