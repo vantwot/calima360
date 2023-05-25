@@ -16,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          path: 'frontend' # Ruta de la carpeta frontend en tu repositorio
+          path: './frontend' # Ruta de la carpeta frontend en tu repositorio
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
