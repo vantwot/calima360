@@ -1,6 +1,7 @@
 //importar Librerias
 import React from 'react';
-
+import { useNavigate } from 'react-router-dom';
+import axiosRequestSingIn from './axiosRequest';
 
 /*  
   *  @author <cristian.machado@correounivalle.edu.co>  
@@ -9,9 +10,26 @@ import React from 'react';
 **/
 const FormSingIn = () => {
 
+    const history =  useNavigate();
+
     //evitar el recargo de la pagina
     const HandleOnSubmit = (e) => {
-            e.preventDefault();
+        e.preventDefault();
+
+        //capturar los datos del formulario
+        const name = e.target.name.value;
+        const lastname = e.target.lastname.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        console.log(name, lastname, email, password)
+
+        axiosRequestSingIn({
+            name: name,
+            lastname: lastname,
+            email: email,
+            password: password
+        });
+
     }
 
     return (
@@ -42,7 +60,7 @@ const FormSingIn = () => {
 
                     </div>
                     <div className="_container_a">
-                        <a href="/">¿Ya tienes cuenta? Inicia sesión</a>
+                        <a onClick={()=> { history('/') }}>¿Ya tienes cuenta? Inicia sesión</a>
                         <button type="submit">REGISTRARSE</button>
                     </div>
              </form>
