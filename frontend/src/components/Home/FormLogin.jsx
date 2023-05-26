@@ -1,4 +1,7 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
+import axiosRequestLogin from './axiosRequest';
+
 
 /*  
   *  @author <cristian.machado@correounivalle.edu.co>  
@@ -7,9 +10,21 @@ import React from "react";
 **/
 const FormLogin = () => {
 
+    const history =  useNavigate();
+
     //evitar el recargo de la pagina
     const HandleOnSubmit = (e) => {
             e.preventDefault();
+
+            //capturar los datos del formulario
+            const email = e.target.email.value;
+            const password = e.target.password.value;
+            console.log(email, password)
+            axiosRequestLogin({ email: email , password: password});
+    }
+
+    const handleSingIn = () => {
+        history('/singIn');
     }
 
     return (
@@ -21,7 +36,7 @@ const FormLogin = () => {
                <label htmlFor="password" className="_label">Contraseña</label>
                <input type="password" name="password" id="password" />
                <div className="_container_a">
-                   <a href="/singIn">¿No tienes cuenta? Registrate</a>
+                   <a onClick={handleSingIn} >¿No tienes cuenta? Registrate</a>
                </div>
                <button 
                     type="submit"
