@@ -8,15 +8,13 @@ const Religion3D = (props)  => {
         const { nodes, materials } = useGLTF(Object_3d);
         return (
             <group {...props} dispose={null}>
-            <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Cube.geometry}
-            material={materials["Scratched Gold"]}
-            />
+              <mesh
+                geometry={nodes.Cube.geometry}
+                material={materials.oro}
+              />
             </group>
-        );
-}
+          );
+        }
 
 useGLTF.preload(Object_3d);
 

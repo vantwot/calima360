@@ -4,9 +4,9 @@ import Navegator from './Navegator';
 import InfoProfile from './InfoProfile';
 
 const DATA = Object.freeze({
-    name: 'JUAN SEBASTIAN',
-    apellido: 'DIAZ CASAS',
-    email: 'JUAN.DIAZ@CORREOUNIVALLE.EDU.CO',
+    name: 'Juan Sebastián',
+    apellido: 'Diaz Casas',
+    email: 'juan.diaz@correounivalle.edu.co',
     img_url: 'profile_default.svg',
 
 })

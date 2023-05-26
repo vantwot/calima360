@@ -42,7 +42,7 @@ const FormSingIn = () => {
 
                     </div>
                     <div className="_container_a">
-                        <a href="#">¿Ya tienes cuenta? Inicia sesión</a>
+                        <a href="/">¿Ya tienes cuenta? Inicia sesión</a>
                         <button type="submit">REGISTRARSE</button>
                     </div>
              </form>

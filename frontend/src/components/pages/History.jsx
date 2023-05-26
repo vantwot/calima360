@@ -11,7 +11,7 @@ const DATA_HISTORY = [
         img: 'vida.svg'
     },
     {
-        title: 'Religion',
+        title: 'Religión',
         img: 'religion.svg'
     }
 ]

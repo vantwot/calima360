@@ -30,7 +30,7 @@ const InfoProfile = (props) => {
             </div>
             <div className='_conatiner_info_data'>
                   <div className='_item_info'>
-                        <span>Nombre</span>
+                        <span>NOMBRE</span>
                         <h2>{name}</h2>
                   </div>
                   <div className='_item_info'>
@@ -39,7 +39,7 @@ const InfoProfile = (props) => {
                   </div>
                   <div className='_item_info'>
                         <span>CORREO</span>
-                        <h2>{email}</h2>
+                        <h1>{email}</h1>
                   </div>
 
                   {/* <div className='_container_progress'>
