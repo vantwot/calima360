@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { Pool } = require('pg');
+const cors = require('cors');
 
 const app = express();
 const port = 5000;
@@ -17,6 +18,7 @@ const pool = new Pool({
 
 // Middleware para analizar el cuerpo de las solicitudes como JSON
 app.use(express.json());
+app.use(cors());
 
 // Ruta de usuarios
 app.get('/usuario', async (req, res) => {

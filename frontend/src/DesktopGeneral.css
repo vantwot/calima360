@@ -31,17 +31,18 @@ html,body {
     gap: 2px;
     height: 3em;
     padding: 2%;
-    overflow: hidden;
+    overflow: visible;
     background: var(--color-primary);
 }
 
-._header_container div {
+._header_container div._container_profile {
     display: grid;
     place-content: center;
     height: -webkit-fill-available;
+    margin-right: 2em;
 }
 
-._header_container div img {
+._header_container div._container_profile img {
     width: 100%;
     height: 4em;
     object-fit: contain;
@@ -194,6 +195,11 @@ html,body {
     font-size: 1.5em;
     cursor: pointer;
     
+}
+
+
+._container_profile {
+    position: relative;
 }
 
 ._container_profile a img {
@@ -441,6 +447,33 @@ div._container_progress_item span._progress_ {
     height: 25em;
 }
 
+
+._container_options {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 110%;
+    right: calc(-50% - 1em);
+    width: 50%;
+    height: auto;
+    min-width: 10em;
+    background: var(--background-nav);
+    border-radius: 2px;
+    z-index: 222;
+    box-shadow: 0px 0px 10px 0px rgba(192, 157, 60, 0.75);
+}
+
+._container_options a {
+    display: grid;
+    place-content: center;
+    padding: 1em;
+    font-size: 1em;
+    font-weight: 400;
+    color: var(--color-black);
+    font-style: normal;
+    text-transform: uppercase;
+    text-decoration: none;
+}
 
 /*
    Variables
