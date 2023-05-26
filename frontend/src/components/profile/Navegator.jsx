@@ -1,10 +1,18 @@
 //importar Librerias
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 const images_content = require.context("../../assets/item_menu/", true);
 
+
 const ICONS_NAV = [
-    'carnet.svg',
-    'house.svg',
+    {
+        icon: 'carnet.svg',
+        target: '/profile'
+    },
+    {
+        icon: 'house.svg',
+        target: '/profile/leccion'
+    }
     // 'quiz.svg',
 ]
 
@@ -14,15 +22,22 @@ const ICONS_NAV = [
   *  @returns Home
 **/
 const Navegator = () => {
+
+    const history =  useNavigate();
+
+    const handleNavagator = (target) => {
+        history(target);
+    }
+
     return (
         <div className='_container_navegator'>
             {
-                ICONS_NAV.map((icon, index) => {
+                ICONS_NAV.map((item, index) => {
 
                     return (
                         <div key={index} className='_item_navegator'>
-                            <a>
-                                <img src={images_content(`./${icon}`)} alt="icon" />
+                            <a onClick={() => { handleNavagator(item.target)}}>
+                                <img src={images_content(`./${item.icon}`)} alt="icon" />
                             </a>
                         </div>
                     )

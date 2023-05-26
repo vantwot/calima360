@@ -5,6 +5,7 @@ import SignIn from './components/pages/SingIn';
 import Profile from './components/pages/Profile';
 import History from './components/pages/History';
 import Model3d from './components/pages/Model3d';
+import Leccion from './components/pages/Leccion';
 
 import {
   BrowserRouter as Router,
@@ -20,7 +21,8 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/singIn" element={<SignIn />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/history" element={<History />} />
+          <Route path="/profile/leccion/historia" element={<History />} />
+          <Route path="/profile/leccion" element={<Leccion />} />
           <Route path="/model-religion" element={<Model3d />} />
         </Routes>
       </Router>
