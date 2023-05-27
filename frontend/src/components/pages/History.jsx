@@ -11,13 +11,15 @@ const DATA_HISTORY = [
         title: 'Vida',
         img: 'vida.svg',
         target: '/model-vida',
-        disabled: true
+        disabled: true,
+        pathBack: '/profile/leccion/historia'
     },
     {
         title: 'Religión',
         img: 'religion.svg',
         target: '/model-religion',
-        disabled: true
+        disabled: true,
+        pathBack: '/profile/leccion/historia'
     }
 ]
 
@@ -31,8 +33,8 @@ const History = () => {
     }, []);
 
 
-    const handleCerrarSesion = (target) => {
-        history(target);
+    const handleCerrarSesion = (target,pathBack) => {
+        history(target, {  state: { pathBack } });
     }
 
     return (
@@ -50,7 +52,7 @@ const History = () => {
                     {
                         DATA_HISTORY.map((item, index) => {
                             return (
-                                <div onClick={ () => { item.disabled && handleCerrarSesion(item.target) }}  key={index} className='_container_history_section'>
+                                <div onClick={ () => { item.disabled && handleCerrarSesion(item.target, item.pathBack) }}  key={index} className='_container_history_section'>
                                     <img src={require(`../../assets/item_menu/${item.img}`)} alt="icon" />
                                     <p>{item.title}</p>
                                 </div>

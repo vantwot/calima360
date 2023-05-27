@@ -212,6 +212,7 @@ html,body {
 }
 
 ._container_primary_profile {
+    position: relative;
     display: grid;
     grid-template-rows: 100%;
     grid-template-columns: 10% 90%;
@@ -219,6 +220,14 @@ html,body {
     width: calc(100% - 2em);
     height: calc(100vh - 4em);
     overflow: hidden;
+}
+
+._container_primary_profile 
+._arrow_left_back {
+    position: absolute;
+    top: 1em;
+    left: 7em;
+    z-index: 9999;
 }
 
 ._container_navegator {

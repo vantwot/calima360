@@ -7,18 +7,18 @@ import { useNavigate } from 'react-router-dom';
 
 
 const DATA_HISTORY = [
-    {
-        title: 'MITOLOGÍA',
-        img: 'mitologia.svg',
-        target: '/profile/leccion/mitologia',
-        disabled: false
-    },
-    {
-        title: 'ORFEBRERÍA',
-        img: 'orfebreria.svg',
-        target: '/profile/leccion/orfebreria',
-        disabled: false
-    },
+    // {
+    //     title: 'MITOLOGÍA',
+    //     img: 'mitologia.svg',
+    //     target: '/profile/leccion/mitologia',
+    //     disabled: false
+    // },
+    // {
+    //     title: 'ORFEBRERÍA',
+    //     img: 'orfebreria.svg',
+    //     target: '/profile/leccion/orfebreria',
+    //     disabled: false
+    // },
     {
         title: 'HISTORIA',
         img: 'historia.svg',

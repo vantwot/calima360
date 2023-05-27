@@ -7,12 +7,24 @@ import { Canvas } from '@react-three/fiber'
 import Model3D from '../model3d/Model3D';
 import ReligionWindow from '../window/ReligionWindow';
 import closeIcon from '../../assets/item_menu/close.svg';
+import {  
+    useLocation ,
+    useNavigate
+} from 'react-router-dom';
 
-const Model3d = () => {
+const Model3d = (props) => {
 
+    const history =  useNavigate();
     const [showIn, setShowIn] = useState(false);
     const handleModalIn = () => setShowIn(true);
     const handleCloseIn = () => setShowIn(false);
+
+    const location = useLocation();
+    const pathBack = location.state?.pathBack;
+
+    const handleCerrarSesion = () => {
+        history(pathBack);
+    }
 
     React.useEffect(() => {
         document.getElementById('root').classList.add('remove_gap');
@@ -28,7 +40,11 @@ const Model3d = () => {
                  </div>
             </Header>
             <div className='_container_primary_profile'>
-            <ReligionWindow show={showIn} onHide={handleCloseIn} handleCloseIn={handleCloseIn} handleModalIn={handleModalIn} size="lg"/>
+                <div className='_arrow_left_back'>
+                    <a onClick={handleCerrarSesion}>
+                        atras
+                    </a>
+                </div>
                 <Navegator />
                 <Experience title={'Religión'}>
                     <div className='canvas_3d'>
