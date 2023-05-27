@@ -34,5 +34,17 @@
         grid-template-columns: 25% 75%;
     }
 
+    ._conatiner_info-profile {
+        flex-direction: column;
+    }
+
+    ._conatiner_info-profile div._container_photo_profile {
+        width: auto;
+    }
+
+    ._container_section h2 {
+        font-size: 2em;
+    }
+
   
 }

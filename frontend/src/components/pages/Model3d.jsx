@@ -18,12 +18,22 @@ const Model3d = (props) => {
     const [showIn, setShowIn] = useState(false);
     const handleModalIn = () => setShowIn(true);
     const handleCloseIn = () => setShowIn(false);
+    const [ active_profile, setActiveProfile ] = React.useState(false);
 
     const location = useLocation();
     const pathBack = location.state?.pathBack;
 
     const handleCerrarSesion = () => {
         history(pathBack);
+    }
+
+    const handleProfile = () => {
+        setActiveProfile(!active_profile);
+    }
+
+    const handleCerrar = (target) => {
+        document.getElementById('root').classList.remove('remove_gap');
+        history(target);
     }
 
     React.useEffect(() => {
@@ -34,8 +44,13 @@ const Model3d = (props) => {
         <>
             <Header>
                 <div className='_container_profile'>
-                    <a>
+                    <a onClick={handleProfile}>
                         <img src={icon_profile} alt="profile" />
+                        { active_profile &&
+                          <div className='_container_options'>
+                                <a onClick={ () => { handleCerrar('/') }}>Cerrar Sesion</a>
+                          </div>
+                        }
                     </a>
                  </div>
             </Header>

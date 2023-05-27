@@ -227,7 +227,7 @@ html,body {
     position: absolute;
     top: 1em;
     left: 7em;
-    z-index: 9999;
+    z-index: 99;
 }
 
 ._container_primary_profile 
