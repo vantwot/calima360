@@ -30,8 +30,8 @@ const ModelVida3D = () => {
     return (
         <>
             <OrbitControls makeDefault minDistance={20} maxDistance={30} />
-            <directionalLight ref={directionalLightRef1} castShadow={true} position={[0, 30, 0]} intensity={0.3} />
-            <directionalLight ref={directionalLightRef2} castShadow={true} position={[0, -10, 0]} intensity={0.1} />
+            <directionalLight ref={directionalLightRef1} castShadow={true} position={[0, 10, 0]} intensity={0.5} />
+            <directionalLight ref={directionalLightRef2} castShadow={true} position={[0, -10, 0]} intensity={0.5} />
             <ambientLight intensity={0.5} />
 
             <Model scale="2" position={[0, 0, 0]} rotation-x={- Math.PI * 0.38} rotation-z={- Math.PI * 0.15} onClick={handleMouseClick} />

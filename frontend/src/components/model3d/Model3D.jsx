@@ -7,31 +7,6 @@ const Model3D = (props) => {
     const directionalLightRef1 = useRef();
     const directionalLightRef2 = useRef();
 
-    // const {
-    //     handleModalIn,
-    //     handleCloseIn
-    // } = props;
-
-    const handleMouseClick = () => {
-        const popupWindow = window.open('', '_blank', 'width=500,height=500,top=100,left=250');
-        if (popupWindow) {
-            popupWindow.document.write(`
-                <html>
-                <head>
-                    <title>Pop-up Window</title>
-                    <style>
-                        /* Estilos CSS para la ventana emergente */
-                    </style>
-                </head>
-                <body>
-                    <h1>Contenido de la ventana emergente</h1>
-                    <p>Este es el contenido de la ventana emergente.</p>
-                </body>
-                </html>
-            `);
-        }
-    };
-
     const hadlePopUp = () => {
         props.handleModalIn();
     }

@@ -53,12 +53,27 @@ const Model3d = () => {
                                 <a onClick={handleCloseIn} className='_close_popup_'>
                                     <img src={closeIcon} alt="close" />
                                 </a>
-                                <p>Religión</p>
-                                <img src={icon_profile} alt="profile" />
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus perferendis
-                                    dicta exercitationem doloremque soluta et eligendi excepturi explicabo dolor sit, 
-                                    commodi repudiandae esse possimus nam suscipit, fugit, tempore corporis temporibus.
-                                </p>
+                                <h1>Religión de la cultura Calima</h1>
+                                <p>Predominó el culto funerario, donde las personas creían en el más allá. Existieron un alto número de tumbas, de todos los períodos que tuvo la cultura, y que estaban acompañados con objetos hechos a base de oro y amas guerra, las cuales eran construidas en pozos,</p>
+                                <p>De igual manera, solían practicar el sacrificio como un ritual funerario y todo esto era parte de una filosofía el fallecido debe de emprender el viaje al otro mundo con los recursos necesarios y en compañía de los seres queridos. Por lo que se debe de analizar los siguientes elementos que solían estar en las tumbas:</p>
+                                    <ol>
+                                        <li>
+                                             <h3>Máscaras de oro</h3>
+                                            <p>Permitía saber que la persona que estaba era un dios.</p>
+                                        </li>
+                                        <li>
+                                            <h3>Pectorales</h3>
+                                            <p>Asociada con la sabiduría del alma que entablaría una guerra contra las tinieblas para llegar al más allá.</p>
+                                        </li>
+                                        <li>
+                                            <h3>Vasijas de barro</h3>
+                                            <p>Exponían el culto a los órganos sexuales femeninos.</p>
+                                        </li>
+                                        <li>
+                                            <h3>Alcazarra</h3>
+                                            <p>Representación al trabajo para lograr convertirse en un hombre solar y poder realizar magníficas obras.</p>
+                                        </li>
+                                    </ol>       
                             </div>
                         </div>
                         }
