@@ -17,6 +17,7 @@ const axiosRequestLogin = async ({ email , password}) => {
 
         const response = await axios.post(`${URL}:${PORT}/login` , DATA);
         console.log(response.data);
+        return response.data;
 
     } catch (error) {
         console.error(error);

@@ -90,27 +90,12 @@ const Model3d = () => {
                                 <a onClick={handleCloseIn} className='_close_popup_'>
                                     <img src={closeIcon} alt="close" />
                                 </a>
-                                <h1>Religión de la cultura Calima</h1>
-                                <p>Predominó el culto funerario, donde las personas creían en el más allá. Existieron un alto número de tumbas, de todos los períodos que tuvo la cultura, y que estaban acompañados con objetos hechos a base de oro y amas guerra, las cuales eran construidas en pozos,</p>
-                                <p>De igual manera, solían practicar el sacrificio como un ritual funerario y todo esto era parte de una filosofía el fallecido debe de emprender el viaje al otro mundo con los recursos necesarios y en compañía de los seres queridos. Por lo que se debe de analizar los siguientes elementos que solían estar en las tumbas:</p>
-                                    <ol>
-                                        <li>
-                                             <h3>Máscaras de oro</h3>
-                                            <p>Permitía saber que la persona que estaba era un dios.</p>
-                                        </li>
-                                        <li>
-                                            <h3>Pectorales</h3>
-                                            <p>Asociada con la sabiduría del alma que entablaría una guerra contra las tinieblas para llegar al más allá.</p>
-                                        </li>
-                                        <li>
-                                            <h3>Vasijas de barro</h3>
-                                            <p>Exponían el culto a los órganos sexuales femeninos.</p>
-                                        </li>
-                                        <li>
-                                            <h3>Alcazarra</h3>
-                                            <p>Representación al trabajo para lograr convertirse en un hombre solar y poder realizar magníficas obras.</p>
-                                        </li>
-                                    </ol>       
+                                <h1>Vida de la cultura Calima</h1>
+                                <p>La cultura Calima, que floreció en la región suroeste de Colombia entre los siglos IV a.C. y VII d.C., tuvo una vida rica y compleja. Durante este período, la cultura Calima desarrolló una serie de características distintivas que los diferenciaron de otros grupos indígenas de la región.</p>
+                                <p>La vida de la cultura Calima estaba estrechamente vinculada a su entorno natural. Los calimas habitaban una región de valles y montañas, lo que les brindaba una variedad de recursos naturales para su subsistencia. Se dedicaban a la agricultura, cultivando maíz, frijoles, calabazas y algodón. También eran hábiles ceramistas y tejedores, creando hermosos objetos de barro y textiles que reflejaban su creatividad y destreza.</p>
+                                <p>Además de sus actividades económicas, la cultura Calima tenía una fuerte base religiosa y espiritual. Creían en la existencia de un mundo más allá de la vida terrenal y practicaban un culto funerario elaborado. Las tumbas calimas eran ricas en objetos preciosos, como máscaras de oro, pectorales y vasijas de barro. Estos objetos simbolizaban la importancia del viaje del difunto al más allá y su transformación en seres divinos.</p>
+                                <p>La sociedad calima también estaba organizada de manera jerárquica, con líderes políticos y religiosos que ejercían un gran poder. Los calimas participaban en rituales y ceremonias, donde se honraban a los dioses y se fortalecían los lazos comunitarios. La guerra también era parte de la vida calima, ya sea para defenderse de amenazas externas o para expandir su territorio.</p>
+                                <p>La cultura Calima dejó un legado significativo en la historia de Colombia. Sus obras de arte, su habilidad en la cerámica y su enfoque en el culto funerario son testimonios de una civilización rica y sofisticada. Aunque los calimas desaparecieron hace siglos, su legado perdura en los vestigios arqueológicos y en la memoria de la región suroeste de Colombia.</p>
                             </div>
                         </div>
                         }

@@ -23,8 +23,8 @@ const FormSingIn = () => {
         const password = e.target.password.value;
         console.log(name, lastname, email, password)
 
-        axiosRequestSingIn({ name, lastname, email, password });
-
+        axiosRequestSingIn({ name, lastname, email, password }).then(res => {window.confirm("Registro exitoso")})
+        .catch(err => {window.confirm("Error al crear usuario")})
     }
 
     return (
