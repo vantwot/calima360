@@ -29,24 +29,33 @@ const History = () => {
     const history =  useNavigate();
     const [ active_profile, setActiveProfile ] = React.useState(false);
 
-    React.useEffect(() => {
-        document.getElementById('root').classList.add('remove_gap');
-    }, []);
-
+    const handleProfile = () => {
+        setActiveProfile(!active_profile);
+    }
 
     const handleCerrarSesion = (target,pathBack) => {
         history(target, {  state: { pathBack } });
     }
 
+    const handleCerrar = (target) => {
+        document.getElementById('root').classList.remove('remove_gap');
+        history(target);
+    }
+
+
+    React.useEffect(() => {
+        document.getElementById('root').classList.add('remove_gap');
+    }, []);
+
     return (
         <>
             <Header>
                 <div className='_container_profile'>
-                    <a>
+                    <a onClick={handleProfile}>
                         <img src={icon_profile} alt="profile" />
                         { active_profile &&
                           <div className='_container_options'>
-                                <a onClick={ () => { history('/') }}>Cerrar Sesion</a>
+                                <a onClick={ () => { handleCerrar('/') }}>Cerrar Sesion</a>
                           </div>
                         }
                     </a>

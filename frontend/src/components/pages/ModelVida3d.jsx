@@ -59,9 +59,10 @@ const Model3d = () => {
                             //maldita propiedad, 30m perdi de mi vida :3
                             shadows={true}
                         >
-                          <ModelVida3D /> 
+                          <ModelVida3D 
                                 handleModalIn={handleModalIn}
                                 handleCloseIn={handleCloseIn}
+                          /> 
                           </Canvas>
                         {showIn &&
                         <div className='_popup_3d_'>

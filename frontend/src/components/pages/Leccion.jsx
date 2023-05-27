@@ -43,6 +43,10 @@ const Leccion = () => {
     }
 
 
+    const handleCerrar = (target) => {
+        document.getElementById('root').classList.remove('remove_gap');
+        history(target);
+    }
 
     React.useEffect(() => {
         document.getElementById('root').classList.add('remove_gap');
@@ -57,7 +61,7 @@ const Leccion = () => {
                     </a>
                     { active_profile &&
                           <div className='_container_options'>
-                                <a onClick={ () => { handleCerrarSesion('/') }}>Cerrar Sesion</a>
+                                <a onClick={ () => { handleCerrar('/') }}>Cerrar Sesion</a>
                           </div>
                     }
                  </div>
