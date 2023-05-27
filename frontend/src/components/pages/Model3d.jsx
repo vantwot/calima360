@@ -60,6 +60,9 @@ const Model3d = (props) => {
                         <img src={backArrrow} alt="back" />
                     </a>
                 </div>
+                <div className='_text_left_back'>
+                    <strong>Dar click a la figura!!!</strong>
+                </div>
                 <Navegator />
                 <Experience title={'Religión'}>
                     <div className='canvas_3d'>
