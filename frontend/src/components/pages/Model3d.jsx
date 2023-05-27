@@ -5,8 +5,8 @@ import icon_profile from '../../assets/logo/profile_default.svg';
 import Navegator from '../profile/Navegator'
 import { Canvas } from '@react-three/fiber'
 import Model3D from '../model3d/Model3D';
-import ReligionWindow from '../window/ReligionWindow';
 import closeIcon from '../../assets/item_menu/close.svg';
+import backArrrow from '../../assets/item_menu/backArrow.svg';
 import {  
     useLocation ,
     useNavigate
@@ -42,7 +42,7 @@ const Model3d = (props) => {
             <div className='_container_primary_profile'>
                 <div className='_arrow_left_back'>
                     <a onClick={handleCerrarSesion}>
-                        atras
+                        <img src={backArrrow} alt="back" />
                     </a>
                 </div>
                 <Navegator />
