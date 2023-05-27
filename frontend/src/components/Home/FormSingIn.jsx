@@ -13,7 +13,7 @@ const FormSingIn = () => {
     const history =  useNavigate();
 
     //evitar el recargo de la pagina
-    const HandleOnSubmit = (e) => {
+    const HandleOnSubmit = async (e) => {
         e.preventDefault();
 
         //capturar los datos del formulario
@@ -23,8 +23,14 @@ const FormSingIn = () => {
         const password = e.target.password.value;
         console.log(name, lastname, email, password)
 
-        axiosRequestSingIn({ name, lastname, email, password }).then(res => {window.confirm("Registro exitoso")})
-        .catch(err => {window.confirm("Error al crear usuario")})
+        await axiosRequestSingIn({ name, lastname, email, password })
+        .then(res => {
+            if (res != -1) {
+                window.confirm("Registro exitoso.")
+            } else {
+                window.confirm("No se pudo crear el usuario.")
+            }
+        })
     }
 
     return (

@@ -19,11 +19,11 @@ const axiosRequestLogin = async ({ name, lastname, email, password}) => {
 
         const response = await axios.post(`${URL}:${PORT}/registro` , DATA);
         console.log(response.data);
-        return response.data
+        return response.data;
 
     } catch (error) {
         console.error(error);
-        return error;
+        return -1;
     }
 
 };

@@ -12,18 +12,21 @@ const FormLogin = () => {
     const history =  useNavigate();
 
     //evitar el recargo de la pagina
-    const HandleOnSubmit = (e) => {
+    const HandleOnSubmit = async (e) => {
             e.preventDefault();
 
             //capturar los datos del formulario
             const email = e.target.email.value;
             const password = e.target.password.value;
             console.log(email, password)
-            axiosRequestLogin({ email: email , password: password}).then(res => {sessionStorage.setItem('token', JSON.stringify ()) 
-            if (sessionStorage.getItem('token') === null || sessionStorage.getItem('token') === undefined) {window.confirm("Error al iniciar sesión")} 
-            else { history("/profile");}});
-            
-            
+            await axiosRequestLogin({ email: email , password: password})
+            .then(res => {
+                sessionStorage.setItem('token', res);
+                if (res != -1) {
+                    history("/profile");
+                } else {
+                    window.confirm('Error al ingresar, por favor verifique sus datos.')
+                }})
     }
 
     const handleSingIn = () => {

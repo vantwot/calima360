@@ -10,17 +10,18 @@ const PORT = 5000;
 const axiosRequestLogin = async ({ email , password}) => {
     try {
 
-        const DATA = Object.freeze({
+        const DATA = {
             "email": email,
             "contraseña": password
-        });
+        };
 
         const response = await axios.post(`${URL}:${PORT}/login` , DATA);
         console.log(response.data);
-        return response.data;
+        return response.data.token;
 
     } catch (error) {
         console.error(error);
+        return -1;
     }
 
 };
