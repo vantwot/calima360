@@ -3,9 +3,7 @@ import axios from 'axios';
 
 
 //variables globales
-const URL = 'http://52.7.103.37:5000/';
-const PORT = 5000;
-
+const URL = 'http://52.7.103.37:5000';
 
 const axiosRequestLogin = async ({ email , password}) => {
     try {
@@ -15,7 +13,7 @@ const axiosRequestLogin = async ({ email , password}) => {
             "contraseña": password
         };
 
-        const response = await axios.post(`${URL}:${PORT}/login` , DATA);
+        const response = await axios.post(`${URL}/login` , DATA);
         console.log(response.data);
         return response.data.token;
 
@@ -34,7 +32,7 @@ const axiosRequestSingIn = async ({
 
     try {
 
-        axios.post(`${URL}:${PORT}/registro`, {
+        axios.post(`${URL}/registro`, {
             nombre: name,
             apellido: lastname,
             email: email, 
