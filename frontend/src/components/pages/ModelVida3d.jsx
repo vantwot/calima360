@@ -19,24 +19,41 @@ const Model3d = () => {
     const [showIn, setShowIn] = useState(false);
     const handleModalIn = () => setShowIn(true);
     const handleCloseIn = () => setShowIn(false);
-
-    React.useEffect(() => {
-        document.getElementById('root').classList.add('remove_gap');
-    }, []);
+    const [ active_profile, setActiveProfile ] = React.useState(false);
 
     const location = useLocation();
     const pathBack = location.state?.pathBack;
+
+
+    const handleProfile = () => {
+        setActiveProfile(!active_profile);
+    }
 
     const handlePathBack = () => {
         history(pathBack);
     }
 
+    const handleCerrar = (target) => {
+        document.getElementById('root').classList.remove('remove_gap');
+        history(target);
+    }
+
+    React.useEffect(() => {
+        document.getElementById('root').classList.add('remove_gap');
+    }, []);
+
+
     return (
         <>
             <Header>
                 <div className='_container_profile'>
-                    <a>
+                    <a onClick={handleProfile}>
                         <img src={icon_profile} alt="profile" />
+                        { active_profile &&
+                          <div className='_container_options'>
+                                <a onClick={ () => { handleCerrar('/') }}>Cerrar Sesion</a>
+                          </div>
+                        }
                     </a>
                  </div>
             </Header>
