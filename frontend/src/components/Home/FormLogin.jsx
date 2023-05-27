@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from 'react-router-dom';
 import axiosRequestLogin from "./axiosRequest";
 
-
 /*  
   *  @author <cristian.machado@correounivalle.edu.co>  
   *  @version 0.0.1
@@ -20,7 +19,11 @@ const FormLogin = () => {
             const email = e.target.email.value;
             const password = e.target.password.value;
             console.log(email, password)
-            axiosRequestLogin({ email: email , password: password});
+            axiosRequestLogin({ email: email , password: password}).then(res => {sessionStorage.setItem('token', JSON.stringify ()) 
+            if (sessionStorage.getItem('token') === null || sessionStorage.getItem('token') === undefined) {window.confirm("Error al iniciar sesión")} 
+            else { history("/profile");}});
+            
+            
     }
 
     const handleSingIn = () => {
