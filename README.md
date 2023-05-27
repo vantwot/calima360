@@ -29,7 +29,7 @@ Calima360 es una aplicación interactiva que te permite explorar la cultura prec
 1. Inicia el servidor backend.
     ```bash
    cd backend
-   npm start
+   node index.js
 
 2. Inicia la aplicación frontend.
     ```bash
