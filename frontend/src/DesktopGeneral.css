@@ -230,6 +230,11 @@ html,body {
     z-index: 9999;
 }
 
+._container_primary_profile 
+._arrow_left_back a {
+    cursor: pointer;
+}
+
 ._container_navegator {
     height: 100%;
     width: calc(100% - 2em);

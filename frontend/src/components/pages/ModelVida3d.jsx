@@ -6,9 +6,16 @@ import Navegator from '../profile/Navegator'
 import { Canvas } from '@react-three/fiber'
 import ModelVida3D from '../model3d/ModelVida3D';
 import closeIcon from '../../assets/item_menu/close.svg';
+import backArrrow from '../../assets/item_menu/backArrow.svg';
+import {  
+    useLocation ,
+    useNavigate
+} from 'react-router-dom';
+
 
 const Model3d = () => {
 
+    const history =  useNavigate();
     const [showIn, setShowIn] = useState(false);
     const handleModalIn = () => setShowIn(true);
     const handleCloseIn = () => setShowIn(false);
@@ -16,6 +23,13 @@ const Model3d = () => {
     React.useEffect(() => {
         document.getElementById('root').classList.add('remove_gap');
     }, []);
+
+    const location = useLocation();
+    const pathBack = location.state?.pathBack;
+
+    const handlePathBack = () => {
+        history(pathBack);
+    }
 
     return (
         <>
@@ -27,6 +41,11 @@ const Model3d = () => {
                  </div>
             </Header>
             <div className='_container_primary_profile'>
+            <div className='_arrow_left_back'>
+                    <a onClick={handlePathBack}>
+                        <img src={backArrrow} alt="back" />
+                    </a>
+            </div>
             <Navegator />
                 <Experience title={'Vida'}>
                     <div className='canvas_3d'>

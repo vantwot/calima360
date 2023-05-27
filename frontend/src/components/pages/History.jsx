@@ -27,6 +27,7 @@ const DATA_HISTORY = [
 const History = () => {
 
     const history =  useNavigate();
+    const [ active_profile, setActiveProfile ] = React.useState(false);
 
     React.useEffect(() => {
         document.getElementById('root').classList.add('remove_gap');
@@ -43,6 +44,11 @@ const History = () => {
                 <div className='_container_profile'>
                     <a>
                         <img src={icon_profile} alt="profile" />
+                        { active_profile &&
+                          <div className='_container_options'>
+                                <a onClick={ () => { history('/') }}>Cerrar Sesion</a>
+                          </div>
+                        }
                     </a>
                  </div>
             </Header>
