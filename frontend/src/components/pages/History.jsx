@@ -10,8 +10,8 @@ const DATA_HISTORY = [
     {
         title: 'Vida',
         img: 'vida.svg',
-        target: '/profile/leccion/vida',
-        disabled: false,
+        target: '/model-vida',
+        disabled: true,
         pathBack: '/profile/leccion/historia'
     },
     {

@@ -5,6 +5,7 @@ import SignIn from './components/pages/SingIn';
 import Profile from './components/pages/Profile';
 import History from './components/pages/History';
 import Model3d from './components/pages/Model3d';
+import ModelVida3d from './components/pages/ModelVida3d';
 import Leccion from './components/pages/Leccion';
 
 import {
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/profile/leccion/historia" element={<History />} />
           <Route path="/profile/leccion" element={<Leccion />} />
           <Route path="/model-religion" element={<Model3d />} />
+          <Route path="/model-vida" element={<ModelVida3d />} />
         </Routes>
       </Router>
     </>
