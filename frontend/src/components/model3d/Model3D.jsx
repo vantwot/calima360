@@ -8,7 +8,7 @@ const Model3D = () => {
     const directionalLightRef2 = useRef();
 
     const handleMouseClick = () => {
-        const popupWindow = window.open('', '_blank', 'width=500,height=500');
+        const popupWindow = window.open('', '_blank', 'width=500,height=500,top=100,left=250');
         if (popupWindow) {
             popupWindow.document.write(`
                 <html>
