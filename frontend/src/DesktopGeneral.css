@@ -475,6 +475,53 @@ div._container_progress_item span._progress_ {
     text-decoration: none;
 }
 
+._popup_3d_ {
+    display: grid;
+    place-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 222;
+    background: var(--background-popup);
+    overflow: hidden;
+}
+
+
+._popup_3d_  ._container_popup_3d {
+    position: relative;
+    width: 70%;
+    max-width: 700px;
+    max-height: 400px;
+    padding: 2em;
+    background: var(--background-primary);
+    border-radius: 8px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+
+._popup_3d_  
+._container_popup_3d 
+._close_popup_ { 
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    font-size: 1.3em;
+    color: var(--color-black);
+    cursor: pointer;
+}
+
+._popup_3d_  
+._container_popup_3d 
+._close_popup_ img { 
+    object-fit: scale-down;
+    width: 1.6em;
+    height: 1.6em;
+}
+
 /*
    Variables
 */
@@ -487,6 +534,7 @@ div._container_progress_item span._progress_ {
     --color-secundary-black: #333333;
     --color-white: #FFFFFF;
     --background-nav: #FDDA8C;
+    --background-popup: #3535347e;
 }
 
 

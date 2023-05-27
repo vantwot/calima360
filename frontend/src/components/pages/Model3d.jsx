@@ -6,6 +6,7 @@ import Navegator from '../profile/Navegator'
 import { Canvas } from '@react-three/fiber'
 import Model3D from '../model3d/Model3D';
 import ReligionWindow from '../window/ReligionWindow';
+import closeIcon from '../../assets/item_menu/close.svg';
 
 const Model3d = () => {
 
@@ -41,8 +42,26 @@ const Model3d = () => {
                             //maldita propiedad, 30m perdi de mi vida :3
                             shadows={true}
                         >
-                          <Model3D />   
+                          <Model3D 
+                                handleModalIn={handleModalIn}
+                                handleCloseIn={handleCloseIn}
+                          />   
                         </Canvas>
+                        {showIn &&
+                        <div className='_popup_3d_'>
+                            <div className='_container_popup_3d'>
+                                <a onClick={handleCloseIn} className='_close_popup_'>
+                                    <img src={closeIcon} alt="close" />
+                                </a>
+                                <p>Religión</p>
+                                <img src={icon_profile} alt="profile" />
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus perferendis
+                                    dicta exercitationem doloremque soluta et eligendi excepturi explicabo dolor sit, 
+                                    commodi repudiandae esse possimus nam suscipit, fugit, tempore corporis temporibus.
+                                </p>
+                            </div>
+                        </div>
+                        }
                     </div>
                 </Experience>
             </div>
