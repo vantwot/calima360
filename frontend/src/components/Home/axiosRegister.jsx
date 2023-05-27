@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 //variables globales
-const URL = ' https://calima360.pages.dev';
+const URL = ' calima360.pages.dev';
 //const PORT = 5000;
 
 
