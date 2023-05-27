@@ -1,7 +1,38 @@
 /*
     Mobile
 */
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 600px) {
+
+    ._container_singIn form ,
+    ._container_form form {
+        padding: 0em 1em 2em 1em;
+        width: calc(100% - 2em);
+    }
+
+    ._container_form form div._container_a a {
+        margin-top: 1em;
+    }
+
+    ._container_singIn form div._container_inputs {
+        display: grid;
+        grid-auto-rows: auto;
+        grid-template-columns: 100%;
+        gap: 1em;
+    }    
+
+    ._container_singIn form div._container_a {
+        flex-direction: column;
+    }
+
+    ._container_singIn form div._container_a button[type="submit"]  {
+        width: 90%;
+    }
+
+    ._container_primary_profile {
+        display: grid;
+        grid-template-rows: 100%;
+        grid-template-columns: 25% 75%;
+    }
 
   
 }
