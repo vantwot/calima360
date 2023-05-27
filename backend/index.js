@@ -1,10 +1,22 @@
+// Importar el módulo 'express'
 const express = require('express');
+
+// Importar el módulo 'bcrypt'
 const bcrypt = require('bcrypt');
+
+// Importar el módulo 'jsonwebtoken'
 const jwt = require('jsonwebtoken');
+
+// Importar la clase Pool del módulo 'pg'
 const { Pool } = require('pg');
+
+// Importar el módulo 'cors'
 const cors = require('cors');
 
+// Crear una instancia de la aplicación de Express
 const app = express();
+
+// Definir el número de puerto en el que se ejecutará la aplicación
 const port = 5000;
 
 // Configura la conexión a la base de datos PostgreSQL

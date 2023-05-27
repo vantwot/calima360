@@ -1,38 +1,50 @@
-import React from "react";
-import { useNavigate } from 'react-router-dom';
-import axiosRequestLogin from "./axiosRequest";
-
 /*  
   *  @author <cristian.machado@correounivalle.edu.co>  
   *  @version 0.0.1
   *  @returns Home
 **/
-const FormLogin = () => {
 
+// Importar React desde la biblioteca 'react'
+import React from "react";
+
+// Importar el hook useNavigate desde la biblioteca 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+
+// Importar la función axiosRequestLogin desde el archivo './axiosRequest'
+import axiosRequestLogin from "./axiosRequest";
+
+// Definición del componente funcional FormLogin
+const FormLogin = () => {
+    // Obtener la función de navegación de la biblioteca 'react-router-dom'
     const history =  useNavigate();
 
-    //evitar el recargo de la pagina
+    // Manejar el evento de envío del formulario
     const HandleOnSubmit = async (e) => {
-            e.preventDefault();
+        e.preventDefault();
 
-            //capturar los datos del formulario
-            const email = e.target.email.value;
-            const password = e.target.password.value;
-            console.log(email, password)
-            await axiosRequestLogin({ email: email , password: password})
-            .then(res => {
-                sessionStorage.setItem('token', res);
-                if (res != -1) {
-                    history("/profile");
-                } else {
-                    window.confirm('Error al ingresar, por favor verifique sus datos.')
-                }})
+        // Capturar los datos del formulario
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        console.log(email, password);
+
+        // Realizar una solicitud de inicio de sesión utilizando la función axiosRequestLogin
+        await axiosRequestLogin({ email: email , password: password})
+        .then(res => {
+            sessionStorage.setItem('token', res);
+            if (res !== -1) {
+                history("/profile");
+            } else {
+                window.confirm('Error al ingresar, por favor verifique sus datos.');
+            }
+        });
     }
 
+    // Manejar el evento de registro
     const handleSingIn = () => {
         history('/singIn');
     }
 
+    // Renderizar el formulario de inicio de sesión
     return (
         <div className="_container_form">
            <form onSubmit={HandleOnSubmit}>
@@ -54,4 +66,5 @@ const FormLogin = () => {
     );
 };
 
+// Exportar el componente FormLogin como el valor predeterminado del módulo
 export default FormLogin;
