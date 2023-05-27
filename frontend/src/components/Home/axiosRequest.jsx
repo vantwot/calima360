@@ -3,8 +3,8 @@ import axios from 'axios';
 
 
 //variables globales
-const URL = ' calima360.pages.dev';
-//const PORT = 5000;
+const URL = 'http://localhost';
+const PORT = 5000;
 
 
 const axiosRequestLogin = async ({ email , password}) => {
@@ -15,7 +15,7 @@ const axiosRequestLogin = async ({ email , password}) => {
             "contraseña": password
         };
 
-        const response = await axios.post(`${URL}/login` , DATA);
+        const response = await axios.post(`${URL}:${PORT}/login` , DATA);
         console.log(response.data);
         return response.data.token;
 
@@ -34,7 +34,7 @@ const axiosRequestSingIn = async ({
 
     try {
 
-        axios.post(`${URL}/registro`, {
+        axios.post(`${URL}:${PORT}/registro`, {
             nombre: name,
             apellido: lastname,
             email: email, 
