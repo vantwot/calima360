@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 //variables globales
-const URL = 'http://52.7.103.37:5000';
+const URL = 'http://localhost:5000';
 
 const axiosRequestLogin = async ({ email , password}) => {
     try {
