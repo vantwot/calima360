@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 //variables globales
-const URL = ' http://localhost';
+const URL = 'http://52.7.103.37';
 const PORT = 5000;
 
 
