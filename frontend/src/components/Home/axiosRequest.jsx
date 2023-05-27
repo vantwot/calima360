@@ -11,8 +11,8 @@ const axiosRequestLogin = async ({ email , password}) => {
     try {
 
         const DATA = Object.freeze({
-            email: email,
-            contraseña: password
+            "email": email,
+            "contraseña": password
         });
 
         const response = await axios.post(`${URL}:${PORT}/login` , DATA);

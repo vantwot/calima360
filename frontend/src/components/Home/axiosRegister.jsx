@@ -7,15 +7,17 @@ const URL = ' http://localhost';
 const PORT = 5000;
 
 
-const axiosRequestLogin = async ({ email , password}) => {
+const axiosRequestLogin = async ({ name, lastname, email, password}) => {
     try {
 
-        const DATA = Object.freeze({
-            email: email,
-            contraseña: password
-        });
+        const DATA = {
+            "nombre": name, 
+            "apellido": lastname,
+            "email": email,
+            "contraseña": password
+        }
 
-        const response = await axios.post(`${URL}:${PORT}/login` , DATA);
+        const response = await axios.post(`${URL}:${PORT}/registro` , DATA);
         console.log(response.data);
 
     } catch (error) {

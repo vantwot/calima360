@@ -1,7 +1,7 @@
 //importar Librerias
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import axiosRequestSingIn from './axiosRequest';
+import axiosRequestSingIn from './axiosRegister';
 
 /*  
   *  @author <cristian.machado@correounivalle.edu.co>  
@@ -23,12 +23,7 @@ const FormSingIn = () => {
         const password = e.target.password.value;
         console.log(name, lastname, email, password)
 
-        axiosRequestSingIn({
-            name: name,
-            lastname: lastname,
-            email: email,
-            password: password
-        });
+        axiosRequestSingIn({ name, lastname, email, password });
 
     }
 
