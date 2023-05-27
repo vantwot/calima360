@@ -63,6 +63,9 @@ const Model3d = () => {
                         <img src={backArrrow} alt="back" />
                     </a>
             </div>
+            <div className='_text_left_back'>
+                    <strong>Dar click a la figura!!!</strong>
+            </div>
             <Navegator />
                 <Experience title={'Vida'}>
                     <div className='canvas_3d'>

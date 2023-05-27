@@ -231,6 +231,15 @@ html,body {
 }
 
 ._container_primary_profile 
+._text_left_back {
+    position: absolute;
+    bottom: 6em;
+    right: 4em;
+    z-index: 99;
+    color: var(--color-black);
+}
+
+._container_primary_profile 
 ._arrow_left_back a {
     cursor: pointer;
 }
