@@ -1,38 +1,47 @@
-//importar Librerias
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import axiosRequestSingIn from './axiosRegister';
-
 /*  
   *  @author <cristian.machado@correounivalle.edu.co>  
   *  @version 0.0.1
   *  @returns Home
 **/
+
+// Importar React desde la biblioteca 'react'
+import React from 'react';
+
+// Importar el hook useNavigate desde la biblioteca 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+
+// Importar la función axiosRequestSingIn desde el archivo './axiosRegister'
+import axiosRequestSingIn from './axiosRegister';
+
+// Definición del componente funcional FormSingIn
 const FormSingIn = () => {
 
+    // Obtener la función de navegación de la biblioteca 'react-router-dom'
     const history =  useNavigate();
 
-    //evitar el recargo de la pagina
+    // Manejar el evento de envío del formulario
     const HandleOnSubmit = async (e) => {
         e.preventDefault();
 
-        //capturar los datos del formulario
+        // Capturar los datos del formulario
         const name = e.target.name.value;
         const lastname = e.target.lastname.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(name, lastname, email, password)
+        console.log(name, lastname, email, password);
 
+        // Realizar una solicitud de registro utilizando la función axiosRequestSingIn
         await axiosRequestSingIn({ name, lastname, email, password })
         .then(res => {
-            if (res != -1) {
-                window.confirm("Registro exitoso.")
+            if (res !== -1) {
+                window.confirm("Registro exitoso.");
             } else {
-                window.confirm("No se pudo crear el usuario.")
+                window.confirm("No se pudo crear el usuario.");
             }
-        })
+        });
     }
 
+    // Renderizar el formulario de registro
     return (
         <div className='_container_singIn'>
              <form onSubmit={HandleOnSubmit}>
@@ -66,9 +75,8 @@ const FormSingIn = () => {
                     </div>
              </form>
         </div>
-    )
-
+    );
 };
 
-
+// Exportar el componente FormSingIn como el valor predeterminado del módulo
 export default FormSingIn;
