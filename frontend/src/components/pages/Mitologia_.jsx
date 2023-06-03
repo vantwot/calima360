@@ -1,52 +1,40 @@
-import React from "react";
-import Header from "../Home/Header";
+//librerias
+import React from 'react';
+import Header from '../Home/Header';
 import Navegator from '../profile/Navegator';
 import icon_profile from '../../assets/logo/profile_default.svg';
 import Section from '../history/Section';
 import { useNavigate } from 'react-router-dom';
 
-
 const DATA_HISTORY = [
-    // {
-    //     title: 'ORFEBRERÍA',
-    //     img: 'orfebreria.svg',
-    //     target: '/profile/leccion/orfebreria',
-    //     disabled: false
-    // },
     {
-        title: 'HISTORIA',
-        img: 'historia.svg',
-        target: '/profile/leccion/historia',
-        disabled: true
-    },
-    {
-        title: 'MITOLOGÍA',
-        img: 'mitologia.svg',
-        target: '/profile/leccion/mitologia',
-        disabled: true
+        title: 'Mitología',
+        img: 'mitologia_.svg',
+        target: '/model-mitologia',
+        disabled: true,
+        pathBack: '/profile/leccion/mitologia'
     }
 ]
 
 
-const Leccion = () => {
+const Mitologia_ = () => {
 
     const history =  useNavigate();
-
     const [ active_profile, setActiveProfile ] = React.useState(false);
 
     const handleProfile = () => {
         setActiveProfile(!active_profile);
     }
 
-    const handleCerrarSesion = (target) => {
-        history(target);
+    const handleCerrarSesion = (target,pathBack) => {
+        history(target, {  state: { pathBack } });
     }
-
 
     const handleCerrar = (target) => {
         document.getElementById('root').classList.remove('remove_gap');
         history(target);
     }
+
 
     React.useEffect(() => {
         document.getElementById('root').classList.add('remove_gap');
@@ -57,22 +45,22 @@ const Leccion = () => {
             <Header>
                 <div className='_container_profile'>
                     <a onClick={handleProfile}>
-                        <img src={icon_profile} alt="profile" />                        
-                    </a>
-                    { active_profile &&
+                        <img src={icon_profile} alt="profile" />
+                        { active_profile &&
                           <div className='_container_options'>
                                 <a onClick={ () => { handleCerrar('/') }}>Cerrar Sesion</a>
                           </div>
-                    }
+                        }
+                    </a>
                  </div>
             </Header>
             <div className='_container_primary_profile'>
                 <Navegator />
-                <Section title='LECCIONES' >
+                <Section title='Mitologia' >
                     {
                         DATA_HISTORY.map((item, index) => {
                             return (
-                                <div onClick={ () => { item.disabled && handleCerrarSesion(item.target) }} disabled={item.disabled} key={index} className='_container_history_section'>
+                                <div onClick={ () => { item.disabled && handleCerrarSesion(item.target, item.pathBack) }}  key={index} className='_container_history_section'>
                                     <img src={require(`../../assets/item_menu/${item.img}`)} alt="icon" />
                                     <p>{item.title}</p>
                                 </div>
@@ -85,6 +73,6 @@ const Leccion = () => {
         </>
     );
 
-}
+};
 
-export default Leccion;
+export default Mitologia_;
