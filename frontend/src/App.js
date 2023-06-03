@@ -7,6 +7,9 @@ import History from './components/pages/History';
 import Model3d from './components/pages/Model3d';
 import ModelVida3d from './components/pages/ModelVida3d';
 import Leccion from './components/pages/Leccion';
+import Mitologia from './components/pages/Mitologia';
+import Mitologia_ from './components/pages/Mitologia_';
+import Quiz from './components/pages/Quiz';
 
 import {
   BrowserRouter as Router,
@@ -26,6 +29,9 @@ const App = () => {
           <Route path="/profile/leccion" element={<Leccion />} />
           <Route path="/model-religion" element={<Model3d />} />
           <Route path="/model-vida" element={<ModelVida3d />} />
+          <Route path="/profile/leccion/mitologia" element={<Mitologia_ />} />
+          <Route path="/model-mitologia" element={<Mitologia />} />
+          <Route path="/profile/quiz" element={<Quiz />} />
         </Routes>
       </Router>
     </>

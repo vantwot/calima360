@@ -12,8 +12,11 @@ const ICONS_NAV = [
     {
         icon: 'house.svg',
         target: '/profile/leccion'
+    },
+    {
+        icon: 'quiz.svg',
+        target: '/profile/quiz'
     }
-    // 'quiz.svg',
 ]
 
 /*  
