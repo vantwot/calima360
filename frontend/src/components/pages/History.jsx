@@ -2,10 +2,11 @@
 import React from 'react';
 import Header from '../Home/Header';
 import Navegator from '../profile/Navegator';
-import icon_profile from '../../assets/logo/profile_default.svg';
 import Section from '../history/Section';
 import { useNavigate } from 'react-router-dom';
 
+
+//imformacion de las opciones de la seccion historia
 const DATA_HISTORY = [
     {
         title: 'Vida',
@@ -23,44 +24,29 @@ const DATA_HISTORY = [
     }
 ]
 
-
+/**
+ * @description Renderiza las opciones de la seccion historia
+ * @returns History Component
+ */
 const History = () => {
-
+    //variable para redireccionar
     const history =  useNavigate();
-    const [ active_profile, setActiveProfile ] = React.useState(false);
 
-    const handleProfile = () => {
-        setActiveProfile(!active_profile);
-    }
-
+    //funcion para redireccionar
     const handleCerrarSesion = (target,pathBack) => {
         history(target, {  state: { pathBack } });
     }
 
-    const handleCerrar = (target) => {
-        document.getElementById('root').classList.remove('remove_gap');
-        history(target);
-    }
-
-
+    //el poderosisimo useEffect
     React.useEffect(() => {
         document.getElementById('root').classList.add('remove_gap');
     }, []);
 
+
+    //retorna el componente
     return (
         <>
-            <Header>
-                <div className='_container_profile'>
-                    <a onClick={handleProfile}>
-                        <img src={icon_profile} alt="profile" />
-                        { active_profile &&
-                          <div className='_container_options'>
-                                <a onClick={ () => { handleCerrar('/') }}>Cerrar Sesion</a>
-                          </div>
-                        }
-                    </a>
-                 </div>
-            </Header>
+            <Header login={true} />
             <div className='_container_primary_profile'>
                 <Navegator />
                 <Section title='Historia' >

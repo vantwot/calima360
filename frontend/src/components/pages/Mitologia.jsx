@@ -1,7 +1,7 @@
+//importar Librerias
 import React, {useState} from 'react'
 import Experience from '../model3d/Experence'
 import Header from '../Home/Header'
-import icon_profile from '../../assets/logo/profile_default.svg';
 import Navegator from '../profile/Navegator'
 import { Canvas } from '@react-three/fiber'
 import Mitologia3D from '../model3d/Mitologia3D';
@@ -13,50 +13,39 @@ import {
 } from 'react-router-dom';
 
 
+
+/**
+ * @description Encargado de mostrar la Figura 3D de la seccion Mitologia
+ * @returns Mitologia Component Padre
+ */
 const Mitologia = () => {
 
+    //variables
     const history =  useNavigate();
     const [showIn, setShowIn] = useState(false);
+
+
+    //funciones
     const handleModalIn = () => setShowIn(true);
     const handleCloseIn = () => setShowIn(false);
-    const [ active_profile, setActiveProfile ] = React.useState(false);
 
+    //logica para el pathBack
     const location = useLocation();
     const pathBack = location.state?.pathBack;
-
-
-    const handleProfile = () => {
-        setActiveProfile(!active_profile);
-    }
 
     const handlePathBack = () => {
         history(pathBack);
     }
 
-    const handleCerrar = (target) => {
-        document.getElementById('root').classList.remove('remove_gap');
-        history(target);
-    }
-
+    // el poderisimo useEffect
     React.useEffect(() => {
         document.getElementById('root').classList.add('remove_gap');
     }, []);
 
-
+    //renderizar componente
     return (
         <>
-            <Header>
-                <div className='_container_profile'>
-                    <a onClick={handleProfile}>
-                        <img src={icon_profile} alt="profile" />
-                        { active_profile &&
-                          <div className='_container_options'>
-                                <a onClick={ () => { handleCerrar('/') }}>Cerrar Sesion</a>
-                          </div>
-                        }
-                    </a>
-                 </div>
-            </Header>
+            <Header login={true} />
             <div className='_container_primary_profile'>
             <div className='_arrow_left_back'>
                     <a onClick={handlePathBack}>

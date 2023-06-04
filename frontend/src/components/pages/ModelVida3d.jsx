@@ -1,7 +1,7 @@
+//import Librerias
 import React, {useState} from 'react'
 import Experience from '../model3d/Experence'
 import Header from '../Home/Header'
-import icon_profile from '../../assets/logo/profile_default.svg';
 import Navegator from '../profile/Navegator'
 import { Canvas } from '@react-three/fiber'
 import ModelVida3D from '../model3d/ModelVida3D';
@@ -13,29 +13,24 @@ import {
 } from 'react-router-dom';
 
 
+/**
+ * @description Funcion que retorna el componente de la pagina de model3d
+ * @returns Componente de la pagina de model3d
+ */
 const Model3d = () => {
 
     const history =  useNavigate();
     const [showIn, setShowIn] = useState(false);
+
+    //funciones
     const handleModalIn = () => setShowIn(true);
     const handleCloseIn = () => setShowIn(false);
-    const [ active_profile, setActiveProfile ] = React.useState(false);
 
     const location = useLocation();
     const pathBack = location.state?.pathBack;
 
-
-    const handleProfile = () => {
-        setActiveProfile(!active_profile);
-    }
-
     const handlePathBack = () => {
         history(pathBack);
-    }
-
-    const handleCerrar = (target) => {
-        document.getElementById('root').classList.remove('remove_gap');
-        history(target);
     }
 
     React.useEffect(() => {
@@ -45,18 +40,7 @@ const Model3d = () => {
 
     return (
         <>
-            <Header>
-                <div className='_container_profile'>
-                    <a onClick={handleProfile}>
-                        <img src={icon_profile} alt="profile" />
-                        { active_profile &&
-                          <div className='_container_options'>
-                                <a onClick={ () => { handleCerrar('/') }}>Cerrar Sesion</a>
-                          </div>
-                        }
-                    </a>
-                 </div>
-            </Header>
+            <Header login={true} />
             <div className='_container_primary_profile'>
             <div className='_arrow_left_back'>
                     <a onClick={handlePathBack}>

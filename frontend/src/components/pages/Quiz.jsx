@@ -1,12 +1,11 @@
 import React from "react";
 import Header from "../Home/Header";
 import Navegator from '../profile/Navegator';
-import icon_profile from '../../assets/logo/profile_default.svg';
 import Section from '../history/Section';
 import closeIcon from '../../assets/item_menu/close.svg';
-import { useNavigate } from 'react-router-dom';
 
 
+//Informacion de la seccion Quiz
 const DATA_HISTORY = [
     {
         title: 'ORFEBRERÍA',
@@ -28,50 +27,29 @@ const DATA_HISTORY = [
     }
 ]
 
-
+/**
+ * @description Componente
+ * @returns Componente Quiz
+ */
 const Quiz = () => {
 
-    const history =  useNavigate();
-
-    const [ active_profile, setActiveProfile ] = React.useState(false);
+    //variables
     const [ active_quiz, setActiveQuiz ] = React.useState(false);
 
-    const handleProfile = () => {
-        setActiveProfile(!active_profile);
-    }
-
-    const handleCerrarSesion = (target) => {
-        history(target);
-    }
-
-
-    const handleCerrar = (target) => {
-        document.getElementById('root').classList.remove('remove_gap');
-        history(target);
-    }
-
+    //funciones
     const handleClose_quiz = () => {
         setActiveQuiz(!active_quiz);
     }
 
+    //el todo poderoso useEffect
     React.useEffect(() => {
         document.getElementById('root').classList.add('remove_gap');
     }, []);
 
+    //render component
     return (
         <>
-            <Header>
-                <div className='_container_profile'>
-                    <a onClick={handleProfile}>
-                        <img src={icon_profile} alt="profile" />                        
-                    </a>
-                    { active_profile &&
-                          <div className='_container_options'>
-                                <a onClick={ () => { handleCerrar('/') }}>Cerrar Sesion</a>
-                          </div>
-                    }
-                 </div>
-            </Header>
+            <Header login={true} />
             <div className='_container_primary_profile'>
                 <Navegator />
                 <Section title='Cuestionario' >

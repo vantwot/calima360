@@ -1,7 +1,7 @@
+//importar Librerias
 import React, {useState} from 'react'
 import Experience from '../model3d/Experence'
 import Header from '../Home/Header'
-import icon_profile from '../../assets/logo/profile_default.svg';
 import Navegator from '../profile/Navegator'
 import { Canvas } from '@react-three/fiber'
 import Model3D from '../model3d/Model3D';
@@ -12,13 +12,20 @@ import {
     useNavigate
 } from 'react-router-dom';
 
+
+/**
+ * @description Pinta una figura 3d en la pagina
+ * @returns Componente de la pagina de model3d
+*/
 const Model3d = (props) => {
 
+    //variables
     const history =  useNavigate();
     const [showIn, setShowIn] = useState(false);
+
+    //funciones
     const handleModalIn = () => setShowIn(true);
     const handleCloseIn = () => setShowIn(false);
-    const [ active_profile, setActiveProfile ] = React.useState(false);
 
     const location = useLocation();
     const pathBack = location.state?.pathBack;
@@ -27,33 +34,15 @@ const Model3d = (props) => {
         history(pathBack);
     }
 
-    const handleProfile = () => {
-        setActiveProfile(!active_profile);
-    }
-
-    const handleCerrar = (target) => {
-        document.getElementById('root').classList.remove('remove_gap');
-        history(target);
-    }
-
+    // el poderisimo useEffect
     React.useEffect(() => {
         document.getElementById('root').classList.add('remove_gap');
     }, []);
 
+    //renderizar componente
     return (
         <>
-            <Header>
-                <div className='_container_profile'>
-                    <a onClick={handleProfile}>
-                        <img src={icon_profile} alt="profile" />
-                        { active_profile &&
-                          <div className='_container_options'>
-                                <a onClick={ () => { handleCerrar('/') }}>Cerrar Sesion</a>
-                          </div>
-                        }
-                    </a>
-                 </div>
-            </Header>
+            <Header login={true} />
             <div className='_container_primary_profile'>
                 <div className='_arrow_left_back'>
                     <a onClick={handleCerrarSesion}>

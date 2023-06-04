@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../Home/Header";
 import Navegator from '../profile/Navegator';
-import icon_profile from '../../assets/logo/profile_default.svg';
 import Section from '../history/Section';
 import { useNavigate } from 'react-router-dom';
 
@@ -28,44 +27,29 @@ const DATA_HISTORY = [
 ]
 
 
+/**
+ * @description Componente 
+ * @returns Componente Leccion
+ */
 const Leccion = () => {
 
+    //navigate para redireccionar a otra ruta
     const history =  useNavigate();
-
-    const [ active_profile, setActiveProfile ] = React.useState(false);
-
-    const handleProfile = () => {
-        setActiveProfile(!active_profile);
-    }
 
     const handleCerrarSesion = (target) => {
         history(target);
     }
 
 
-    const handleCerrar = (target) => {
-        document.getElementById('root').classList.remove('remove_gap');
-        history(target);
-    }
-
+    //el todo poderoso useEffect
     React.useEffect(() => {
         document.getElementById('root').classList.add('remove_gap');
     }, []);
 
     return (
         <>
-            <Header>
-                <div className='_container_profile'>
-                    <a onClick={handleProfile}>
-                        <img src={icon_profile} alt="profile" />                        
-                    </a>
-                    { active_profile &&
-                          <div className='_container_options'>
-                                <a onClick={ () => { handleCerrar('/') }}>Cerrar Sesion</a>
-                          </div>
-                    }
-                 </div>
-            </Header>
+            {/* Header Component */}
+            <Header login={true} />
             <div className='_container_primary_profile'>
                 <Navegator />
                 <Section title='LECCIONES' >
