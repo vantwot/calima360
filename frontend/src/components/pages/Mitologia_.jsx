@@ -14,6 +14,7 @@ const DATA_HISTORY = [
     }
 ]
 
+
 /**
  * @description Renderiza las opciones de la seccion mitologia
  * @returns Mitologia Component

@@ -4,8 +4,8 @@ import Home from './components/pages/Home';
 import SignIn from './components/pages/SingIn';
 import Profile from './components/pages/Profile';
 import History from './components/pages/History';
-import Model3d from './components/pages/Model3d';
-import ModelVida3d from './components/pages/ModelVida3d';
+import ReligionComponent3D from './components/pages/ReligionComponent3D';
+import VidaComponent3D from './components/pages/VidaComponent3D';
 import Leccion from './components/pages/Leccion';
 import Mitologia from './components/pages/Mitologia';
 import Mitologia_ from './components/pages/Mitologia_';
@@ -27,8 +27,8 @@ const App = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/leccion/historia" element={<History />} />
           <Route path="/profile/leccion" element={<Leccion />} />
-          <Route path="/model-religion" element={<Model3d />} />
-          <Route path="/model-vida" element={<ModelVida3d />} />
+          <Route path="/model-religion" element={<ReligionComponent3D />} />
+          <Route path="/model-vida" element={<VidaComponent3D />} />
           <Route path="/profile/leccion/mitologia" element={<Mitologia_ />} />
           <Route path="/model-mitologia" element={<Mitologia />} />
           <Route path="/profile/quiz" element={<Quiz />} />
