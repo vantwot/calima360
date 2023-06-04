@@ -11,14 +11,21 @@ import { useNavigate } from 'react-router-dom';
  */
 const RenderSections = ({ 
     content_section,
-    title
+    title,
+    state_use
 }) => {
 
     //navigate para redireccionar a otra ruta
     const history =  useNavigate();
 
     //funcion para redireccionar
-    const handleCerrarSesion = (target , pathBack) => {
+    const handleCerrarSesion = ({target , pathBack , state}) => {
+
+        if(state) {
+            state_use.set(!state_use.get)
+            return;
+        }
+
         history(target, {  state: { pathBack } });
     }
 
@@ -36,7 +43,7 @@ const RenderSections = ({
                     {
                         content_section.map((item, index) => {
                             return (
-                                <div onClick={ () => { item.disabled && handleCerrarSesion(item.target,item.pathBack) }} disabled={item.disabled} key={index} className='_container_history_section'>
+                                <div onClick={ () => { item.disabled && handleCerrarSesion(item) }} disabled={item.disabled} key={index} className='_container_history_section'>
                                     <img src={require(`../../assets/item_menu/${item.img}`)} alt="icon" />
                                     <p>{item.title}</p>
                                 </div>

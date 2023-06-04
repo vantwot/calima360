@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../Home/Header";
-import Navegator from '../profile/Navegator';
-import Section from '../history/Section';
+import RenderSections from "../utils/RenderSections";
 import closeIcon from '../../assets/item_menu/close.svg';
 
 
@@ -11,19 +10,22 @@ const DATA_HISTORY = [
         title: 'ORFEBRERÍA',
         img: 'orfebreria.svg',
         target: '',
-        disabled: false
+        disabled: false,
+        state: true
     },
     {
         title: 'HISTORIA',
         img: 'historia.svg',
         target: '',
-        disabled: true
+        disabled: true,
+        state: true
     },
     {
         title: 'MITOLOGÍA',
         img: 'mitologia.svg',
         target: '',
-        disabled: false
+        disabled: false,
+        state: true
     }
 ]
 
@@ -41,30 +43,17 @@ const Quiz = () => {
         setActiveQuiz(!active_quiz);
     }
 
-    //el todo poderoso useEffect
-    React.useEffect(() => {
-        document.getElementById('root').classList.add('remove_gap');
-    }, []);
-
     //render component
     return (
         <>
             <Header login={true} />
-            <div className='_container_primary_profile'>
-                <Navegator />
-                <Section title='Cuestionario' >
-                    {
-                        DATA_HISTORY.map((item, index) => {
-                            return (
-                                <div onClick={ () => { item.disabled && handleClose_quiz() }} disabled={item.disabled} key={index} className='_container_history_section'>
-                                    <img src={require(`../../assets/item_menu/${item.img}`)} alt="icon" />
-                                    <p>{item.title}</p>
-                                </div>
-                            )
-                        })
-
-                    }
-                    {active_quiz &&
+            <RenderSections state_use={{ 
+                                         get: active_quiz ,  
+                                         set: setActiveQuiz
+                            }} 
+                            title="CUESTONARIO" 
+                            content_section={DATA_HISTORY} />
+            {active_quiz &&
                         <div className='_popup_3d_'>
                             <div className='_container_popup_3d'>
                                 <a onClick={handleClose_quiz} className='_close_popup_'>
@@ -86,9 +75,7 @@ const Quiz = () => {
                                 </ol>
                             </div>
                         </div>
-                        }
-                </Section>
-            </div>
+            }
         </>
     );
 
