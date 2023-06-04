@@ -12,8 +12,6 @@ const DATA = Object.freeze({
 })
 
 
-
-
 /*  
   *  @author <cristian.machado@correounivalle.edu.co>  
   *  @version 0.0.1

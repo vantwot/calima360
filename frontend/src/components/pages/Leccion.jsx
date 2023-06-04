@@ -1,8 +1,6 @@
 import React from "react";
 import Header from "../Home/Header";
-import Navegator from '../profile/Navegator';
-import Section from '../history/Section';
-import { useNavigate } from 'react-router-dom';
+import RenderSections from "../utils/RenderSections";
 
 
 const DATA_HISTORY = [
@@ -32,40 +30,11 @@ const DATA_HISTORY = [
  * @returns Componente Leccion
  */
 const Leccion = () => {
-
-    //navigate para redireccionar a otra ruta
-    const history =  useNavigate();
-
-    const handleCerrarSesion = (target) => {
-        history(target);
-    }
-
-
-    //el todo poderoso useEffect
-    React.useEffect(() => {
-        document.getElementById('root').classList.add('remove_gap');
-    }, []);
-
+    //render component
     return (
         <>
-            {/* Header Component */}
             <Header login={true} />
-            <div className='_container_primary_profile'>
-                <Navegator />
-                <Section title='LECCIONES' >
-                    {
-                        DATA_HISTORY.map((item, index) => {
-                            return (
-                                <div onClick={ () => { item.disabled && handleCerrarSesion(item.target) }} disabled={item.disabled} key={index} className='_container_history_section'>
-                                    <img src={require(`../../assets/item_menu/${item.img}`)} alt="icon" />
-                                    <p>{item.title}</p>
-                                </div>
-                            )
-                        })
-
-                    }
-                </Section>
-            </div>
+            <RenderSections title="LECCIONES" content_section={DATA_HISTORY} />
         </>
     );
 
