@@ -1,8 +1,7 @@
 import React from "react";
 import Header from "../Home/Header";
 import RenderSections from "../utils/RenderSections";
-import closeIcon from '../../assets/item_menu/close.svg';
-
+import PopupGeneral from "../utils/PopupGeneral";
 
 //Informacion de la seccion Quiz
 const DATA_HISTORY = [
@@ -29,6 +28,28 @@ const DATA_HISTORY = [
     }
 ]
 
+
+function RenderContentPopup() {
+    return (
+    <>
+        <h1>HISTORIA</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />
+            Nullam sed lectus elit. Donec sed magna mi. Nullam fermentum metus vitae risus  <br />
+            feugiat curae; Sed euismod bibendum odio at semper.
+        </p>
+        <ol style={{
+            listStyle: 'upper-latin'
+        }}>
+            <li> <input type="radio" name="opcion" />Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+            <li> <input type="radio" name="opcion" />Nullam sed lectus elit. Donec sed magna mi. Nullam fermentum metus vitae risus feugiat curae; Sed euismod bibendum odio at semper.</li>
+            <li> <input type="radio" name="opcion"  />Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+            <li> <input type="radio" name="opcion"  />Nullam sed lectus elit. Donec sed magna mi. Nullam fermentum metus vitae risus feugiat curae; Sed euismod bibendum odio at semper.</li>
+        </ol>
+    </>)
+}
+
+
 /**
  * @description Componente
  * @returns Componente Quiz
@@ -53,29 +74,7 @@ const Quiz = () => {
                             }} 
                             title="CUESTONARIO" 
                             content_section={DATA_HISTORY} />
-            {active_quiz &&
-                        <div className='_popup_3d_'>
-                            <div className='_container_popup_3d'>
-                                <a onClick={handleClose_quiz} className='_close_popup_'>
-                                    <img src={closeIcon} alt="close" />
-                                </a>
-                                <h1>HISTORIA</h1>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />
-                                    Nullam sed lectus elit. Donec sed magna mi. Nullam fermentum metus vitae risus  <br />
-                                    feugiat curae; Sed euismod bibendum odio at semper.
-                                </p>
-                                <ol style={{
-                                    listStyle: 'upper-latin'
-                                }}>
-                                    <li> <input type="radio" name="opcion" />Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                    <li> <input type="radio" name="opcion" />Nullam sed lectus elit. Donec sed magna mi. Nullam fermentum metus vitae risus feugiat curae; Sed euismod bibendum odio at semper.</li>
-                                    <li> <input type="radio" name="opcion"  />Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                    <li> <input type="radio" name="opcion"  />Nullam sed lectus elit. Donec sed magna mi. Nullam fermentum metus vitae risus feugiat curae; Sed euismod bibendum odio at semper.</li>
-                                </ol>
-                            </div>
-                        </div>
-            }
+            {active_quiz &&  <PopupGeneral handleCloseIn={handleClose_quiz} children_={<RenderContentPopup />} />}
         </>
     );
 
