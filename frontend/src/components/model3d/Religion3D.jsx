@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import Object_3d from '../../assets/3D/mascara.glb'
 
-
+//
 const Religion3D = (props)  => {
 
         const { nodes, materials } = useGLTF(Object_3d);
