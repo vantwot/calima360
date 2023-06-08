@@ -517,6 +517,7 @@ div._container_progress_item span._progress_ {
     width: 70%;
     max-width: 700px;
     max-height: 400px;
+    height: calc(100% - 2em);
     padding: 2em;
     background: var(--background-primary);
     border-radius: 8px;
@@ -524,8 +525,13 @@ div._container_progress_item span._progress_ {
     overflow-x: hidden;
 }
 
+._popup_3d_  
+._container_popup_3d._container_quiz {
+    max-height: 350px;
+    max-width: 700px;
+}
 
-
+._close_next_,
 ._popup_3d_  
 ._container_popup_3d 
 ._close_popup_ { 
@@ -537,6 +543,12 @@ div._container_progress_item span._progress_ {
     cursor: pointer;
 }
 
+._close_next_ {
+    top: unset;
+    bottom: 0.5em;
+}
+
+._close_next_ ,
 ._popup_3d_  
 ._container_popup_3d 
 ._close_popup_ img { 
@@ -544,6 +556,96 @@ div._container_progress_item span._progress_ {
     width: 1.6em;
     height: 1.6em;
 }
+
+._close_next_ img {
+    width: 2.3em;
+    height: 2.3em;
+} 
+
+._container_close_quiz {
+    display: grid;
+    place-content: center;
+    width: -webkit-fill-available;
+}
+
+._popup_3d_  
+._container_popup_3d._container_close_quiz._container_close_quiz {
+    height: 200px;
+    width: 300px;
+} 
+
+.container_btns_quiz {
+    display: flex;
+    gap: 1.4em;
+}
+
+.container_btns_quiz button {
+    width: 4em;
+    height: 2em;
+    background: var(--color-secundary-black);
+    border: var(--color-secundary-black) 1px solid;
+    border-radius: 2px;
+    color: var(--color-white);
+    cursor: pointer;
+}
+
+._popup_3d_  
+._container_popup_3d._container_result_quiz {
+    height: 200px;
+    width: 300px
+}
+
+._container_result_quiz
+.container_btns_quiz button {
+    display: grid;
+    place-content: center;
+    width: auto;
+    height: 2em;
+    padding: 1em;
+    background: var(--color-secundary-black);
+    border: var(--color-secundary-black) 1px solid;
+    border-radius: 2px;
+    color: var(--color-white);
+    cursor: pointer;
+}
+
+._container_result_quiz p {
+    text-align: center;
+}
+
+._container_result_quiz h1 {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--color-black);
+    font-style: normal;
+    text-transform: uppercase;
+}
+
+/*
+ * Scrollbar General
+*/
+::-webkit-scrollbar {
+    display: initial;
+    width: auto;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+}
+
+
 
 /*
    Variables
