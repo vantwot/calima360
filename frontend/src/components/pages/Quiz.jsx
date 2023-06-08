@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../Home/Header";
 import RenderSections from "../utils/RenderSections";
+import PopQuiz from "../utils/PopQuiz";
 import PopupGeneral from "../utils/PopupGeneral";
 
 //Informacion de la seccion Quiz
@@ -29,26 +30,167 @@ const DATA_HISTORY = [
 ]
 
 
-function RenderContentPopup() {
+const DATA_QUIZ = [
+    {
+        title: 'ORFEBRERÍA',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+        text_a: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+        text_b: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+        text_c: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+        text_d: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+        answer: 'A'
+    },
+    {
+        title: 'HISTORIA',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+        text_a: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+        text_b: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+        text_c: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+        text_d: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+        answer: 'B'
+    },
+    {
+        title: 'MITOLOGÍA',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+        text_a: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+        text_b: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+        text_c: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+        text_d: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+        answer: 'C'
+    }
+]
+
+function RenderContentPopup({
+    title,
+    description,
+    text_a,
+    text_b,
+    text_c,
+    text_d,
+    set_data_answer,
+    select_answer,
+    selectedOption, 
+    setSelectedOption
+}) {
+
+    const [ data , setData ] = React.useState({
+        title: title,
+        description: description,
+        text_a: text_a,
+        text_b: text_b,
+        text_c: text_c,
+        text_d: text_d,
+    });
+
+    const handleAnswer = (e) => {
+        console.log(e.target.value, 'value');
+        set_data_answer([e.target.value]);
+        setSelectedOption({
+            selectedOptionA: 'A' === e.target.value,
+            selectedOptionB: 'B' === e.target.value,
+            selectedOptionC: 'C' === e.target.value,
+            selectedOptionD: 'D' === e.target.value,
+        });
+    }
+
+    React.useEffect(() => {
+
+        setData({
+            title: title,
+            description: description,
+            text_a: text_a,
+            text_b: text_b,
+            text_c: text_c,
+            text_d: text_d,
+        }) 
+
+    }, [description, text_a, text_b, text_c, text_d, title])
+
     return (
     <>
-        <h1>HISTORIA</h1>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />
-            Nullam sed lectus elit. Donec sed magna mi. Nullam fermentum metus vitae risus  <br />
-            feugiat curae; Sed euismod bibendum odio at semper.
-        </p>
+        <h1>{data.title}</h1>
+        <p>{data.description}</p>
         <ol style={{
             listStyle: 'upper-latin'
         }}>
-            <li> <input type="radio" name="opcion" />Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-            <li> <input type="radio" name="opcion" />Nullam sed lectus elit. Donec sed magna mi. Nullam fermentum metus vitae risus feugiat curae; Sed euismod bibendum odio at semper.</li>
-            <li> <input type="radio" name="opcion"  />Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-            <li> <input type="radio" name="opcion"  />Nullam sed lectus elit. Donec sed magna mi. Nullam fermentum metus vitae risus feugiat curae; Sed euismod bibendum odio at semper.</li>
+            <li> <input 
+                    checked={selectedOption.selectedOptionA}
+                    onChange={handleAnswer} 
+                    value={'A'} 
+                    type="radio" 
+                    name="opcion" />{data.text_a}</li>
+            <li> <input 
+                    checked={selectedOption.selectedOptionB}
+                    onChange={handleAnswer} 
+                    value={'B'} 
+                    type="radio" 
+                    name="opcion" />{data.text_b}</li>
+            <li> <input 
+                    checked={selectedOption.selectedOptionC}
+                    onChange={handleAnswer} 
+                    value={'C'} 
+                    type="radio" 
+                    name="opcion"  />{data.text_c}</li>
+            <li> <input checked={selectedOption.selectedOptionD} 
+                    onChange={handleAnswer} 
+                    value={'D'} 
+                    type="radio" 
+                    name="opcion"  />{data.text_d}</li>
         </ol>
     </>)
 }
 
+function RenderContentPopup_({
+    handleCloseIn,
+    reset_quiz
+}) {
+    return (
+    <>
+        <div className="_container_close_quiz">
+            <h1>Cierre De Quiz</h1>
+            <p>
+                Estas seguro de cerrar el quiz? <br />
+                Perderas tu progreso.
+            </p>
+            <div className="container_btns_quiz">
+                <button onClick={reset_quiz} className="btn_quiz">Si</button>
+                <button onClick={handleCloseIn} className="btn_quiz">No</button>
+            </div>
+        </div>
+
+    </>)
+}
+
+const RenderResultPopup_ = ({
+    handleCloseIn,
+    reset_quiz,
+    result,
+    total
+}) => {
+
+    const [ data , setData ] = React.useState({
+        result: (result.filter((item,index) => item === total[index].answer)).length,
+        total: total.length
+    });
+    
+    return (
+        <>
+            <div className="_container_close_quiz">
+                <h1>Resultado</h1>
+                <p>
+                    Tu Puntuacion Es: <br />
+                    {data.result} / {data.total} <br />
+                    {data.result >= 3 ? 'Felicidades' : 'Sigue Intentando'}
+                </p>
+                <div className="container_btns_quiz">
+                    <button onClick={reset_quiz} className="btn_quiz">Intentar De Nuevo</button>
+                    <button onClick={handleCloseIn} className="btn_quiz">Salir</button>
+                </div>
+            </div>
+        </>
+    )
+
+}
 
 /**
  * @description Componente
@@ -57,12 +199,75 @@ function RenderContentPopup() {
 const Quiz = () => {
 
     //variables
+    const [ index__ , setIndex__ ] = React.useState(0);
     const [ active_quiz, setActiveQuiz ] = React.useState(false);
+    const [ active_quiz_, setActiveQuiz_ ] = React.useState(false);
+    const [ result_quiz_, setResultQuiz_ ] = React.useState(false);
+    const [ data_answer, setDataAnswer ] = React.useState(DATA_QUIZ[index__]);
+    const [ select_answer, setSelectAnswer ] = React.useState([]);
+    const [ select_answer_aux, setSelectAnswer_aux ] = React.useState([]);
+    const [ visibleArrow , setVisibleArrow ] = React.useState(false);
+    const [selectedOption, setSelectedOption] = React.useState({
+        selectedOptionA: false,
+        selectedOptionB: false,
+        selectedOptionC: false,
+        selectedOptionD: false,
+    });
 
     //funciones
     const handleClose_quiz = () => {
         setActiveQuiz(!active_quiz);
+        setActiveQuiz_(!active_quiz_);
     }
+
+    const reset_quiz = () => {
+        setActiveQuiz_(!active_quiz_);
+    }
+
+    const handleNext = () => {
+        setSelectAnswer([...select_answer, ...select_answer_aux]);
+        setSelectAnswer_aux([]);
+        setVisibleArrow(false);
+        setSelectedOption({
+            selectedOptionA: false,
+            selectedOptionB: false,
+            selectedOptionC: false,
+            selectedOptionD: false,
+        });
+
+        setIndex__(index__ + 1);
+
+        if ((index__+ 1) > DATA_QUIZ.length - 1) {
+            setIndex__(0);
+            setDataAnswer(DATA_QUIZ[0]);
+            setResultQuiz_(true);
+            setActiveQuiz(false);
+            setActiveQuiz_(false);
+
+        } else {
+            setDataAnswer(DATA_QUIZ[(index__+ 1)]);
+        }
+
+    }
+
+    const handleCloseResult = () => {
+        setResultQuiz_(false);
+        setSelectAnswer([]);
+    }
+
+    const handleAgainQuiz = () => {
+        handleCloseResult();
+        setActiveQuiz(true);
+        setSelectAnswer([]);
+    }
+
+    React.useEffect(() => {
+        
+        if (select_answer_aux.length > 0) {
+            setVisibleArrow(true);
+        }
+    }, [select_answer_aux])
+
 
     //render component
     return (
@@ -74,7 +279,52 @@ const Quiz = () => {
                             }} 
                             title="CUESTONARIO" 
                             content_section={DATA_HISTORY} />
-            {active_quiz &&  <PopupGeneral handleCloseIn={handleClose_quiz} children_={<RenderContentPopup />} />}
+            {active_quiz &&  
+               <PopQuiz 
+                   visibleClose={true} 
+                   visible={visibleArrow} 
+                   handleCloseIn={handleClose_quiz} 
+                   handleNext={handleNext}
+                   children_={<RenderContentPopup 
+                                title={data_answer.title}
+                                description={data_answer.description}
+                                text_a={data_answer.text_a}
+                                text_b={data_answer.text_b}
+                                text_c={data_answer.text_c}
+                                text_d={data_answer.text_d}
+                                set_data_answer={setSelectAnswer_aux}
+                                select_answer={select_answer_aux}
+                                selectedOption={selectedOption}
+                                 setSelectedOption={setSelectedOption}
+                   />} 
+                   class=""
+                />}
+            { active_quiz_ && 
+               <PopQuiz 
+                 visibleClose={false} 
+                 visible={false} 
+                 handleCloseIn={handleClose_quiz} 
+                 children_={<RenderContentPopup_    
+                         handleCloseIn={handleClose_quiz}
+                         reset_quiz={reset_quiz}
+                 />} 
+                 class_="_container_close_quiz"
+              /> 
+            }
+            { result_quiz_ && 
+               <PopQuiz 
+                 visibleClose={false} 
+                 visible={false} 
+                 handleCloseIn={handleCloseResult} 
+                 children_={<RenderResultPopup_    
+                         handleCloseIn={handleCloseResult}
+                         reset_quiz={handleAgainQuiz}
+                         result={select_answer}
+                         total={DATA_QUIZ}
+                 />} 
+                 class_="_container_result_quiz"
+              /> 
+            }
         </>
     );
 
