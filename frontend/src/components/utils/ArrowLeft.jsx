@@ -1,6 +1,7 @@
 //import libraries
 import React from 'react';
 import backArrrow from '../../assets/item_menu/backArrow.svg';
+import rigthAright from '../../assets/item_menu/rigthAright.svg';
 import Navegator from '../profile/Navegator'
 import {  
     useLocation,
@@ -57,10 +58,27 @@ const RenderContentFigure3D = ({ path }) => {
     )
 }
 
+const ArrowRight = ({
+    handleNextFigure
+}) => {
+
+    return (
+        <>
+           <div className='_text_right_arrow'>
+                <a onClick={handleNextFigure}>
+                    <img src={rigthAright} alt="imagen_right" />
+                </a>
+           </div>
+        </>
+    )
+
+}
+
 
 export {
     usePathtLocation,
     ArrowLeft,
     RenderTextClick,
-    RenderContentFigure3D
+    RenderContentFigure3D,
+    ArrowRight
 }
