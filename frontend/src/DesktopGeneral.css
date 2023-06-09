@@ -622,6 +622,17 @@ div._container_progress_item span._progress_ {
     text-transform: uppercase;
 }
 
+
+._text_right_arrow {
+    position: absolute;
+    bottom: 50%;
+    right: 15em;
+    z-index: 99;
+    color: var(--color-black);
+    cursor: pointer;
+}
+
+
 /*
  * Scrollbar General
 */
