@@ -1,33 +1,56 @@
 //importar Librerias
-import React from 'react';
+import React, { useState } from 'react';
 import Navegator from './Navegator';
 import InfoProfile from './InfoProfile';
-
-const DATA = Object.freeze({
-    name: 'Juan Sebastián',
-    apellido: 'Diaz Casas',
-    email: 'juan.diaz@correounivalle.edu.co',
-    img_url: 'profile_default.svg',
-
-})
-
+import axios from 'axios';
+import { decodeToken } from 'react-jwt';
 
 /*  
-  *  @author <cristian.machado@correounivalle.edu.co>  
+  *  @author <deiby.rodriguez@correounivalle.edu.co>  
   *  @version 0.0.1
   *  @returns Home
 **/
+  //<Route path="/profile" element={<Profile />} /> <Route path="/profile" element={isAuthenticated ? (<Profile />) : redirect("/")}/>
+
 const ContainerProfile = () => {
 
+    const [userData, setUserData] = useState({
+        name: '',
+        apellido: '',
+        email: '',
+        img_url: 'profile_default.svg',
+    });
+
     React.useEffect(() => {
-         document.getElementById('root').classList.add('remove_gap');
+        const fetchData = async () => {
+            try {
+                const token = sessionStorage.token;
+                const decodedToken = decodeToken(token);
+                const userId = decodedToken.userId;
+                const url = 'http://44.205.85.243:5000/usuario/' + userId;
+                const response = await axios.get(url);
+                const { nombre, apellido, email } = response.data;
+                setUserData((prevState) => ({
+                    ...prevState,
+                    name: nombre,
+                    apellido: apellido,
+                    email: email,
+                }));
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchData();
+
+        document.getElementById('root').classList.add('remove_gap');
     }, []);
 
     return (
         <>
            <div className='_container_primary_profile'>
                 <Navegator />
-                <InfoProfile content={DATA} />
+                <InfoProfile content={userData} />
             </div>
         </>
     )

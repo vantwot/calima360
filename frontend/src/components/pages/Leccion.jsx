@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../Home/Header";
 import RenderSections from "../utils/RenderSections";
+import Verificate from "../utils/verificate";
 
 
 const DATA_HISTORY = [
@@ -33,6 +34,7 @@ const Leccion = () => {
     //render component
     return (
         <>
+            <Verificate target={"/profile/leccion"} />
             <Header login={true} />
             <RenderSections title="LECCIONES" content_section={DATA_HISTORY} />
         </>

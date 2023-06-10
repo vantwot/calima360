@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../Home/Header";
 import RenderSections from "../utils/RenderSections";
 import PopQuiz from "../utils/PopQuiz";
 import PopupGeneral from "../utils/PopupGeneral";
+import axios from 'axios';
+import Verificate from "../utils/verificate";
 
 //Informacion de la seccion Quiz
 const DATA_HISTORY = [
@@ -33,30 +35,30 @@ const DATA_HISTORY = [
 const DATA_QUIZ = [
     {
         title: 'ORFEBRERÍA',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-        text_a: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-        text_b: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-        text_c: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-        text_d: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-        answer: 'A'
+        description: '¿Cuál de las siguientes afirmaciones es verdadera acerca de la orfebrería de los calimas?',
+        text_a: 'Los calimas eran expertos en la fabricación de armas y herramientas de metal.',
+        text_b: 'Los calimas no practicaban la orfebrería y se enfocaban en otras formas de arte.',
+        text_c: 'La orfebrería calima se caracterizaba por el uso exclusivo de oro como material.',
+        text_d: 'Los calimas no tenían conocimientos sobre el trabajo con metales y no practicaban la orfebrería.',
+        answer: 'C'
     },
     {
         title: 'HISTORIA',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-        text_a: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-        text_b: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-        text_c: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-        text_d: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-        answer: 'B'
+        description: '¿Cuál de las siguientes afirmaciones es verdadera acerca de la historia de los calimas?',
+        text_a: 'Los calimas fueron una cultura que se desarrolló en la región de la Amazonia.',
+        text_b: 'Los calimas eran una civilización contemporánea de los antiguos egipcios.',
+        text_c: 'Los calimas eran conocidos por sus habilidades náuticas y navegaban por el océano Atlántico.',
+        text_d: 'Los calimas fueron una cultura precolombina que habitó en la región del Valle del Cauca, Colombia.',
+        answer: 'D'
     },
     {
         title: 'MITOLOGÍA',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-        text_a: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-        text_b: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-        text_c: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-        text_d: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-        answer: 'C'
+        description: '¿Cuál de las siguientes afirmaciones es verdadera acerca de la mitología de los calimas?',
+        text_a: 'Los calimas adoraban a una deidad principal conocida como "Calima", considerada la diosa de la naturaleza.',
+        text_b: 'La mitología calima estaba centrada en la adoración de seres mitológicos marinos, como sirenas y tritones.',
+        text_c: 'Los calimas creían en la existencia de un mundo subterráneo habitado por espíritus malignos y serpientes gigantes.',
+        text_d: 'Ninguna de las anteriores.',
+        answer: 'D'
     }
 ]
 
@@ -262,6 +264,18 @@ const Quiz = () => {
     }
 
     React.useEffect(() => {
+        const URL = 'http://44.205.85.243:5000/cuestionario';
+        var data = [];
+        axios.get(URL)
+        .then(res=>{
+            console.log(res.data[0]);
+        })
+        .catch(error=>{
+            console.log(error)
+        })
+    })
+
+    React.useEffect(() => {
         
         if (select_answer_aux.length > 0) {
             setVisibleArrow(true);
@@ -272,6 +286,7 @@ const Quiz = () => {
     //render component
     return (
         <>
+            <Verificate target={"/profile/quiz"} />
             <Header login={true} />
             <RenderSections state_use={{ 
                                          get: active_quiz ,  

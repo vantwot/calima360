@@ -10,14 +10,41 @@ import Leccion from './components/pages/Leccion';
 import Mitologia from './components/pages/Mitologia';
 import Mitologia_ from './components/pages/Mitologia_';
 import Quiz from './components/pages/Quiz';
-
+// import { useEffect, useState } from 'react';
+// import { decodeToken } from 'react-jwt';
+// import { useNavigate } from "react-router-dom";
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from 'react-router-dom';
 
+// const Redirection = (prop) => {
+//   const na = useNavigate();
+//   useEffect(()=>{
+//     if(prop){
+//       na("/");
+//     }
+//   }, []);
+//   return <></>
+// }
+
 const App = () => {
+  // //<Route path="/profile" element={isAuthenticated ? <Profile /> : ruta("/")}/>
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // useEffect(()=>{
+  //   try{
+  //     const token = sessionStorage.token;
+  //     const decodedToken = decodeToken(token);
+  //     const userId = decodedToken.userId;
+  //     if (userId){
+  //       setIsAuthenticated(true);
+  //     }
+  //   }
+  //   catch{
+  //     console.log('Debe hacer el login primero');
+  //   }
+  // }, []);
   return (
     <>
       <Router>

@@ -10,6 +10,7 @@ import {
     RenderContentFigure3D,
     ArrowRight
 } from '../utils/ArrowLeft'
+import Verificate from '../utils/verificate'
 
 
 function RenderContentPopup() {
@@ -114,6 +115,7 @@ const Mitologia = () => {
     //renderizar componente
     return (
         <>
+            <Verificate target={"/model-mitologia"} />
             <Header login={true} />
             <div className='_container_primary_profile'>
                 <RenderContentFigure3D path={path_} />

@@ -8,6 +8,7 @@ import {
     usePathtLocation,
     RenderContentFigure3D
 } from '../utils/ArrowLeft'
+import Verificate from '../utils/verificate'
 
 
 //informacion de la seccion
@@ -61,6 +62,7 @@ const ReligionComponent3D = (props) => {
     //renderizar componente
     return (
         <>
+            <Verificate target={"/model-religion"} />
             <Header login={true} />
             <div className='_container_primary_profile'>
                 <RenderContentFigure3D path={path_} />

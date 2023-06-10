@@ -25,13 +25,13 @@ const FormLogin = () => {
         // Capturar los datos del formulario
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(email, password);
 
         // Realizar una solicitud de inicio de sesión utilizando la función axiosRequestLogin
         await axiosRequestLogin({ email: email , password: password})
         .then(res => {
-            sessionStorage.setItem('token', res);
             if (res !== -1) {
+                sessionStorage.setItem('token', res);
+                setTimeout(() => { console.log("Ingresando"); }, "1000");
                 history("/profile");
             } else {
                 window.confirm('Error al ingresar, por favor verifique sus datos.');

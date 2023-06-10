@@ -8,6 +8,7 @@ import {
     usePathtLocation,
     RenderContentFigure3D
 } from '../utils/ArrowLeft'
+import Verificate from '../utils/verificate'
 
 
 function RenderContentPopup() {
@@ -44,6 +45,7 @@ const VidaComponent3D = () => {
 
     return (
         <>
+            <Verificate target={"/model-vida"} />
             <Header login={true} />
             <div className='_container_primary_profile'>
                 <RenderContentFigure3D  path={path_} />

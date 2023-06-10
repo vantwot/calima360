@@ -2,6 +2,7 @@
 import React from 'react';
 import Header from '../Home/Header';
 import RenderSections from '../utils/RenderSections';
+import Verificate from '../utils/verificate';
 
 
 //imformacion de las opciones de la seccion historia
@@ -31,6 +32,7 @@ const History = () => {
     //retorna el componente
     return (
         <>
+            <Verificate target={"/profile/leccion/historia"} />
             <Header login={true} />
             <RenderSections title="Historia" content_section={DATA_HISTORY} />
         </>

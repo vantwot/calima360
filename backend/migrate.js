@@ -1,3 +1,11 @@
+/*  
+  *  @author <deiby.rodriguez@correounivalle.edu.co>  
+  *  @version 0.0.1
+**/
+/*
+  Este archivo contiene las migraciones necesarias para actualizar o crear la bd.
+*/
+
 // importar el modulo 'pg'
 const { Client } = require('pg');
 // importar el modulo 'node-pg-migrate'
