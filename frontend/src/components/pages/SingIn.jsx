@@ -12,8 +12,7 @@ import Verificate from '../utils/verificate';
 const SignIn = () => {
 
     return (
-        <> 
-            <Verificate target={"/profile/leccion"} />
+        <>
             <Header />
             <FormSingIn />
         </>
