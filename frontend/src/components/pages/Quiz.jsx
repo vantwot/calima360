@@ -72,7 +72,8 @@ function RenderContentPopup({
     set_data_answer,
     select_answer,
     selectedOption, 
-    setSelectedOption
+    setSelectedOption,
+    options_all
 }) {
 
     const [ data , setData ] = React.useState({
@@ -112,6 +113,26 @@ function RenderContentPopup({
     <>
         <h1>{data.title}</h1>
         <p>{data.description}</p>
+        {
+        options_all?
+        <ol style={{
+            listStyle: 'upper-latin'
+        }}>
+         {
+            options_all.map((item, index) => {
+                const options_ = ['A', 'B', 'C', 'D'];
+                return (
+                    <li key={index}> <input 
+                            checked={selectedOption[`selectedOption${options_[index]}}`]}
+                            onChange={handleAnswer} 
+                            value={options_[index]} 
+                            type="radio" 
+                            name="opcion" />{item}</li>
+                )
+            })
+         }
+        </ol>
+        :
         <ol style={{
             listStyle: 'upper-latin'
         }}>
@@ -139,6 +160,7 @@ function RenderContentPopup({
                     type="radio" 
                     name="opcion"  />{data.text_d}</li>
         </ol>
+        }
     </>)
 }
 
@@ -215,6 +237,7 @@ const Quiz = () => {
         selectedOptionC: false,
         selectedOptionD: false,
     });
+    const [ options_all , setOptionsAll ] = React.useState(null);
 
     //funciones
     const handleClose_quiz = () => {
@@ -263,17 +286,20 @@ const Quiz = () => {
         setSelectAnswer([]);
     }
 
-    React.useEffect(() => {
+    React.useEffect( () => {
         const URL = 'http://44.205.85.243:5000/cuestionario';
-        var data = [];
-        axios.get(URL)
-        .then(res=>{
-            console.log(res.data[0]);
-        })
-        .catch(error=>{
-            console.log(error)
-        })
-    })
+
+        const data = async () => {
+            const response = await axios.get(URL)
+            const { data }  = (response);
+            console.log(data[0]);
+            //setOptionsAll(data[0].opciones);
+            //return data;
+        }
+
+        //data()
+
+    }, [])
 
     React.useEffect(() => {
         
@@ -310,7 +336,8 @@ const Quiz = () => {
                                 set_data_answer={setSelectAnswer_aux}
                                 select_answer={select_answer_aux}
                                 selectedOption={selectedOption}
-                                 setSelectedOption={setSelectedOption}
+                                setSelectedOption={setSelectedOption}
+                                options_all={options_all}
                    />} 
                    class=""
                 />}
