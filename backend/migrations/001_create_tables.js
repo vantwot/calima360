@@ -1,3 +1,11 @@
+/*  
+  *  @author <deiby.rodriguez@correounivalle.edu.co>  
+  *  @version 0.0.1
+**/
+/*
+  Este archivo contiene las migraciones necesarias para actualizar o crear las tablas en la bd.
+*/
+
 exports.up = (pgm) => {
   pgm.createTable('usuarios', {
     id: { type: 'serial', primaryKey: true },

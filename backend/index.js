@@ -1,3 +1,11 @@
+/*  
+  *  @author <deiby.rodriguez@correounivalle.edu.co>  
+  *  @version 0.0.1
+**/
+/*
+  Este archivo contiene las rutas necesarias para el manejo de datos en la bd.
+*/
+
 // Importar el módulo 'express'
 const express = require('express');
 

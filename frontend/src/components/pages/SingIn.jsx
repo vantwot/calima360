@@ -2,6 +2,7 @@
 import React from 'react';
 import Header from '../Home/Header';
 import FormSingIn from '../Home/FormSingIn';
+import Verificate from '../utils/verificate';
 
 /*  
   *  @author <cristian.machado@correounivalle.edu.co>  
@@ -11,7 +12,8 @@ import FormSingIn from '../Home/FormSingIn';
 const SignIn = () => {
 
     return (
-        <>
+        <> 
+            <Verificate target={"/profile/leccion"} />
             <Header />
             <FormSingIn />
         </>
