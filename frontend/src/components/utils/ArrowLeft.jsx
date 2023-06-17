@@ -17,6 +17,7 @@ const ArrowLeft = ({
 
     //funciones
     const handlePathBack = () => {
+        console.log(path);
         history(path);
     }
 

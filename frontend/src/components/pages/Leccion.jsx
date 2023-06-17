@@ -5,12 +5,12 @@ import Verificate from "../utils/verificate";
 
 
 const DATA_HISTORY = [
-    // {
-    //     title: 'ORFEBRERÍA',
-    //     img: 'orfebreria.svg',
-    //     target: '/profile/leccion/orfebreria',
-    //     disabled: false
-    // },
+    {
+        title: 'ORFEBRERÍA',
+        img: 'orfebreria.svg',
+        target: '/profile/leccion/orfebreria',
+        disabled: true
+    },
     {
         title: 'HISTORIA',
         img: 'historia.svg',
