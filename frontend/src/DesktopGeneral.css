@@ -251,7 +251,6 @@ html,body {
     padding: 0.5em;
     background: var(--background-nav);
     padding-top: 1.4em;
-    overflow: hidden;
 }
 
 body,html div#root.remove_gap {
@@ -261,6 +260,7 @@ body,html div#root.remove_gap {
 ._container_navegator div._item_navegator {
     display: grid;
     place-content: center;
+    position: relative;
     width: 100%;
     height: 4em;
     margin-top: 1.5em;
@@ -269,6 +269,40 @@ body,html div#root.remove_gap {
 ._container_navegator div._item_navegator a {
     cursor: pointer;
 } 
+
+._container_navegator 
+div._item_navegator 
+div._text_hover_ {
+    display: none;
+}
+
+._container_navegator 
+div._item_navegator:hover 
+div._text_hover_ {
+    display: grid;
+    justify-content: start;
+    align-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(90%,-70%);
+    background-color: var(--color-primary);
+    width: 7em;
+    height: 2em;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 0 0 15px 15px;
+    border-bottom-left-radius: 2px;
+    border-color: transparent transparent #4a4d4a transparent;
+}
+
+._container_navegator 
+div._item_navegator:hover 
+div._text_hover_ p {
+    width: -webkit-fill-available;
+    color: var(--color-white);
+    font-size: 1.4em;
+}
 
 ._container_navegator div._item_navegator a img {
     width: 3.6em;

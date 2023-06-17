@@ -7,15 +7,18 @@ const images_content = require.context("../../assets/item_menu/", true);
 const ICONS_NAV = [
     {
         icon: 'carnet.svg',
-        target: '/profile'
+        target: '/profile',
+        title: 'Perfil'
     },
     {
         icon: 'house.svg',
-        target: '/profile/leccion'
+        target: '/profile/leccion',
+        title: 'Lecciones'
     },
     {
         icon: 'quiz.svg',
-        target: '/profile/quiz'
+        target: '/profile/quiz',
+        title: 'Quiz'
     }
 ]
 
@@ -42,6 +45,9 @@ const Navegator = () => {
                             <a onClick={() => { handleNavagator(item.target)}}>
                                 <img src={images_content(`./${item.icon}`)} alt="icon" />
                             </a>
+                            <div className='_text_hover_'>
+                                <p>{item.title}</p>
+                            </div>
                         </div>
                     )
 
