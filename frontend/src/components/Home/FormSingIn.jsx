@@ -35,6 +35,7 @@ const FormSingIn = () => {
         .then(res => {
             if (res !== -1) {
                 window.confirm("Registro exitoso.");
+                history('/')
             } else {
                 window.confirm("No se pudo crear el usuario.");
             }

@@ -9,6 +9,7 @@ const Experience = (props) => {
         canvasAttr,
         children_,
         handleModalIn,
+        luzFigura,
         children
     } = props;
 
@@ -30,6 +31,7 @@ const Experience = (props) => {
                         <Figure3d 
                               handleModalIn={handleModalIn} 
                               Children_3d={children_}
+                              luzFigura={luzFigura}
                         />
 
                 </Canvas>

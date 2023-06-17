@@ -117,6 +117,10 @@ const Mitologia = () => {
                     <Experience
                         title={'Mitologia'}
                         handleModalIn={handleModalIn}
+                        luzFigura={{
+                            intensity: 10,
+                            position: [0, -10, 7],
+                        }}
                         children_= {<Mito3D scale="3.5" position={[0, 0, 0]} />}
                     />
                 }
