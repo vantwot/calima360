@@ -147,6 +147,24 @@ app.put('/usuario/:id', async (req, res) => {
   }
 });
 
+//Ruta para eliminar un usuario
+app.delete('/usuario/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Eliminar el usuario en la base de datos
+    await pool.query(
+      'DELETE FROM usuarios WHERE id = $1',
+      [id]
+    );
+
+    res.json({ mensaje: 'Usuario eliminado exitosamente' });
+  } catch (error) {
+    console.error('Error al eliminar usuario:', error);
+    res.status(500).json({ error: 'Error al eliminar usuario' });
+  }
+});
+
 // Ruta protegida que requiere autenticación
 app.get('/recurso-protegido', verificarToken, (req, res) => {
     res.json({ mensaje: '¡Este es un recurso protegido!' });
@@ -313,6 +331,11 @@ app.put('/usuario_cuestionario/:id', async (req, res) => {
 });
   
 // Inicia el servidor
-app.listen(port, () => {
-  console.log(`Servidor en ejecución en http://localhost:${port}`);
-});
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`Servidor en ejecución en http://localhost:${port}`);
+  });
+}
+
+// Exporta la aplicación Express para las pruebas
+module.exports = app;
