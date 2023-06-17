@@ -73,6 +73,7 @@ const Mitologia = () => {
 
     //variables
     const path_ = usePathtLocation();
+    const [ pathLocation , setPathLocation ] = useState(path_);
     const [showIn, setShowIn] = useState(false);
     const [showIn_figure, setShowIn_figure] = useState({
         show_1: true,
@@ -102,7 +103,7 @@ const Mitologia = () => {
             <Verificate target={"/model-mitologia"} />
             <Header login={true} />
             <div className='_container_primary_profile'>
-                <RenderContentFigure3D path={path_} />
+                <RenderContentFigure3D path={pathLocation} />
                 <ArrowRight handleNextFigure={handleNextFigure} />
                 {
                     showIn_figure.show_1 && 

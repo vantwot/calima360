@@ -32,6 +32,7 @@ const VidaComponent3D = () => {
 
     //variables
     const path_ = usePathtLocation();
+    const [ pathLocation , setPathLocation ] = useState(path_);
     const [showIn, setShowIn] = useState(false);
 
     //funciones
@@ -48,7 +49,7 @@ const VidaComponent3D = () => {
             <Verificate target={"/model-vida"} />
             <Header login={true} />
             <div className='_container_primary_profile'>
-                <RenderContentFigure3D  path={path_} />
+                <RenderContentFigure3D  path={pathLocation} />
                 <Experience 
                         title={'Vida'} 
                         handleModalIn={handleModalIn}

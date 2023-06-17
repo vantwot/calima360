@@ -48,6 +48,7 @@ const ReligionComponent3D = (props) => {
 
     //variables
     const path_ = usePathtLocation();
+    const [ pathLocation , setPathLocation ] = useState(path_);
     const [showIn, setShowIn] = useState(false);
     
     //funciones
@@ -65,7 +66,7 @@ const ReligionComponent3D = (props) => {
             <Verificate target={"/model-religion"} />
             <Header login={true} />
             <div className='_container_primary_profile'>
-                <RenderContentFigure3D path={path_} />
+                <RenderContentFigure3D path={pathLocation} />
                 <Experience 
                        title={'Religión'} 
                        handleModalIn={handleModalIn}
