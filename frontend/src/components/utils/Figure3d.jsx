@@ -10,7 +10,8 @@ import { useRef } from 'react'
  */
 const Figure3d = ({
     handleModalIn,
-    Children_3d
+    Children_3d,
+    luzFigura
 }) => {
 
     const directionalLightRef1 = useRef();
@@ -24,8 +25,12 @@ const Figure3d = ({
     return (
         <>
             <OrbitControls makeDefault minDistance={20} maxDistance={30} />
-            <directionalLight ref={directionalLightRef1} castShadow={true} position={[0, 20, 0]} intensity={0.3} />
-            <directionalLight ref={directionalLightRef2} castShadow={true} position={[0, -10, 0]} intensity={0.1} />
+            <directionalLight  
+                   ref={directionalLightRef2} 
+                   castShadow={true} 
+                   position={(luzFigura?.position) || [0, -10, 0]} 
+                   intensity={(luzFigura?.intensity) || 0.1} 
+            />
             <ambientLight intensity={0.5} />
             {
                 React.cloneElement(Children_3d, { onClick: hadlePopUp })
