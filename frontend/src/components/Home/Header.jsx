@@ -9,7 +9,7 @@ import React from 'react';
 
 // Importar el logo desde el archivo '../../assets/logo/LOGO.png'
 import logo_ from '../../assets/logo/LOGO.png';
-
+import Hamburger from '../utils/Hamburger';
 // Importar el logo desde el archivo '../../assets/logo/profile_default.svg'
 import icon_profile from '../../assets/logo/profile_default.svg';
 
@@ -33,7 +33,7 @@ const Header = (props) => {
 
     //variabless de estado
     const [ active_profile, setActiveProfile ] = React.useState(false);
-
+    const [ active_hamburger, setActiveHamburger ] = React.useState(false);
 
     //funciones 
     const handleProfile = () => {
@@ -46,12 +46,34 @@ const Header = (props) => {
         history(target);
     }
 
+    React.useEffect(() => {
+
+        //sacar el
+        //si el ancho de la pantalla es menor o 
+        //igual a 768px entonces activa el hamburger
+        if (window.innerWidth <= 768) {
+            setActiveHamburger(true);
+        }
+
+        //si el ancho de la pantalla es mayor a 768px entonces
+        //desactiva el hamburger
+        window.addEventListener('resize', () => {
+            if (window.innerWidth <= 768) {
+                setActiveHamburger(true);
+            } else {
+                setActiveHamburger(false);
+            }
+        })
+
+    }, [])
+
 
     // Renderizar el encabezado
     return (
         <>
            <header className="_header_container">
-                <div>
+                <div className='_container_mobile_menu'>
+                    { login_ && active_hamburger && <Hamburger />}
                     <img src={logo_} alt="logo" />
                 </div>
                 {children}

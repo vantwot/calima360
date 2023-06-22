@@ -25,7 +25,7 @@ const RenderSections = ({
             state_use.set(!state_use.get)
             return;
         }
-
+        console.log(pathBack);
         history(target, {  state: { pathBack } });
     }
 

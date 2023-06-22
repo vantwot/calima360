@@ -46,5 +46,127 @@
         font-size: 2em;
     }
 
+    ._container_primary_profile
+    ._container_navegator {
+        display: none;
+    }
+
+    ._container_primary_profile {
+        align-items: flex-start;
+        justify-content: center;
+        grid-template-rows: unset;
+        grid-template-columns: unset;
+        gap: 1em;
+        width: -webkit-fill-available;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    ._conatiner_info-profile {
+        /* //margin-top: 7em; */
+        width: 17em;
+    }
+
+    ._container_mobile_menu { 
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    ._container_mobile_menu img {
+        object-fit: scale-down;
+        width: min-content;
+        height: 80%;
+    }
+
+    ._hamburger_container a img {
+        object-fit: scale-down;
+        width: min-content;
+        height: 50%;  
+    }
+
+    ._hamburger_full_height {
+        display: grid;
+        place-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: -webkit-fill-available;
+        background: var(--background-nav);
+        z-index: 999;
+        overflow: hidden;
+    }
+
+    ._hamburger_full_height > a {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0.7em;
+    }
+
+    ._hamburger_full_height > a img {
+        width: 2em;
+        height: 2em;
+    }
+
+    ._hamburger_full_height 
+    ._container_navegator {
+        display: grid;
+        place-content: center;
+        gap: 2.8em;
+        max-width: unset;
+        padding-top: unset;
+    }
+
+    ._hamburger_full_height
+    ._container_navegator 
+    div._item_navegator {
+        margin-top: unset;
+    }
+
+    ._hamburger_full_height
+    ._container_navegator 
+    div._item_navegator > a img {
+        width: 7em;
+        object-fit: contain;
+    }
+
+    ._header_container 
+    div._container_profile > a img{
+        height: 3em;
+    }
+
+    ._header_container 
+    div._container_profile {
+        margin-right: 0.5em;
+    }
+
+    ._container_navegator 
+    div._item_navegator
+    div._text_hover_ {
+        position: absolute;
+        top: 1em;
+        left: 0;
+        width: 100%;
+        display: inline-block;
+        color: var(--color-secundary-black);
+        font-size: 1.2em;
+        text-align: center;
+        font-weight: 700;
+        font-family: var( --typografy-secundary);
+    }
+
+    ._container_primary_profile 
+    ._arrow_left_back {
+        top: 1em;
+        left: 1em;
+    }
+
+    ._text_right_arrow {
+        right: 1em;
+    }
+
+
   
 }

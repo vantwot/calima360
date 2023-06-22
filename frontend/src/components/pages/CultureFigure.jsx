@@ -44,21 +44,25 @@ function RenderContentPopup() {
  * @description Pinta una figura 3d en la pagina
  * @returns Componente de la pagina de model3d
 */
-const ReligionComponent3D = (props) => {
+const CultureFigure = (props) => {
 
     //variables
     const path_ = usePathtLocation();
     const [ pathLocation , setPathLocation ] = useState(path_);
     const [showIn, setShowIn] = useState(false);
-    
+    console.log(pathLocation);
     //funciones
     const handleModalIn = () => setShowIn(true);
     const handleCloseIn = () => setShowIn(false);
 
-    //el poderisimo useEffect
+    // el poderisimo useEffect
     React.useEffect(() => {
         document.getElementById('root').classList.add('remove_gap');
     }, []);
+
+    React.useEffect(() => {
+        console.log(path_,pathLocation);
+    },[pathLocation]);
 
     //renderizar componente
     return (
@@ -79,4 +83,4 @@ const ReligionComponent3D = (props) => {
 
 }
 
-export default ReligionComponent3D;
+export default CultureFigure;

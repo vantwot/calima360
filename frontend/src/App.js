@@ -10,9 +10,9 @@ import Leccion from './components/pages/Leccion';
 import Mitologia from './components/pages/Mitologia';
 import Mitologia_ from './components/pages/Mitologia_';
 import Quiz from './components/pages/Quiz';
-// import { useEffect, useState } from 'react';
-// import { decodeToken } from 'react-jwt';
-// import { useNavigate } from "react-router-dom";
+import Orfebreria from './components/pages/Orfebreria';
+import ArteFigure from './components/pages/ArteFigure';
+import CultureFigure from './components/pages/CultureFigure';
 import {
   BrowserRouter as Router,
   Routes,
@@ -37,6 +37,9 @@ const App = () => {
           <Route path="/profile/leccion/mitologia" element={<Mitologia_ />} />
           <Route path="/model-mitologia" element={<Mitologia />} />
           <Route path="/profile/quiz" element={<Quiz />} />
+          <Route path="/profile/leccion/orfebreria" element={<Orfebreria />} />
+          <Route path="/arte-figura" element={<ArteFigure />} />
+          <Route path="/cultura-figura" element={<CultureFigure />} />
         </Routes>
       </Router>
     </>
