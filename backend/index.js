@@ -30,8 +30,8 @@ const port = 5000;
 // Configura la conexión a la base de datos PostgreSQL
 const pool = new Pool({
   user: 'postgres',
-  host: 'calima360.cyydty3tfbz4.us-east-1.rds.amazonaws.com',
-  database: 'calima',
+  host: 'calima360.clvcllzp4ibu.us-east-2.rds.amazonaws.com',
+  database: 'calimadb',
   password: 'postgres',
   port: 5432,
 });
