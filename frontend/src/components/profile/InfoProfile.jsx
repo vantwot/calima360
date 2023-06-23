@@ -19,9 +19,10 @@ const InfoProfile = (props) => {
         name,
         apellido,
         email,
-        img_url
+        img_url,
+        cuestonario
     } = props.content;
-    console.log(props.content);
+    console.log(cuestonario);
     return (
 
         <div className="_conatiner_info-profile">
@@ -42,7 +43,9 @@ const InfoProfile = (props) => {
                         <h1>{email}</h1>
                   </div>
 
-                  {/* <div className='_container_progress'>
+                 {
+                  cuestonario && cuestonario !== 0 &&
+                  <div className='_container_progress'>
 
                         <div className='_container_progress_item'>
                                 <span>PROGRESO: </span>
@@ -53,14 +56,15 @@ const InfoProfile = (props) => {
                                     <div key={index} className='_container_progress_item'>
                                         <span>{item}</span>
                                         <span className='_progress_'></span>
-                                        <span className='_porcentaje'>50%</span>
+                                        <span className='_porcentaje'>{cuestonario}%</span>
                                     </div>
                                 )
                             }) 
                         }
 
                   </div>
-                  <a className='_edit_action'>EDITAR</a> */}
+                  }
+                  <a className='_edit_action'>EDITAR</a>
             </div>
         </div>
         
