@@ -7,6 +7,8 @@ import Verificate from "../utils/verificate";
 import RenderContentPopup_ from "../utils/QuizComponent";
 import { RenderResultPopup_ } from "../utils/QuizComponent";
 import RenderContentPopup from "../utils/RenderContentPopup";
+import { decodeToken } from "react-jwt";
+import { useNavigate } from "react-router-dom";
 
 //Informacion de la seccion Quiz
 const DATA_HISTORY = [
@@ -33,68 +35,6 @@ const DATA_HISTORY = [
     }
 ]
 
-
-const DATA_QUIZ = [
-    {
-        title: 'HISTORIA',
-        description: '¿Cuál de las siguientes afirmaciones es verdadera acerca de la orfebrería de los calimas?',
-        questions: [
-            {
-                opcion: `Los calimas eran expertos en la fabricación de armas y herramientas de metal.`
-            },
-            {
-                opcion: `Los calimas no practicaban la orfebrería y se enfocaban en otras formas de arte.`
-            },
-            {
-                opcion: `La orfebrería calima se caracterizaba por el uso exclusivo de oro como material.`
-            },
-            {
-                opcion: `Los calimas no tenían conocimientos sobre el trabajo con metales y no practicaban la orfebrería.`
-            }
-        ],
-        answer: 'C'
-    },
-    {
-        title: 'HISTORIA',
-        description: '¿Cuál de las siguientes afirmaciones es verdadera acerca de la historia de los calimas?',
-        questions: [
-            {
-                opcion: 'Los calimas fueron una cultura que se desarrolló en la región de la Amazonia.'
-            },
-            {
-                opcion: 'Los calimas eran una civilización contemporánea de los antiguos egipcios.'
-            },
-            {
-                opcion: 'Los calimas eran conocidos por sus habilidades náuticas y navegaban por el océano Atlántico.'
-            },
-            {
-                opcion: 'Los calimas fueron una cultura precolombina que habitó en la región del Valle del Cauca, Colombia.'
-            }
-        ],
-        answer: 'D'
-    },
-    {
-        title: 'HISTORIA',
-        description: '¿Cuál de las siguientes afirmaciones es verdadera acerca de la mitología de los calimas?',
-        questions: [
-            {
-                opcion: 'Los calimas adoraban a una deidad principal conocida como "Calima", considerada la diosa de la naturaleza.'
-            },
-            {
-                opcion: 'La mitología calima estaba centrada en la adoración de seres mitológicos marinos, como sirenas y tritones.'
-            },
-            {
-                opcion: 'Los calimas creían en la existencia de un mundo subterráneo habitado por espíritus malignos y serpientes gigantes.'
-            },
-            {
-                opcion: 'Ninguna de las anteriores.'
-            }
-        ],
-        answer: 'D'
-    }
-];
-
-
 /**
  * @description Componente
  * @returns Componente Quiz
@@ -106,12 +46,13 @@ const Quiz = () => {
     const [ active_quiz, setActiveQuiz ] = React.useState(false);
     const [ active_quiz_, setActiveQuiz_ ] = React.useState(false);
     const [ result_quiz_, setResultQuiz_ ] = React.useState(false);
-    const [ data_answer, setDataAnswer ] = React.useState(DATA_QUIZ[index__]);
+    const [ data_answer, setDataAnswer ] = React.useState([]);
     const [ select_answer, setSelectAnswer ] = React.useState([]);
     const [ select_answer_aux, setSelectAnswer_aux ] = React.useState([]);
     const [ visibleArrow , setVisibleArrow ] = React.useState(false);
     const [ options_all , setOptionsAll ] = React.useState(null);
     const [ data_axios , setDataAxios ] = React.useState([]);
+    const navigate = useNavigate();
     const answer___ = ['A', 'B', 'C', 'D']
     const [selectedOption, setSelectedOption] = React.useState({
         selectedOptionA: false,
@@ -158,9 +99,34 @@ const Quiz = () => {
 
     }
 
-    const handleCloseResult = () => {
-        setResultQuiz_(false);
-        setSelectAnswer([]);
+    const handleCloseResult = async (porcentaje) => {
+
+        try {
+
+            const URL = 'http://44.205.85.243:5000/usuario_cuestionario'
+            const token = sessionStorage.token;
+            const decodedToken = decodeToken(token);
+            const userId = decodedToken.userId;
+
+            const data = {
+                "id_usuario": userId,
+                "id_cuestionario": 1,
+                "estado": `${porcentaje}`
+            }
+
+            //post
+            const response = await axios.post(URL, data)
+            const { data: data_ } = response;
+            console.log('data_', data_);
+            console.log('porcentaje', porcentaje);
+            setResultQuiz_(false);
+            setSelectAnswer([]);
+            navigate('/profile');
+
+        } catch (error) {
+            console.log('error', error);
+        }   
+
     }
 
     const handleAgainQuiz = () => {
@@ -175,20 +141,21 @@ const Quiz = () => {
         const data = async () => {
             const response = await axios.get(URL)
             const { data }  = (response);
-            console.log('data11111', data[3].pregunta);
+            
             setOptionsAll(data[index__].opciones)
+
             //convertir la respuesta a la hecha en la logica
+            //costo n^2
             data?.map((item, index) => {
 
                 (item.opciones).filter((item_, index_) => {
                     if (item_.value !== '-1') {
                         item.answer = answer___[index_]
                         return null
-
                     }
                 })
             })
-            console.log('dataaaaaaa12', data);
+           
             setDataAnswer(data[index__])
             setDataAxios(data)
         }

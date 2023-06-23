@@ -31,9 +31,10 @@ const RenderResultPopup_ = ({
 
     const [ data , setData ] = React.useState({
         result: (result.filter((item,index) => item === total[index].answer)).length,
-        total: total.length
+        total: total.length,
+        percent: (result.filter((item,index) => item === total[index].answer)).length / total.length * 100
     });
-    
+  
     return (
         <>
             <div className="_container_close_quiz">
@@ -45,7 +46,7 @@ const RenderResultPopup_ = ({
                 </p>
                 <div className="container_btns_quiz">
                     <button onClick={reset_quiz} className="btn_quiz">Intentar De Nuevo</button>
-                    <button onClick={handleCloseIn} className="btn_quiz">Salir</button>
+                    <button onClick={() => { handleCloseIn(data.percent) }} className="btn_quiz">Salir</button>
                 </div>
             </div>
         </>
