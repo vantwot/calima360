@@ -111,6 +111,8 @@ const Quiz = () => {
     const [ select_answer_aux, setSelectAnswer_aux ] = React.useState([]);
     const [ visibleArrow , setVisibleArrow ] = React.useState(false);
     const [ options_all , setOptionsAll ] = React.useState(null);
+    const [ data_axios , setDataAxios ] = React.useState([]);
+    const answer___ = ['A', 'B', 'C', 'D']
     const [selectedOption, setSelectedOption] = React.useState({
         selectedOptionA: false,
         selectedOptionB: false,
@@ -143,15 +145,15 @@ const Quiz = () => {
 
         setIndex__(index__ + 1);
 
-        if ((index__+ 1) > DATA_QUIZ.length - 1) {
+        if ((index__+ 1) > data_axios.length - 1) {
             setIndex__(0);
-            setDataAnswer(DATA_QUIZ[0]);
+            setDataAnswer(data_axios[0]);
             setResultQuiz_(true);
             setActiveQuiz(false);
             setActiveQuiz_(false);
 
         } else {
-            setDataAnswer(DATA_QUIZ[(index__+ 1)]);
+            setDataAnswer(data_axios[(index__+ 1)]);
         }
 
     }
@@ -173,10 +175,26 @@ const Quiz = () => {
         const data = async () => {
             const response = await axios.get(URL)
             const { data }  = (response);
+            console.log('data11111', data[3].pregunta);
+            setOptionsAll(data[index__].opciones)
+            //convertir la respuesta a la hecha en la logica
+            data?.map((item, index) => {
+
+                (item.opciones).filter((item_, index_) => {
+                    if (item_.value !== '-1') {
+                        item.answer = answer___[index_]
+                        return null
+
+                    }
+                })
+            })
+            console.log('dataaaaaaa12', data);
+            setDataAnswer(data[index__])
+            setDataAxios(data)
         }
 
-        //data();
-        setOptionsAll(DATA_QUIZ[index__].questions)
+        data();
+        
 
     }, [])
 
@@ -206,8 +224,8 @@ const Quiz = () => {
                    handleCloseIn={handleClose_quiz} 
                    handleNext={handleNext}
                    children_={<RenderContentPopup 
-                                title={data_answer.title}
-                                description={data_answer.description}
+                                title={'HISTORIA'}
+                                description={data_answer.pregunta}
                                 set_data_answer={setSelectAnswer_aux}
                                 select_answer={select_answer_aux}
                                 selectedOption={selectedOption}
@@ -237,7 +255,7 @@ const Quiz = () => {
                          handleCloseIn={handleCloseResult}
                          reset_quiz={handleAgainQuiz}
                          result={select_answer}
-                         total={DATA_QUIZ}
+                         total={data_axios}
                  />} 
                  class_="_container_result_quiz"
               /> 
