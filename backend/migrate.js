@@ -11,12 +11,12 @@ const { Client } = require('pg');
 // importar el modulo 'node-pg-migrate'
 const { default: migrate } = require('node-pg-migrate');
 // constante para guardar la dirección de la base de datos
-const connectionString = 'postgres://postgres:postgres@calima360.cyydty3tfbz4.us-east-1.rds.amazonaws.com:5432/calima';
+const connectionString = 'postgres://postgres:postgres@calima360.clvcllzp4ibu.us-east-2.rds.amazonaws.com:5432/calimadb';
 
 // Función para crear la base de datos "calima"
 async function createDatabase() {
     const client = new Client({
-        connectionString: 'postgres://postgres:postgres@calima360.cyydty3tfbz4.us-east-1.rds.amazonaws.com:5432'
+        connectionString: 'postgres://postgres:postgres@calima360.clvcllzp4ibu.us-east-2.rds.amazonaws.com:5432'
     });
 
     try {
