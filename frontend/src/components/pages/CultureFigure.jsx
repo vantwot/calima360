@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import Experience from '../model3d/Experence'
 import Header from '../Home/Header'
 import PopupGeneral from '../utils/PopupGeneral'
-import Religion3D from '../model3d/Religion3D'
+import Cultura3D from '../model3d/Cultura'
 import { 
     usePathtLocation,
     RenderContentFigure3D
@@ -15,27 +15,17 @@ import Verificate from '../utils/verificate'
 function RenderContentPopup() {
     return (
     <>
-        <h1>Religión de la cultura Calima</h1>
-        <p>Predominó el culto funerario, donde las personas creían en el más allá. Existieron un alto número de tumbas, de todos los períodos que tuvo la cultura, y que estaban acompañados con objetos hechos a base de oro y amas guerra, las cuales eran construidas en pozos,</p>
-        <p>De igual manera, solían practicar el sacrificio como un ritual funerario y todo esto era parte de una filosofía el fallecido debe de emprender el viaje al otro mundo con los recursos necesarios y en compañía de los seres queridos. Por lo que se debe de analizar los siguientes elementos que solían estar en las tumbas:</p>
-            <ol>
-                <li>
-                    <h3>Máscaras de oro</h3>
-                    <p>Permitía saber que la persona que estaba era un dios.</p>
-                </li>
-                <li>
-                    <h3>Pectorales</h3>
-                    <p>Asociada con la sabiduría del alma que entablaría una guerra contra las tinieblas para llegar al más allá.</p>
-                </li>
-                <li>
-                    <h3>Vasijas de barro</h3>
-                    <p>Exponían el culto a los órganos sexuales femeninos.</p>
-                </li>
-                <li>
-                    <h3>Alcazarra</h3>
-                    <p>Representación al trabajo para lograr convertirse en un hombre solar y poder realizar magníficas obras.</p>
-                </li>
-            </ol>
+        <h1>Los Ornamentos dentro de la cultura Calima</h1>
+
+        <p>Los Calima eran conocidos por su habilidad en la metalurgia, y sus ornamentos eran principalmente elaborados en oro y tumbaga, una aleación de oro con cobre. Estos ornamentos incluían collares, pectorales, brazaletes, anillos y diademas, entre otros.</p>
+
+        <p>Los diseños de los ornamentos Calima eran muy detallados y reflejaban la influencia de la fauna y la flora de la región. Muchos de los ornamentos representaban animales como serpientes, aves, felinos y caimanes, así como plantas y elementos abstractos estilizados.</p>
+
+        <p>Los Calima también utilizaban otros materiales en la creación de ornamentos, como conchas marinas, piedras semipreciosas y cerámica. Estos materiales eran combinados en diseños complejos y coloridos, creando piezas de gran belleza y valor cultural.</p>
+
+        <p>Los ornamentos Calima no solo eran utilizados como adornos personales, sino que eran utilizados en rituales y ceremonias, y se cree que representaban estatus, poder y conexión con lo divino.</p>
+
+        <p>Hoy en día, los ornamentos de la cultura Calima son considerados verdaderas obras de arte y son apreciados tanto por su belleza estética como por su importancia histórica y cultural.</p>
     </>)
 }
 
@@ -67,20 +57,23 @@ const CultureFigure = (props) => {
     //renderizar componente
     return (
         <>
-            <Verificate target={"/model-religion"} />
+            <Verificate target={"/cultura-figura"} />
             <Header login={true} />
             <div className='_container_primary_profile'>
                 <RenderContentFigure3D path={pathLocation} />
                 <Experience 
-                       title={'Religión'} 
-                       handleModalIn={handleModalIn}
-                       children_= {<Religion3D scale="3.9" position={[0, 0, 0]} />}
+                    title={'Cultura'} 
+                    handleModalIn={handleModalIn}
+                    luzFigura={{
+                        intensity: 10,
+                        position: [0, 0, 0],
+                    }}
+                    children_= {<Cultura3D scale="7" position={[0, -7, 0]} rotation-x={- Math.PI * 0.4} rotation-z={- Math.PI * 0.15} />}
                 />
                 {showIn && <PopupGeneral handleCloseIn={handleCloseIn} children_={<RenderContentPopup />} />}
             </div>
         </>
     )
-
 }
 
 export default CultureFigure;

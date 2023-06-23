@@ -2,7 +2,7 @@
 import React, {useState} from 'react'
 import Experience from '../model3d/Experence'
 import Header from '../Home/Header'
-import Model from '../model3d/Vida3D'
+import Arte3D from '../model3d/Arte'
 import PopupGeneral from '../utils/PopupGeneral'
 import { 
     usePathtLocation,
@@ -14,12 +14,11 @@ import Verificate from '../utils/verificate'
 function RenderContentPopup() {
     return (
     <>
-        <h1>Vida de la cultura Calima</h1>
-        <p>La cultura Calima, que floreció en la región suroeste de Colombia entre los siglos IV a.C. y VII d.C., tuvo una vida rica y compleja. Durante este período, la cultura Calima desarrolló una serie de características distintivas que los diferenciaron de otros grupos indígenas de la región.</p>
-        <p>La vida de la cultura Calima estaba estrechamente vinculada a su entorno natural. Los calimas habitaban una región de valles y montañas, lo que les brindaba una variedad de recursos naturales para su subsistencia. Se dedicaban a la agricultura, cultivando maíz, frijoles, calabazas y algodón. También eran hábiles ceramistas y tejedores, creando hermosos objetos de barro y textiles que reflejaban su creatividad y destreza.</p>
-        <p>Además de sus actividades económicas, la cultura Calima tenía una fuerte base religiosa y espiritual. Creían en la existencia de un mundo más allá de la vida terrenal y practicaban un culto funerario elaborado. Las tumbas calimas eran ricas en objetos preciosos, como máscaras de oro, pectorales y vasijas de barro. Estos objetos simbolizaban la importancia del viaje del difunto al más allá y su transformación en seres divinos.</p>
-        <p>La sociedad calima también estaba organizada de manera jerárquica, con líderes políticos y religiosos que ejercían un gran poder. Los calimas participaban en rituales y ceremonias, donde se honraban a los dioses y se fortalecían los lazos comunitarios. La guerra también era parte de la vida calima, ya sea para defenderse de amenazas externas o para expandir su territorio.</p>
-        <p>La cultura Calima dejó un legado significativo en la historia de Colombia. Sus obras de arte, su habilidad en la cerámica y su enfoque en el culto funerario son testimonios de una civilización rica y sofisticada. Aunque los calimas desaparecieron hace siglos, su legado perdura en los vestigios arqueológicos y en la memoria de la región suroeste de Colombia.</p>
+        <h1>Arte en la cultura Calima</h1>
+        <p>El arte de la cultura Calima, que floreció en la región del suroeste de Colombia entre los siglos IV a.C. y VII d.C., se distingue por sus hermosas vasijas de barro.</p>
+        <p>Las vasijas de barro calimas son una expresión artística y cultural muy importante de esta antigua civilización, estás vasijas eran utilizadas tanto para fines utilitarios como ceremoniales. Los calimas crearon una amplia variedad de formas y tamaños de vasijas, que van desde pequeñas copas y platos hasta grandes urnas y estatuillas antropomorfas.</p>
+        <p>El estilo artístico de las vasijas calimas es altamente distintivo. Las piezas suelen ser de forma globular con cuellos estrechos y se decoran con una variedad de motivos geométricos y figurativos. Los calimas desarrollaron una técnica cerámica única, conocida como "engobe negativo", que consiste en aplicar un recubrimiento de arcilla blanca en la superficie de la vasija y luego raspar o grabar diseños para revelar el color oscuro de la arcilla subyacente. Este contraste entre el engobe blanco y el fondo oscuro crea un efecto visual muy llamativo.</p>
+        <p>Los motivos decorativos de las vasijas calimas son variados y representan elementos de la naturaleza, como aves, peces, serpientes, felinos y figuras humanas. Estos diseños suelen ser estilizados y abstractos, con una fuerte influencia geométrica. Algunas vasijas también presentan escenas narrativas, como cacerías o rituales, que brindan información sobre las actividades y creencias de la cultura Calima.</p>
     </>)
 }
 
@@ -46,20 +45,19 @@ const ArteFigure = () => {
 
     return (
         <>
-            <Verificate target={"/model-vida"} />
+            <Verificate target={"/arte-figura"}/>
             <Header login={true} />
             <div className='_container_primary_profile'>
                 <RenderContentFigure3D  path={pathLocation} />
                 <Experience 
-                        title={'Vida'} 
+                        title={'Arte'} 
                         handleModalIn={handleModalIn}
-                        children_={<Model scale="2" position={[0, 0, 0]} rotation-x={- Math.PI * 0.38} rotation-z={- Math.PI * 0.15} />}
+                        children_={<Arte3D scale="4" position={[0, -120, 0]} rotation-z={- Math.PI * 0.30}/>}
                 />
                 {showIn && <PopupGeneral handleCloseIn={handleCloseIn} children_={<RenderContentPopup />} />}
             </div>
         </>
     )
 }
-                   
 
 export default ArteFigure;
