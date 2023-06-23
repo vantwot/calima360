@@ -31,7 +31,7 @@ const Orfebreria = () => {
         <>
             <Verificate target={"/profile/leccion/orfebreria"} />
             <Header login={true} />
-            <RenderSections content_section={DATA_HISTORY} title='orfebreria' />
+            <RenderSections content_section={DATA_HISTORY} title='orfebrería' />
         </>
     );
 
