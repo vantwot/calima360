@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 
 var id = 0;
 var id2 = 0;
+var id_cuest = 0;
 
 describe('Pruebas funcionales de las rutas de usuario', () => {
   jest.setTimeout(20000);
@@ -87,11 +88,19 @@ describe('Pruebas funcionales de las rutas de cuestionario', () => {
     const response = await request(app).post('/cuestionario').send(cuestionario);
     expect(response.statusCode).toBe(201);
     expect(response.body).toBeDefined();
+    id_cuest = response.body.cuestionarioId;
   });
 
   // Prueba para la ruta '/cuestionario'
   it('Debería obtener la lista de cuestionarios', async () => {
     const response = await request(app).get('/cuestionario');
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toBeDefined();
+  });
+
+  // Prueba para la ruta '/cuestionario/:id'
+  it('Debería obtener un cuestionario por id', async () => {
+    const response = await request(app).get(`/cuestionario/${id_cuest}`);
     expect(response.statusCode).toBe(200);
     expect(response.body).toBeDefined();
   });
@@ -128,9 +137,9 @@ describe('Pruebas funcionales de las rutas de usuario_cuestionario', () => {
   // Prueba para la ruta '/usuario_cuestionario'
   it('Debería registrar un nuevo usuario_cuestionario', async () => {
     const usuario_cuestionario = {
-      estado: 0,
+      estado: 12,
       id_usuario: id2,
-      id_cuestionario: 6
+      id_cuestionario: id_cuest
     };
     const response = await request(app).post('/usuario_cuestionario').send(usuario_cuestionario);
     expect(response.statusCode).toBe(201);
