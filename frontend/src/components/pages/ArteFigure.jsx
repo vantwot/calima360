@@ -50,9 +50,15 @@ const ArteFigure = () => {
             <div className='_container_primary_profile'>
                 <RenderContentFigure3D  path={pathLocation} />
                 <Experience 
+                        canvasAttr={{
+                                fov:  45,
+                                near:  0.3,
+                                far: 200,
+                                position: [ -3, 10, 7 ]
+                        }}
                         title={'Arte'} 
                         handleModalIn={handleModalIn}
-                        children_={<Arte3D scale="5" position={[0, -230, 0]} rotation-z={- Math.PI * 0.30}/>}
+                        children_={<Arte3D scale="6" position={[10, -220, 0]} rotation-z={- Math.PI * 0.30}/>}
                 />
                 {showIn && <PopupGeneral handleCloseIn={handleCloseIn} children_={<RenderContentPopup />} />}
             </div>

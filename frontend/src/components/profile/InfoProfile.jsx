@@ -3,9 +3,18 @@ import React from 'react';
 const images_content = require.context("../../assets/profile/", true);
 
 const DATA_PROFILE = [
-    'HISTORIA',
-    'ORFEBRERIA',
-    'MITOLOGÍA',
+    {
+        name: 'HISTORIA',
+        whoami: 'historia',
+    },
+    {
+        name: 'MITOLOGÍA',
+        whoami: 'mitologia',
+    },
+    {
+        name: 'ORFEBRERÍA',
+        whoami: 'orfebreria',
+    }
 ]
 
 /*  
@@ -20,9 +29,26 @@ const InfoProfile = (props) => {
         apellido,
         email,
         img_url,
-        cuestonario
+        cuestonario,
     } = props.content;
-    console.log(cuestonario);
+    console.log(cuestonario , 'cuestonario');
+    const [porcentaje, setPorcentaje] = React.useState({
+        'historia': 0,
+        'mitologia': '0',
+        'orfebreria': '0',
+        cuestonario_active: false
+    });
+
+
+    React.useEffect(() => {
+
+        if (cuestonario?.length > 0) {
+            console.log(cuestonario, 'cuestonario222');
+            setPorcentaje(cuestonario[0]);
+        }
+
+    }, [cuestonario]);
+
     return (
 
         <div className="_conatiner_info-profile">
@@ -44,7 +70,7 @@ const InfoProfile = (props) => {
                   </div>
 
                  {
-                  cuestonario && cuestonario !== 0 &&
+                  porcentaje?.cuestonario_active &&
                   <div className='_container_progress'>
 
                         <div className='_container_progress_item'>
@@ -52,11 +78,16 @@ const InfoProfile = (props) => {
                         </div>
                         {
                             DATA_PROFILE.map((item, index) => {
+                                const porcentaje_ = (porcentaje[item.whoami]).estado; 
                                 return (
                                     <div key={index} className='_container_progress_item'>
-                                        <span>{item}</span>
-                                        <span className='_progress_'></span>
-                                        <span className='_porcentaje'>{cuestonario}%</span>
+                                        <span>{item.name}</span>
+                                        <span 
+                                            style={{
+                                                background: `linear-gradient(90deg, #5CFF6C ${porcentaje_}%, #FF4545 ${100 - porcentaje_}%)`
+                                            }}
+                                           className='_progress_'></span>
+                                        <span className='_porcentaje'>{porcentaje_}%</span>
                                     </div>
                                 )
                             }) 
