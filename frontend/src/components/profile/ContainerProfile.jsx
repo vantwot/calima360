@@ -48,9 +48,12 @@ const ContainerProfile = () => {
         const fetchData = async () => {
             try {
              
-                const url_cuestionario = `http://44.205.85.243:5000/usuario_cuestionario/${userId}`
+                const url_cuestionario = `http://44.205.85.243:5000/usuario_cuestionario/`
                 const response_cuestionario = await axios.get(url_cuestionario);
-                handleInfoUser(response_cuestionario?.data?.estado || 0);
+                console.log('response_cuestionario', response_cuestionario);
+                const filtroUsuario = response_cuestionario?.data?.filter((item) => item.id_usuario === userId);
+                console.log('filtroUsuario', filtroUsuario[filtroUsuario.length - 1]);
+                handleInfoUser(filtroUsuario[filtroUsuario.length - 1].estado || 0);
              
             } catch (error) {
                 console.log(error);

@@ -28,7 +28,7 @@ const RenderContentPopup = ({
     }
 
     React.useEffect(() => {
-
+        console.log('options_all', options_all);
         setData({
             title: title,
             description: description,
