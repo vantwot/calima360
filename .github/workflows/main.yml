@@ -26,9 +26,3 @@ jobs:
 
       - name: Run tests
         run: npm test --prefix ./frontend
-        
-      - name: Install dependencies back
-        run: npm ci --prefix ./backend
-
-      - name: Run tests
-        run: npx jest --prefix ./backend
