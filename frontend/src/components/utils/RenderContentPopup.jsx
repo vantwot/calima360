@@ -4,12 +4,7 @@ import React from 'react';
 const RenderContentPopup = ({
     title,
     description,
-    text_a,
-    text_b,
-    text_c,
-    text_d,
     set_data_answer,
-    select_answer,
     selectedOption, 
     setSelectedOption,
     options_all
@@ -17,7 +12,8 @@ const RenderContentPopup = ({
     console.log(selectedOption, 'Estoy Cansado');
     const [ data , setData ] = React.useState({
         title: title,
-        description: description
+        description: description,
+        options_all: options_all
     });
 
     const handleAnswer = (e) => {
@@ -35,10 +31,11 @@ const RenderContentPopup = ({
 
         setData({
             title: title,
-            description: description
+            description: description,
+            options_all: options_all
         }) 
 
-    }, [description, title])
+    }, [description, title, options_all])
 
     return (
     <>
@@ -48,7 +45,7 @@ const RenderContentPopup = ({
             listStyle: 'upper-latin'
         }}>
          {
-            options_all?.map((item, index) => {
+            data.options_all?.map((item, index) => {
                 const options_ = ['A', 'B', 'C', 'D'];
                 console.log(selectedOption[`selectedOption${options_[index]}`], 'selectedOption');
                 return (
