@@ -52,7 +52,7 @@ const ArteFigure = () => {
                 <Experience 
                         title={'Arte'} 
                         handleModalIn={handleModalIn}
-                        children_={<Arte3D scale="4" position={[0, -120, 0]} rotation-z={- Math.PI * 0.30}/>}
+                        children_={<Arte3D scale="5" position={[0, -230, 0]} rotation-z={- Math.PI * 0.30}/>}
                 />
                 {showIn && <PopupGeneral handleCloseIn={handleCloseIn} children_={<RenderContentPopup />} />}
             </div>

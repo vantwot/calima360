@@ -20,12 +20,13 @@ exports.up = (pgm) => {
     id: { type: 'serial', primaryKey: true },
     nombre: { type: 'varchar(255)', notNull: true },
     pregunta: { type: 'varchar(255)', notNull: true },
-    opciones: { type: 'jsonb[]' }
+    opciones: { type: 'jsonb[]' },
+    tipo: { type: 'varchar(255)', notNull: true }
   }, {ifNotExists: true});
 
   pgm.createTable('usuario_cuestionario', {
     id: { type: 'serial', primaryKey: true },
-    estado: { type: 'varchar(255)', notNull: true },
+    estado: { type: 'integer', notNull: true },
     id_usuario: {
       type: 'integer',
       notNull: true,

@@ -71,8 +71,8 @@ const ReligionComponent3D = (props) => {
                     title={'Religión'} 
                     handleModalIn={handleModalIn}
                     luzFigura={{
-                        intensity: 0.3,
-                        position: [0, 20, 0],
+                        intensity:1,
+                        position: [-1, 1, -1],
                     }}
                     typeLight={0}
                     children_= {<Religion3D scale="3.9" position={[0, 0, 0]} />}

@@ -119,10 +119,16 @@ const Mitologia = () => {
                         title={'Mitología'}
                         handleModalIn={handleModalIn}
                         luzFigura={{
-                            intensity: 10,
-                            position: [0, -10, 7],
+                            intensity: 20,
+                            position: [-1, 2.5, -1],
                         }}
-                        children_= {<Mito3D scale="3.5" position={[0, 0, 0]} />}
+                        typeLight={0}
+                        luzFigura2={{
+                            intensity: 20,
+                            position: [1, -1, 1],
+                        }}
+                        typeLight2={0}
+                        children_= {<Mito3D scale="3.1" position={[0, 0, 0]} rotation-x={- Math.PI * 0.50} rotation-y={Math.PI * 0.01} rotation-z={-Math.PI * 0.13}/>}
                     />
                 }
                 { showIn && 
