@@ -9,7 +9,7 @@ const RenderContentPopup = ({
     setSelectedOption,
     options_all
 }) => {
-    console.log(selectedOption, 'Estoy Cansado');
+    //console.log(selectedOption, 'Estoy Cansado');
     const [ data , setData ] = React.useState({
         title: title,
         description: description,
@@ -47,7 +47,7 @@ const RenderContentPopup = ({
          {
             data.options_all?.map((item, index) => {
                 const options_ = ['A', 'B', 'C', 'D'];
-                console.log(selectedOption[`selectedOption${options_[index]}`], 'selectedOption');
+               
                 return (
                     <li key={index}> 
                           <input 

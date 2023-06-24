@@ -64,7 +64,7 @@ const InfoProfile = (props) => {
 
                   </div>
                   }
-                  <a className='_edit_action'>EDITAR</a>
+                  {/* <a className='_edit_action'>EDITAR</a> */}
             </div>
         </div>
         
