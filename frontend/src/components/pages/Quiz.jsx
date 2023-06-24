@@ -143,7 +143,7 @@ const Quiz = () => {
             const { data }  = (response);
             
             setOptionsAll(data[index__].opciones)
-
+            console.log('data4444', data);
             //convertir la respuesta a la hecha en la logica
             //costo n^2
             data?.map((item, index) => {
