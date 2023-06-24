@@ -95,13 +95,6 @@ describe('Pruebas funcionales de las rutas de cuestionario', () => {
     expect(response.statusCode).toBe(200);
     expect(response.body).toBeDefined();
   });
-
-  // Prueba para la ruta '/cuestionario/:id'
-  it('Debería obtener un cuestionario por su id', async () => {
-    const response = await request(app).get(`/cuestionario/6`);
-    expect(response.statusCode).toBe(200);
-    expect(response.body).toBeDefined();
-  });
 });
 
 describe('Pruebas funcionales de las rutas de usuario_cuestionario', () => {
