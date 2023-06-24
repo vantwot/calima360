@@ -436,7 +436,7 @@ div._container_progress_item span._progress_ {
     height: 2em;
     margin-left: 0.5em;
     margin-right: 0.5em;
-    background: linear-gradient(90deg, #64FF73 -4.17%, #5CFF6C 49.54%, #FFF845 50.24%, #FFF845 87.52%, #FF4545 88.73%);
+    /* background: linear-gradient(90deg, #64FF73 -4.17%, #5CFF6C 70%, #FF4545 30%); */
     border-radius: 30px;
 }
 

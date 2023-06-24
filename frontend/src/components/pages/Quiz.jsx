@@ -16,22 +16,25 @@ const DATA_HISTORY = [
         title: 'ORFEBRERÍA',
         img: 'orfebreria.svg',
         target: '',
-        disabled: false,
-        state: true
+        disabled: true,
+        state: true,
+        whoami: 'orfebreria'
     },
     {
         title: 'HISTORIA',
         img: 'historia.svg',
         target: '',
         disabled: true,
-        state: true
+        state: true,
+        whoami: 'historia'
     },
     {
         title: 'MITOLOGÍA',
         img: 'mitologia.svg',
         target: '',
-        disabled: false,
-        state: true
+        disabled: true,
+        state: true,
+        whoami: 'mitologia'
     }
 ]
 
@@ -52,6 +55,9 @@ const Quiz = () => {
     const [ visibleArrow , setVisibleArrow ] = React.useState(false);
     const [ options_all , setOptionsAll ] = React.useState(null);
     const [ data_axios , setDataAxios ] = React.useState([]);
+    const [ whoamiData , setWhoamiData ] = React.useState({
+        name: '',
+    });
     const navigate = useNavigate();
     const answer___ = ['A', 'B', 'C', 'D']
     const [selectedOption, setSelectedOption] = React.useState({
@@ -69,6 +75,7 @@ const Quiz = () => {
     }
 
     const reset_quiz = () => {
+        console.log('reset_quiz');
         setActiveQuiz_(!active_quiz_);
     }
 
@@ -109,10 +116,18 @@ const Quiz = () => {
             const userId = decodedToken.userId;
             console.log('userId333', (porcentaje));
             
-            //
+            //deiby toco ser recursivos
+            //33 orfebreria
+            //34 historia
+            //35 mitologia
+            const id_cuestionario = {
+                'mitologia': 35,
+                'historia': 34,
+                'orfebreria': 33
+            }
             const data__ = {
                 "id_usuario": userId,
-                "id_cuestionario": 18,
+                "id_cuestionario": id_cuestionario[whoamiData.name],
                 "estado":  parseInt(porcentaje)
             }
 
@@ -132,9 +147,11 @@ const Quiz = () => {
     }
 
     const handleAgainQuiz = () => {
-        handleCloseResult();
         setActiveQuiz(true);
         setSelectAnswer([]);
+        setIndex__(0);
+        setDataAnswer(data_axios[0]);
+        setResultQuiz_(false);
     }
 
     React.useEffect( () => {
@@ -143,9 +160,8 @@ const Quiz = () => {
         const data = async () => {
             const response = await axios.get(URL)
             const { data }  = (response);
-            
-            setOptionsAll(data[index__].opciones)
-            console.log('data4444', data[index__].opciones, data);
+        
+            //console.log('data4444', whoamiData.name);
             //convertir la respuesta a la hecha en la logica
             //costo n^2
             data?.map((item, index) => {
@@ -158,6 +174,7 @@ const Quiz = () => {
                 })
             })
            
+            setOptionsAll(data);
             setDataAnswer(data[index__])
             setDataAxios(data)
         }
@@ -172,7 +189,25 @@ const Quiz = () => {
         if (select_answer_aux.length > 0) {
             setVisibleArrow(true);
         }
+
     }, [select_answer_aux])
+
+    React.useEffect(() => {
+
+        console.log('whoamiData');
+        if (whoamiData.name !== '' && options_all !== null) {
+            let dataFilterType = options_all?.filter((item, index) => {
+                if ( (item.tipo).toLowerCase() === whoamiData.name) {
+                    return item;
+                }
+            })
+            
+            setDataAnswer(dataFilterType[index__])
+            setDataAxios(dataFilterType);
+        }
+
+
+    }, [whoamiData])
 
 
     //render component
@@ -182,7 +217,8 @@ const Quiz = () => {
             <Header login={true} />
             <RenderSections state_use={{ 
                                         get: active_quiz ,  
-                                        set: setActiveQuiz
+                                        set: setActiveQuiz,
+                                        all: setWhoamiData,
                             }} 
                             title="CUESTONARIO" 
                             content_section={DATA_HISTORY} />
@@ -193,7 +229,7 @@ const Quiz = () => {
                 handleCloseIn={handleClose_quiz} 
                 handleNext={handleNext}
                 children_={<RenderContentPopup 
-                                title={'HISTORIA'}
+                                title={(whoamiData.name).toUpperCase()}
                                 description={data_answer.pregunta}
                                 set_data_answer={setSelectAnswer_aux}
                                 select_answer={select_answer_aux}

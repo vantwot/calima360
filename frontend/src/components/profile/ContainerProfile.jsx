@@ -44,20 +44,54 @@ const ContainerProfile = () => {
         }
     }
 
+    const handleMayor = (objeto) => {
+
+        if (objeto?.length === 0) {
+            return 0;
+        }
+
+        const objetoMayor = objeto.reduce((mayor, objeto) => {
+            if (objeto.estado > mayor.estado) {
+              return objeto;
+            } else {
+              return mayor;
+            }
+          });
+
+        return objetoMayor;
+    }
+
     React.useEffect(() => {
         const fetchData = async () => {
             try {
              
                 const url_cuestionario = `http://44.205.85.243:5000/usuario_cuestionario/`
                 const response_cuestionario = await axios.get(url_cuestionario);
-                console.log('response_cuestionario', response_cuestionario);
+                
                 const filtroUsuario = response_cuestionario?.data?.filter((item) => item.id_usuario === userId);
-                console.log('filtroUsuario', filtroUsuario[filtroUsuario.length - 1]);
-                handleInfoUser(filtroUsuario[filtroUsuario.length - 1].estado || 0);
+                const porcentaje_orfebreria = filtroUsuario?.filter((item) => item.id_cuestionario === 33);
+                const porcentaje_historia = filtroUsuario?.filter((item) => item.id_cuestionario === 34);
+                const porcentaje_mitologia = filtroUsuario?.filter((item) => item.id_cuestionario === 35);
+                const sum_total = porcentaje_orfebreria?.length + porcentaje_historia?.length + porcentaje_mitologia?.length;
+ 
+                //filtrar por el estado mas alto
+                const porcentaje = {
+                    'orfebreria': handleMayor(porcentaje_orfebreria),
+                    'historia': handleMayor(porcentaje_historia),
+                    'mitologia': handleMayor(porcentaje_mitologia),
+                    cuestonario_active: sum_total > 0 
+                }
+                console.log('porcentaje', porcentaje);
+                handleInfoUser([porcentaje]);
              
             } catch (error) {
                 console.log(error);
-                handleInfoUser(0);
+                handleInfoUser([{
+                    'orfebreria': 0,
+                    'historia': 0,
+                    'mitologia': 0,
+                    cuestonario_active: false
+                }]);
             }
         };
 

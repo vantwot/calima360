@@ -19,10 +19,11 @@ const RenderSections = ({
     const history =  useNavigate();
 
     //funcion para redireccionar
-    const handleCerrarSesion = ({target , pathBack , state}) => {
+    const handleCerrarSesion = ({target , pathBack , state , whoami}) => {
 
         if(state) {
             state_use.set(!state_use.get)
+            state_use.all({ name: whoami });
             return;
         }
         console.log(pathBack);
