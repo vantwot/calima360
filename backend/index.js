@@ -224,12 +224,12 @@ app.get('/cuestionario/:id', async (req, res) => {
 // Ruta para crear un nuevo cuestionario
 app.post('/cuestionario', async (req, res) => {
   try {
-    const { nombre, pregunta, opciones } = req.body;
+    const { nombre, pregunta, opciones, tipo } = req.body;
 
     // Insertar el cuestionario en la base de datos
     const result = await pool.query(
-      'INSERT INTO cuestionario (nombre, pregunta, opciones) VALUES ($1, $2, $3) RETURNING id',
-      [nombre, pregunta, opciones]
+      'INSERT INTO cuestionario (nombre, pregunta, opciones, tipo) VALUES ($1, $2, $3, $4) RETURNING id',
+      [nombre, pregunta, opciones, tipo]
     );
 
     const cuestionarioId = result.rows[0].id;
