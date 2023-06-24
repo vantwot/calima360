@@ -179,18 +179,18 @@ const Quiz = () => {
             <Verificate target={"/profile/quiz"} />
             <Header login={true} />
             <RenderSections state_use={{ 
-                                         get: active_quiz ,  
-                                         set: setActiveQuiz
+                                        get: active_quiz ,  
+                                        set: setActiveQuiz
                             }} 
                             title="CUESTONARIO" 
                             content_section={DATA_HISTORY} />
             {active_quiz &&  
-               <PopQuiz 
-                   visibleClose={true} 
-                   visible={visibleArrow} 
-                   handleCloseIn={handleClose_quiz} 
-                   handleNext={handleNext}
-                   children_={<RenderContentPopup 
+            <PopQuiz 
+                visibleClose={true} 
+                visible={visibleArrow} 
+                handleCloseIn={handleClose_quiz} 
+                handleNext={handleNext}
+                children_={<RenderContentPopup 
                                 title={'HISTORIA'}
                                 description={data_answer.pregunta}
                                 set_data_answer={setSelectAnswer_aux}
@@ -198,34 +198,34 @@ const Quiz = () => {
                                 selectedOption={selectedOption}
                                 setSelectedOption={setSelectedOption}
                                 options_all={options_all}
-                   />} 
-                   class=""
+                />} 
+                class=""
                 />}
             { active_quiz_ && 
-               <PopQuiz 
-                 visibleClose={false} 
-                 visible={false} 
-                 handleCloseIn={handleClose_quiz} 
-                 children_={<RenderContentPopup_    
-                         handleCloseIn={handleClose_quiz}
-                         reset_quiz={reset_quiz}
-                 />} 
-                 class_="_container_close_quiz"
-              /> 
+            <PopQuiz 
+                visibleClose={false} 
+                visible={false} 
+                handleCloseIn={handleClose_quiz} 
+                children_={<RenderContentPopup_    
+                        handleCloseIn={handleClose_quiz}
+                        reset_quiz={reset_quiz}
+                />} 
+                class_="_container_close_quiz"
+            /> 
             }
             { result_quiz_ && 
-               <PopQuiz 
-                 visibleClose={false} 
-                 visible={false} 
-                 handleCloseIn={handleCloseResult} 
-                 children_={<RenderResultPopup_    
-                         handleCloseIn={handleCloseResult}
-                         reset_quiz={handleAgainQuiz}
-                         result={select_answer}
-                         total={data_axios}
-                 />} 
-                 class_="_container_result_quiz"
-              /> 
+            <PopQuiz 
+                visibleClose={false} 
+                visible={false} 
+                handleCloseIn={handleCloseResult} 
+                children_={<RenderResultPopup_    
+                        handleCloseIn={handleCloseResult}
+                        reset_quiz={handleAgainQuiz}
+                        result={select_answer}
+                        total={data_axios}
+                />} 
+                class_="_container_result_quiz"
+            /> 
             }
         </>
     );

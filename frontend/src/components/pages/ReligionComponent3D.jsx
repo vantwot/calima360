@@ -68,9 +68,13 @@ const ReligionComponent3D = (props) => {
             <div className='_container_primary_profile'>
                 <RenderContentFigure3D path={pathLocation} />
                 <Experience 
-                       title={'Religión'} 
-                       handleModalIn={handleModalIn}
-                       children_= {<Religion3D scale="3.9" position={[0, 0, 0]} />}
+                    title={'Religión'} 
+                    handleModalIn={handleModalIn}
+                    luzFigura={{
+                        intensity: 10,
+                        position: [0, 0, 0],
+                    }}
+                    children_= {<Religion3D scale="3.9" position={[0, 0, 0]} />}
                 />
                 {showIn && <PopupGeneral handleCloseIn={handleCloseIn} children_={<RenderContentPopup />} />}
             </div>

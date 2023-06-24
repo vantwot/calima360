@@ -60,6 +60,5 @@ const VidaComponent3D = () => {
         </>
     )
 }
-                   
 
 export default VidaComponent3D

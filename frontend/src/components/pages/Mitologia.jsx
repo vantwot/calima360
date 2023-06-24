@@ -108,7 +108,7 @@ const Mitologia = () => {
                 {
                     showIn_figure.show_1 && 
                     <Experience 
-                            title={'Mitologia'}
+                            title={'Mitología'}
                             handleModalIn={handleModalIn}
                             children_={<PectoralOrnamental scale="0.25" />}
                     />
@@ -116,7 +116,7 @@ const Mitologia = () => {
                 {
                     showIn_figure.show_2 &&
                     <Experience
-                        title={'Mitologia'}
+                        title={'Mitología'}
                         handleModalIn={handleModalIn}
                         luzFigura={{
                             intensity: 10,
