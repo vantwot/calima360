@@ -197,7 +197,7 @@ const Quiz = () => {
                                 select_answer={select_answer_aux}
                                 selectedOption={selectedOption}
                                 setSelectedOption={setSelectedOption}
-                                options_all={options_all}
+                                options_all={data_answer.opciones}
                 />} 
                 class=""
                 />}

@@ -28,13 +28,18 @@ const ContainerProfile = () => {
                 const decodedToken = decodeToken(token);
                 const userId = decodedToken.userId;
                 const url = 'http://44.205.85.243:5000/usuario/' + userId;
+                const url_cuestionario = `http://44.205.85.243:5000/usuario_cuestionario/${userId}`
                 const response = await axios.get(url);
+                const response_cuestionario = await axios.get(url_cuestionario);
+                //si existe la info del cuesionario
+                const porcentaje = response_cuestionario?.data?.estado || 0;
                 const { nombre, apellido, email } = response.data;
                 setUserData((prevState) => ({
                     ...prevState,
                     name: nombre,
                     apellido: apellido,
                     email: email,
+                    cuestonario: porcentaje
                 }));
             } catch (error) {
                 console.log(error);
