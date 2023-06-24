@@ -12,7 +12,9 @@ const Figure3d = ({
     handleModalIn,
     Children_3d,
     luzFigura,
-    typeLight
+    luzFigura2,
+    typeLight,
+    typeLight2
 }) => {
 
     const hadlePopUp = () => {
@@ -28,6 +30,12 @@ const Figure3d = ({
                    position={(luzFigura?.position) || [0, -10, 0]} 
                    intensity={(luzFigura?.intensity) || 0.1}
                    typeLight={typeLight || 0}
+            />
+            <HelperLight3d
+                   castShadow={false} 
+                   position={(luzFigura2?.position) || [0, -10, 0]} 
+                   intensity={(luzFigura2?.intensity) || 0.1}
+                   typeLight={typeLight2 || 0}
             />
             <ambientLight intensity={0.5} />
             {
