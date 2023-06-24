@@ -2,7 +2,7 @@
 import React from 'react';
 import { OrbitControls } from '@react-three/drei';
 import { useRef } from 'react'
-
+import HelperLight3d from './HelperLight3d';
 
 /**
  * @description Renderiza la figura 3d
@@ -11,11 +11,9 @@ import { useRef } from 'react'
 const Figure3d = ({
     handleModalIn,
     Children_3d,
-    luzFigura
+    luzFigura,
+    typeLight
 }) => {
-
-    const directionalLightRef1 = useRef();
-    const directionalLightRef2 = useRef();
 
     const hadlePopUp = () => {
         console.log('handleModalIn', handleModalIn);
@@ -25,11 +23,11 @@ const Figure3d = ({
     return (
         <>
             <OrbitControls makeDefault minDistance={20} maxDistance={30} />
-            <directionalLight  
-                   ref={directionalLightRef2} 
-                   castShadow={true} 
+            <HelperLight3d
+                   castShadow={false} 
                    position={(luzFigura?.position) || [0, -10, 0]} 
-                   intensity={(luzFigura?.intensity) || 0.1} 
+                   intensity={(luzFigura?.intensity) || 0.1}
+                   typeLight={typeLight || 0}
             />
             <ambientLight intensity={0.5} />
             {
