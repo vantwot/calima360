@@ -10,9 +10,10 @@ const Experience = (props) => {
         children_,
         handleModalIn,
         luzFigura,
+        typeLight,
         children
     } = props;
-
+    
     //renderizar componente
     return (
           <div className="_container_section">
@@ -32,6 +33,7 @@ const Experience = (props) => {
                               handleModalIn={handleModalIn} 
                               Children_3d={children_}
                               luzFigura={luzFigura}
+                              typeLight={typeLight}
                         />
 
                 </Canvas>
