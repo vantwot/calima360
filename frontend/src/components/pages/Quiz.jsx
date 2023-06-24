@@ -107,15 +107,17 @@ const Quiz = () => {
             const token = sessionStorage.token;
             const decodedToken = decodeToken(token);
             const userId = decodedToken.userId;
-
-            const data = {
+            console.log('userId333', (porcentaje));
+            
+            //
+            const data__ = {
                 "id_usuario": userId,
-                "id_cuestionario": 1,
-                "estado": `${porcentaje}`
+                "id_cuestionario": 18,
+                "estado":  parseInt(porcentaje)
             }
 
             //post
-            const response = await axios.post(URL, data)
+            const response = await axios.post(URL, data__)
             const { data: data_ } = response;
             console.log('data_', data_);
             console.log('porcentaje', porcentaje);
@@ -143,7 +145,7 @@ const Quiz = () => {
             const { data }  = (response);
             
             setOptionsAll(data[index__].opciones)
-            console.log('data4444', data);
+            console.log('data4444', data[index__].opciones, data);
             //convertir la respuesta a la hecha en la logica
             //costo n^2
             data?.map((item, index) => {
