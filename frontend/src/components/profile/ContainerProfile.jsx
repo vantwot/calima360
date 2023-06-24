@@ -14,6 +14,11 @@ import { decodeToken } from 'react-jwt';
 
 const ContainerProfile = () => {
 
+    //variables
+    const token = sessionStorage.token;
+    const decodedToken = decodeToken(token);
+    const userId = decodedToken.userId;
+
     const [userData, setUserData] = useState({
         name: '',
         apellido: '',
@@ -21,28 +26,35 @@ const ContainerProfile = () => {
         img_url: 'profile_default.svg',
     });
 
+    const handleInfoUser = async (porcentaje) => {
+        try {
+            const url = 'http://44.205.85.243:5000/usuario/' + userId;
+            const response = await axios.get(url);
+            const { nombre, apellido, email } = response.data;
+            setUserData((prevState) => ({
+                ...prevState,
+                name: nombre,
+                apellido: apellido,
+                email: email,
+                cuestonario: porcentaje
+            }));
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
     React.useEffect(() => {
         const fetchData = async () => {
             try {
-                const token = sessionStorage.token;
-                const decodedToken = decodeToken(token);
-                const userId = decodedToken.userId;
-                const url = 'http://44.205.85.243:5000/usuario/' + userId;
+             
                 const url_cuestionario = `http://44.205.85.243:5000/usuario_cuestionario/${userId}`
-                const response = await axios.get(url);
                 const response_cuestionario = await axios.get(url_cuestionario);
-                //si existe la info del cuesionario
-                const porcentaje = response_cuestionario?.data?.estado || 0;
-                const { nombre, apellido, email } = response.data;
-                setUserData((prevState) => ({
-                    ...prevState,
-                    name: nombre,
-                    apellido: apellido,
-                    email: email,
-                    cuestonario: porcentaje
-                }));
+                handleInfoUser(response_cuestionario?.data?.estado || 0);
+             
             } catch (error) {
                 console.log(error);
+                handleInfoUser(0);
             }
         };
 
