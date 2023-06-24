@@ -11,6 +11,8 @@ const Experience = (props) => {
         handleModalIn,
         luzFigura,
         typeLight,
+        luzFigura2,
+        typeLight2,
         children
     } = props;
     
@@ -33,7 +35,9 @@ const Experience = (props) => {
                               handleModalIn={handleModalIn} 
                               Children_3d={children_}
                               luzFigura={luzFigura}
+                              luzFigura2={luzFigura2}
                               typeLight={typeLight}
+                              typeLight2={typeLight2}
                         />
 
                 </Canvas>
