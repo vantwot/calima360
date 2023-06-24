@@ -65,10 +65,26 @@ const CultureFigure = (props) => {
                     title={'Cultura'} 
                     handleModalIn={handleModalIn}
                     luzFigura={{
-                        intensity: 10,
-                        position: [0, 0, 0],
+                        intensity: 70,
+                        position: [-1, 2.5, 1],
                     }}
-                    children_= {<Cultura3D scale="7" position={[0, -7, 0]} rotation-x={- Math.PI * 0.4} rotation-z={- Math.PI * 0.15} />}
+                    typeLight={0}
+                    luzFigura2={{
+                        intensity: 70,
+                        position: [1, 2.5, 1],
+                    }}
+                    typeLight2={0}
+                    luzFigura3={{
+                        intensity: 50,
+                        position: [1, -4.5, -1],
+                    }}
+                    typeLight3={0}
+                    luzFigura4={{
+                        intensity: 50,
+                        position: [-1, -4.5, -1],
+                    }}
+                    typeLight4={0}
+                    children_= {<Cultura3D scale="6" position={[0, -2, 0]} rotation-x={- Math.PI * 0.4} rotation-z={- Math.PI * 0.15} />}
                 />
                 {showIn && <PopupGeneral handleCloseIn={handleCloseIn} children_={<RenderContentPopup />} />}
             </div>

@@ -13,8 +13,12 @@ const Figure3d = ({
     Children_3d,
     luzFigura,
     luzFigura2,
+    luzFigura3,
+    luzFigura4,
     typeLight,
-    typeLight2
+    typeLight2,
+    typeLight3,
+    typeLight4
 }) => {
 
     const hadlePopUp = () => {
@@ -37,7 +41,19 @@ const Figure3d = ({
                    intensity={(luzFigura2?.intensity) || 0.1}
                    typeLight={typeLight2 || 0}
             />
-            <ambientLight intensity={0.5} />
+             <HelperLight3d
+                   castShadow={false} 
+                   position={(luzFigura3?.position) || [0, -10, 0]} 
+                   intensity={(luzFigura3?.intensity) || 0.1}
+                   typeLight={typeLight3 || 0}
+            />
+             <HelperLight3d
+                   castShadow={false} 
+                   position={(luzFigura4?.position) || [0, -10, 0]} 
+                   intensity={(luzFigura4?.intensity) || 0.1}
+                   typeLight={typeLight4 || 0}
+            />
+            <ambientLight intensity={1} />
             {
                 React.cloneElement(Children_3d, { onClick: hadlePopUp })
             }
