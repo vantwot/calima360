@@ -9,7 +9,7 @@ import Object_3d from '../../assets/3D/arte.glb'
 const Arte3D = (props)  => {
     const { nodes, materials } = useGLTF(Object_3d);
     return (
-    <group {...props} dispose={null}>
+        <group {...props} dispose={null}>
         <group position={[0.651, 32.324, -32.324]} rotation={[0, 0, Math.PI]}>
             <mesh
             castShadow
@@ -59,7 +59,7 @@ const Arte3D = (props)  => {
             geometry={nodes.Object_2.geometry}
             material={materials.Material}
             />
-        <mesh
+            <mesh
             castShadow
             receiveShadow
             geometry={nodes.Object_3.geometry}
@@ -104,7 +104,7 @@ const Arte3D = (props)  => {
         </group>
         </group>
     );
-}
+    }
 
 useGLTF.preload("/arte.glb");
 
