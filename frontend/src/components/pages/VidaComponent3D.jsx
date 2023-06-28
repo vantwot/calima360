@@ -53,7 +53,11 @@ const VidaComponent3D = () => {
                 <Experience 
                         title={'Vida'} 
                         handleModalIn={handleModalIn}
-                        children_={<Model scale="2" position={[0, 0, 0]} rotation-x={- Math.PI * 0.38} rotation-z={- Math.PI * 0.15} />}
+                        luzFigura={{
+                            intensity: 1,
+                            position: [1, -30, 1],
+                        }}
+                        children_={<Model scale="1.9" position={[0, -40, 0]} rotation-x={- Math.PI * 0.38} rotation-z={- Math.PI * 0.15} />}
                 />
                 {showIn && <PopupGeneral handleCloseIn={handleCloseIn} children_={<RenderContentPopup />} />}
             </div>
