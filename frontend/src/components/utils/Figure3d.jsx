@@ -53,7 +53,7 @@ const Figure3d = ({
                    intensity={(luzFigura4?.intensity) || 0.1}
                    typeLight={typeLight4 || 0}
             />
-            <ambientLight intensity={1} />
+            <ambientLight intensity={0.5} />
             {
                 React.cloneElement(Children_3d, { onClick: hadlePopUp })
             }

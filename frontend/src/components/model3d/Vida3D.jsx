@@ -6,24 +6,27 @@ export default function Model(props) {
   const { nodes, materials } = useGLTF(Object_3d);
   return (
     <group {...props} dispose={null}>
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Cylinder001.geometry}
-        material={materials["Material.002"]}
-        position={[0.05, -8.33, 0.07]}
-        scale={4.95}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Cone.geometry}
-        material={materials["Material.001"]}
-        position={[0.01, 7, -0.02]}
-        scale={[5.5, 5.53, 5.5]}
-      />
+      <group scale={[11.227, 4.402, 11.227]}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder_1.geometry}
+          material={materials["Material.004"]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder_2.geometry}
+          material={materials["Material.005"]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder_3.geometry}
+          material={materials["Material.006"]}
+        />
+      </group>
     </group>
   );
 }
-
 useGLTF.preload("/casa.glb");

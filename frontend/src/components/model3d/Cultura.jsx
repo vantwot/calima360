@@ -9,20 +9,20 @@ import Object_3d from '../../assets/3D/cultura.glb'
 const Cultura3D = (props)  => {
     const { nodes, materials } = useGLTF(Object_3d);
     return (
-    <group {...props} dispose={null}>   
-    <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Ornamento.geometry}
-        material={materials.materialOrnamento}
-        position={[-0.05, 0, 0]}
-        rotation={[-Math.PI, 0, 0]}
-        scale={[-1, -1, -0.27]}
-    />
-    </group>
-);
+        <group {...props} dispose={null}>
+        <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Cube002.geometry}
+            material={materials["Material.001"]}
+            position={[-0.05, 0, 0]}
+            rotation={[-Math.PI, 0, 0]}
+            scale={[-1, -1, -0.27]}
+        />
+        </group>
+    );
 }
-
+    
 useGLTF.preload("/cultura.glb");
 
 export default Cultura3D;
