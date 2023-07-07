@@ -3,6 +3,7 @@ import React from 'react';
 import Navegator from '../profile/Navegator';
 import Section from '../history/Section';
 import { useNavigate } from 'react-router-dom';
+import ProgresQuestion from './ProgresQuestion';
 
 /**
  * @description Render Sections
@@ -12,7 +13,7 @@ import { useNavigate } from 'react-router-dom';
 const RenderSections = ({ 
     content_section,
     title,
-    state_use
+    state_use,
 }) => {
 
     //navigate para redireccionar a otra ruta
@@ -44,13 +45,15 @@ const RenderSections = ({
                     {
                         content_section.map((item, index) => {
                             return (
-                                <div onClick={ () => { item.disabled && handleCerrarSesion(item) }} disabled={item.disabled} key={index} className='_container_history_section'>
-                                    <img src={require(`../../assets/item_menu/${item.img}`)} alt="icon" />
-                                    <p>{item.title}</p>
+                                <div key={index}>
+                                    <div onClick={ () => { item.disabled && handleCerrarSesion(item) }} disabled={item.disabled} className='_container_history_section'>
+                                            <img src={require(`../../assets/item_menu/${item.img}`)} alt="icon" />
+                                            <p>{item.title}</p>
+                                    </div>
+                                    <ProgresQuestion name={item.title} state_={item?.stateQuestion || false} />
                                 </div>
                             )
                         })
-
                     }
                 </Section>
             </div>

@@ -427,6 +427,9 @@ div._container_progress_item:first-child span {
     margin-bottom: 10px;
 }
 
+
+._container_progress_item._container_lection 
+span._progress_,
 ._conatiner_info-profile 
 div._conatiner_info_data 
 div._container_progress 
@@ -436,8 +439,31 @@ div._container_progress_item span._progress_ {
     height: 2em;
     margin-left: 0.5em;
     margin-right: 0.5em;
-    /* background: linear-gradient(90deg, #64FF73 -4.17%, #5CFF6C 70%, #FF4545 30%); */
+    border: 2px solid navajowhite;
     border-radius: 30px;
+}
+
+._container_progress_item._container_lection 
+span._progress_ {
+    margin-top: unset;
+    width: 17em;
+}
+
+._container_progress_item._container_lection {
+    display: flex;
+    width: 80%;
+    height: 2em;
+    justify-items: center;
+    align-items: center;
+    margin-top: 1.5em;
+    max-width: 80%;
+}
+
+._container_progress_item._container_lection
+._porcentaje {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 ._container_section {
