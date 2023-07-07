@@ -2,6 +2,8 @@
 import React from 'react';
 const images_content = require.context("../../assets/profile/", true);
 
+
+
 const DATA_PROFILE = [
     {
         name: 'HISTORIA',
@@ -31,7 +33,7 @@ const InfoProfile = (props) => {
         img_url,
         cuestonario,
     } = props.content;
-    console.log(cuestonario , 'cuestonario');
+   
     const [porcentaje, setPorcentaje] = React.useState({
         'historia': 0,
         'mitologia': '0',
@@ -43,7 +45,6 @@ const InfoProfile = (props) => {
     React.useEffect(() => {
 
         if (cuestonario?.length > 0) {
-            console.log(cuestonario, 'cuestonario222');
             setPorcentaje(cuestonario[0]);
         }
 
@@ -84,10 +85,10 @@ const InfoProfile = (props) => {
                                         <span>{item.name}</span>
                                         <span 
                                             style={{
-                                                background: `linear-gradient(90deg, #5CFF6C ${porcentaje_}%, #FF4545 ${100 - porcentaje_}%)`
+                                                background: `linear-gradient(90deg, #FFAE17 ${porcentaje_}%, #D99414 ${100 - porcentaje_}%)`
                                             }}
                                            className='_progress_'></span>
-                                        <span className='_porcentaje'>{porcentaje_}%</span>
+                                        <span className='_porcentaje'>{(porcentaje_ > 0)? porcentaje_ : 0}%</span>
                                     </div>
                                 )
                             }) 
@@ -95,7 +96,7 @@ const InfoProfile = (props) => {
 
                   </div>
                   }
-                  {/* <a className='_edit_action'>EDITAR</a> */}
+                  <a className='_edit_action'>EDITAR</a>
             </div>
         </div>
         
