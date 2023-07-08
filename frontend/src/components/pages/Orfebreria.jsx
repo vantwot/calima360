@@ -12,7 +12,8 @@ const DATA_HISTORY = [
         target: '/arte-figura',
         disabled: true,
         pathBack: '/profile/leccion/orfebreria',
-        progress: 0
+        progress: 0,
+        countClick: true
     },
     {
         title: 'CULTURA',
@@ -20,7 +21,8 @@ const DATA_HISTORY = [
         target: '/cultura-figura',
         disabled: true,
         pathBack: '/profile/leccion/orfebreria',
-        progress: 0
+        progress: 0,
+        countClick: true
     }
 ]
 

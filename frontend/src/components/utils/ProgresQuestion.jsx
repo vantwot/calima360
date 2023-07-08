@@ -5,16 +5,18 @@ import { decodeToken } from 'react-jwt';
 
 const ProgresQuestion = ({
     state_,
-    name
+    name,
+    type
 }) => {
 
+
      //variables
-     const token = sessionStorage.token;
-     const decodedToken = decodeToken(token);
-     const userId = decodedToken.userId;
      const [porcentaje_, setPorcentaje] = React.useState(0);
      const [state, setState] = React.useState(true);
      const [name_, setName] = React.useState('');
+     const [token , setToken ] = React.useState('')
+     const [userId , setUserId ] = React.useState('')
+     const [decodedToken , setDecodedToken ] = React.useState('')
 
      const handleMayor = (objeto) => {
 
@@ -35,7 +37,7 @@ const ProgresQuestion = ({
 
      const fetchData = async () => {
         try {
-            console.log('name_', name_);
+          
             if (name_ !== "") {
 
             const url_cuestionario = `http://44.205.85.243:5000/usuario_cuestionario/`
@@ -48,7 +50,6 @@ const ProgresQuestion = ({
                 'mitología': 35,
             }
             
-            console.log(data___[name_] , (name_));
             const filtroUsuario = response_cuestionario?.data?.filter((item) => item.id_usuario === userId);
             const porcentaje_orfebreria = filtroUsuario?.filter((item) => item.id_cuestionario === data___[name_]);
     
@@ -72,16 +73,60 @@ const ProgresQuestion = ({
     React.useEffect(() => {
         //console.log('name', name);
         if (name !== null || name !== undefined) {
-           
-            setName( (name.toLowerCase()) );
-            fetchData();
+            if (type === 1) {
+                setName( (name.toLowerCase()) );
+                fetchData();
+            }
+
+            if (type === 2) {
+
+                if (('countClick' in sessionStorage)) {
+                    const countClick =  JSON.parse(sessionStorage.getItem('countClick'))
+                    let porcentaje_aux = 0
+                    let count_aux = 0
+
+                 
+                    Object.entries(countClick[(name.toLowerCase())])?.map( (element,index) => {
+                        count_aux++;
+                       
+                        if (element[1] === 1) {
+                            console.log(element[0], element[1])
+                            porcentaje_aux++
+                        }
+
+                    })
+                    
+                    setPorcentaje( ((porcentaje_aux/count_aux)) * 100 )
+                  
+
+                }
+            }
+
         }
 
     }, [name_]);
 
     React.useEffect(() => {
-        fetchData();
-        console.log('porcentaje', porcentaje_);
+        if (type == 1) {
+            fetchData();
+        }
+
+        if (type === 2) {
+
+            if (('countClick' in sessionStorage) && name_ !== '') {
+                const countClick =  JSON.parse(sessionStorage.getItem('countClick'))
+
+                console.log(countClick[name_] , 'aaaa456')
+            }
+        }
+
+        if ('token' in sessionStorage) {
+            
+            setToken(sessionStorage.token)
+            setDecodedToken(decodeToken(token))
+            setUserId( decodedToken.userId)
+        }
+      
     }, []);
 
      return (

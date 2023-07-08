@@ -25,9 +25,11 @@ const Editar = ({
     const userId = decodedToken.userId;
 
     //handles
-    const onSubmit = (e) => {
-        e.preventdefault()
-        alert('hola')
+    const onSubmit = async (e) => {
+        e.preventDefault()
+       await handleClick()
+       SetEdit(false)
+       window.location.reload()
     }
 
     const onChange1 = (e) => {
@@ -78,7 +80,7 @@ const Editar = ({
     const onClickAvatar = (tap) => {
         setData({
             ...data_,
-            avatar: `${tap}` + '.png'
+            avatar: `${tap}.png`
         })
         SetView(false)
 
@@ -131,7 +133,7 @@ const Editar = ({
                             }
                             </div>
                         </div>
-                        <button className={`${IsOpen? 'disabled_': ''}`} disabled={IsOpen} type="submit" onClick={handleClick}> Editar </button>
+                        <button className={`${IsOpen? 'disabled_': ''}`} disabled={IsOpen} type="submit"> Editar </button>
                         </form>
                 </section>
            </div>)

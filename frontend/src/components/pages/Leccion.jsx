@@ -10,21 +10,24 @@ const DATA_HISTORY = [
         img: 'orfebreria.svg',
         target: '/profile/leccion/orfebreria',
         disabled: true,
-        stateQuestion: true
+        stateQuestion: true,
+        type: 2
     },
     {
         title: 'HISTORIA',
         img: 'historia.svg',
         target: '/profile/leccion/historia',
         disabled: true,
-        stateQuestion: true
+        stateQuestion: true,
+        type: 2
     },
     {
         title: 'MITOLOGÍA',
         img: 'mitologia.svg',
         target: '/profile/leccion/mitologia',
         disabled: true,
-        stateQuestion: true
+        stateQuestion: true,
+        type: 2
     }
 ]
 
