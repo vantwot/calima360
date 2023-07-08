@@ -1,21 +1,28 @@
 import { View } from "@react-three/drei";
 import React from "react";
+import axios from "axios";
+import { decodeToken } from 'react-jwt';
 const images_content = require.context("../../assets/avatar/", true);
 
 //component
 const Editar = ({
     open_,
-    SetEdit
+    SetEdit,
+    name,
+    apellido
 }) => {
 
     const [ IsOpen , SetOpen ] = React.useState(true)
     const [ IsView , SetView ] = React.useState(false)
     const [ data_ , setData ] = React.useState({
-        nombre: '',
-        apellido: '',
+        nombre: name,
+        apellido: apellido,
         avatar: ''
     })
     const data_img = [0,1,2,3,4,5,6,7,8,9]
+    const token = sessionStorage.token;
+    const decodedToken = decodeToken(token);
+    const userId = decodedToken.userId;
 
     //handles
     const onSubmit = (e) => {
@@ -24,12 +31,10 @@ const Editar = ({
     }
 
     const onChange1 = (e) => {
-        console.log(e.target.value , data_)
         setData({
             ...data_,
-            nombre: `${e.target.value}`
+            nombre: e.target.value
         })
-
         if (data_.apellido !== '' && data_.avatar !== '' &&
             (e.target.value).length > 0) {
             SetOpen(false)
@@ -37,12 +42,10 @@ const Editar = ({
         else {
             SetOpen(true)
         }
-
-
+        console.log(data_)
     }
 
     const onChange2 = (e) => {
-        console.log(e.target.value,data_)
         setData({
             ...data_,
             apellido: `${e.target.value}`
@@ -56,6 +59,7 @@ const Editar = ({
             SetOpen(true)
         }
 
+        console.log(data_)
     }
 
     const onClosee = () => {
@@ -74,7 +78,7 @@ const Editar = ({
     const onClickAvatar = (tap) => {
         setData({
             ...data_,
-            avatar: `${tap}`
+            avatar: `${tap}` + '.png'
         })
         SetView(false)
 
@@ -86,6 +90,10 @@ const Editar = ({
         }
     }
 
+    const handleClick = async (e) => {
+        const respuesta = await axios.put('http://44.205.85.243:5000/usuario/' + userId, data_)
+    }
+
     return (
         <>
            {
@@ -95,12 +103,14 @@ const Editar = ({
                         <form  onSubmit={onSubmit}  className="email_p">
                         <label>Nombre</label>
                         <input 
+                            value={data_.nombre}
                             placeholder="Nombre"
                             type="text"
                             onChange={onChange1}
                         />
                         <label>Apellido</label>
                         <input 
+                            value={data_.apellido}
                             placeholder="Apellido"
                             type="text"
                             onChange={onChange2}
@@ -121,7 +131,7 @@ const Editar = ({
                             }
                             </div>
                         </div>
-                        <button className={`${IsOpen? 'disabled_': ''}`} disabled={IsOpen} type="submit"> Editar </button>
+                        <button className={`${IsOpen? 'disabled_': ''}`} disabled={IsOpen} type="submit" onClick={handleClick}> Editar </button>
                         </form>
                 </section>
            </div>)

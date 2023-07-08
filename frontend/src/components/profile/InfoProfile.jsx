@@ -80,7 +80,7 @@ const InfoProfile = (props) => {
                   <a onClick={onClick} className='_edit_action'>EDITAR</a>
             </div>
             {
-                isEdit && <Editar open_={isEdit} SetEdit={SetEdit} />
+                isEdit && <Editar name={name} apellido={apellido} open_={isEdit} SetEdit={SetEdit} />
             }
         </div>
         
