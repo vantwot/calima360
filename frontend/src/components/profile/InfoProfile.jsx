@@ -76,34 +76,7 @@ const InfoProfile = (props) => {
                         <span>CORREO</span>
                         <h1>{email}</h1>
                   </div>
-
-                 {
-                  porcentaje?.cuestonario_active &&
-                  <div className='_container_progress'>
-
-                        <div className='_container_progress_item'>
-                                <span>PROGRESO: </span>
-                        </div>
-                        {
-                            DATA_PROFILE.map((item, index) => {
-                                const porcentaje_ = (porcentaje[item.whoami]).estado; 
-                                return (
-                                    <div key={index} className='_container_progress_item'>
-                                        <span>{item.name}</span>
-                                        <span 
-                                            style={{
-                                                background: `${(porcentaje_ > 0)? `linear-gradient(90deg, #FFAE17 ${porcentaje_}%, #F5EFD7 ${100 - porcentaje_}%)` : 'transparent'}`,
-                                                border: `2px solid #FFAE17`
-                                            }}
-                                           className='_progress_'></span>
-                                        <span className='_porcentaje'>{(porcentaje_ > 0)? porcentaje_ : 0}%</span>
-                                    </div>
-                                )
-                            }) 
-                        }
-
-                  </div>
-                  }
+            
                   <a onClick={onClick} className='_edit_action'>EDITAR</a>
             </div>
             {
