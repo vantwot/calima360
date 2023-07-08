@@ -50,7 +50,8 @@ const RenderSections = ({
                                             <img src={require(`../../assets/item_menu/${item.img}`)} alt="icon" />
                                             <p>{item.title}</p>
                                     </div>
-                                    <ProgresQuestion name={item.title} state_={item?.stateQuestion || false} />
+                                    <ProgresQuestion name={item.title} 
+                                                     state_={item?.stateQuestion || false} />
                                 </div>
                             )
                         })

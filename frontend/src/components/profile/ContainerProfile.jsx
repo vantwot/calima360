@@ -30,7 +30,7 @@ const ContainerProfile = () => {
             const url = 'http://44.205.85.243:5000/usuario/' + userId;
             const response = await axios.get(url);
             const { nombre, apellido, email , avatar } = response.data;
-            console.log(response.data, 'prueba')
+            
             setUserData((prevState) => ({
                 ...prevState,
                 name: nombre,
