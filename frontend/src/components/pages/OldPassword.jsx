@@ -3,6 +3,8 @@ import Header from "../Home/Header";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
+const URL = 'http://44.205.85.243:5000';
+
 //COMPONENTE
 const OldPassword = () => {
 
@@ -11,27 +13,52 @@ const OldPassword = () => {
     const [ Form , SetForm ] = React.useState(true)
     const [ passwordNew , setPasswordNew ] = React.useState('')
     const [ passwordVer , setPasswordVer ] = React.useState('')
+    const [ id , setId ] = React.useState({ "id": 0 })
+    const [ email , setEmail ] = React.useState({ "email": "" })
+    const [ contraseña , setConstraseña ] = React.useState({ "contraseña": "" })
 
     const navigate = useNavigate()
 
     //hanlde subtmit
-    const onSubmit = (e) => {
-        // axios.post()
-        e.preventDefault()
-        SetForm(false)
-        SetOpen(true)
-        alert('hola')
+    const onSubmit = async (e) => {
+        try{
+            e.preventDefault()
+            const usuario = await axios.post(`${URL}/verificar`, email)
+            if(usuario.data.id){
+                SetForm(false)
+                SetOpen(true)
+                setId({ "id": usuario.data.id })
+            }
+            else{
+                alert('Este correo no se encuentra registrado.')
+            }
+        }
+        catch{
+            alert('Ocurrió un error al verificar tu correo.')
+        }
     }
 
-    const onSubmitChangePassword = (e) => {
-        e.preventDefault()
-        alert('password change')
+    const onSubmitChangePassword = async (e) => {
+        try{
+            e.preventDefault()
+            const usuario = await axios.put(`${URL}/contrasena/` + String(id.id), contraseña)
+            if(usuario.data.mensaje === 'Contraseña actualizada exitosamente'){
+                alert('Contraseña cambiada con éxito.');
+                navigate('/');
+            } else{
+                alert('Ocurrió un error al cambiar su contraseña.')
+            }
+        }
+        catch {
+            alert('Ocurrió un error al cambiar su contraseña.')
+        }
     }
 
     const onChange = (e) => {
 
         const value = e.target.value;
-        console.log('a', value , value.length)
+        setEmail({ "email": value})
+        // console.log('a', value , value.length)
         if (value.length > 2) {
             SetOpen(false)
         }
@@ -43,7 +70,7 @@ const OldPassword = () => {
 
     const onChangePasswordNew = (e) => {
         setPasswordNew(e.target.value)
-        
+        setConstraseña({ "contraseña": e.target.value })
         if (e.target.value === passwordVer &&
             passwordVer !== '') {
             SetOpen(false)
@@ -90,6 +117,7 @@ const OldPassword = () => {
                 (<form onSubmit={onSubmitChangePassword} className="email_p changePasword">
                     <label> Cotraseña Nueva </label>
                     <input 
+                        value={passwordNew}
                         placeholder="Contraseña nueva"
                         type="text"
                         onChange={onChangePasswordNew}
