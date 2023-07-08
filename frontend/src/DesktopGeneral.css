@@ -783,6 +783,33 @@ button[type="submit"] {
     font-size: 1.2em;
 }
 
+
+._container_black {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #00000075;
+    z-index: 999;
+    overflow: hidden;
+}
+
+._container_old_password._aux_editar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+._container_old_password._aux_editar 
+form.email_p label {
+    text-align: left;
+}
+
 /*
  * Scrollbar General
 */

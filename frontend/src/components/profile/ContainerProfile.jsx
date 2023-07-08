@@ -5,13 +5,12 @@ import InfoProfile from './InfoProfile';
 import axios from 'axios';
 import { decodeToken } from 'react-jwt';
 
+
 /*  
   *  @author <deiby.rodriguez@correounivalle.edu.co>  
   *  @version 0.0.1
   *  @returns Home
 **/
-  //<Route path="/profile" element={<Profile />} /> <Route path="/profile" element={isAuthenticated ? (<Profile />) : redirect("/")}/>
-
 const ContainerProfile = () => {
 
     //variables
@@ -23,7 +22,7 @@ const ContainerProfile = () => {
         name: '',
         apellido: '',
         email: '',
-        img_url: 'profile_default.svg',
+        img_url: '0.png',
     });
 
     const handleInfoUser = async (porcentaje) => {
