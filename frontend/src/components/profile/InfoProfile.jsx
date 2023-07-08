@@ -4,7 +4,6 @@ import Editar from '../utils/Editar';
 const images_content = require.context("../../assets/avatar/", true);
 
 
-
 const DATA_PROFILE = [
     {
         name: 'HISTORIA',
@@ -108,7 +107,7 @@ const InfoProfile = (props) => {
                 </div>
             </div>
             {
-                isEdit && <Editar />
+                isEdit && <Editar open_={isEdit} SetEdit={SetEdit} />
             }
         </>
         
