@@ -110,7 +110,16 @@ const Mitologia = () => {
                     <Experience 
                             title={'Mitología'}
                             handleModalIn={handleModalIn}
-                            children_={<PectoralOrnamental scale="0.25" />}
+                            luzFigura={{
+                                intensity: 20,
+                                position: [-1, 2.5, -1],
+                            }}
+                            typeLight={0}
+                            luzFigura2={{
+                                intensity: 20,
+                                position: [1, -1, 1],
+                            }}
+                            children_={<PectoralOrnamental scale="2.5" position={[-15, -130, 70]} rotation-x={- Math.PI * 0.50} rotation-z={-Math.PI * 0.13}/>}
                     />
                 }
                 {
