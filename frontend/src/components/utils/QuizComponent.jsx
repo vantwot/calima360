@@ -10,11 +10,11 @@ const RenderContentPopup_ = ({
         <div className="_container_close_quiz">
             <h1>Cierre De Quiz</h1>
             <p>
-                Estas seguro de cerrar el quiz? <br />
-                Perderas tu progreso.
+                ¿Estás seguro de cerrar el quiz? <br />
+                Perderás tu progreso.
             </p>
             <div className="container_btns_quiz">
-                <button onClick={reset_quiz} className="btn_quiz">Si</button>
+                <button onClick={reset_quiz} className="btn_quiz">Sí</button>
                 <button onClick={handleCloseIn} className="btn_quiz">No</button>
             </div>
         </div>
@@ -40,7 +40,7 @@ const RenderResultPopup_ = ({
             <div className="_container_close_quiz">
                 <h1>Resultado</h1>
                 <p>
-                    Tu Puntuacion Es: <br />
+                    Tu puntuación es: <br />
                     {data.result} / {data.total} <br />
                     {data.result >= 3 ? 'Felicidades' : 'Sigue Intentando'}
                 </p>
