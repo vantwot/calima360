@@ -29,13 +29,15 @@ const ContainerProfile = () => {
         try {
             const url = 'http://44.205.85.243:5000/usuario/' + userId;
             const response = await axios.get(url);
-            const { nombre, apellido, email } = response.data;
+            const { nombre, apellido, email , avatar } = response.data;
+            console.log(response.data, 'prueba')
             setUserData((prevState) => ({
                 ...prevState,
                 name: nombre,
                 apellido: apellido,
                 email: email,
-                cuestonario: porcentaje
+                cuestonario: porcentaje,
+                img_url: (avatar !== null && avatar !== undefined)? avatar : '0.png'
             }));
         }
         catch (error) {
