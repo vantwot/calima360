@@ -91,7 +91,8 @@ const ProgresQuestion = ({
                 <div className='_container_progress_item _container_lection'>
                     <span 
                         style={{
-                            background: `${(porcentaje_ > 0)? `linear-gradient(90deg, #FFAE17 ${porcentaje_}%, #D99414 ${100 - porcentaje_}%)` : 'transparent'}`
+                            background: `${(porcentaje_ > 0)? `linear-gradient(90deg, #FFAE17 ${porcentaje_}%, #F5EFD7 ${100 - porcentaje_}%)` : 'transparent'}`,
+                            border: `2px solid #FFAE17`
                         }}
                         className='_progress_'></span>
                     <span className='_porcentaje'>{(porcentaje_ > 0)? porcentaje_ : 0}%</span>
