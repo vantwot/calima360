@@ -1,8 +1,8 @@
 //import library
-import React from "react";
 import Header from '../Home/Header';
 import RenderSections from '../utils/RenderSections';
 import Verificate from '../utils/verificate';
+import React, { Component } from 'react';
 
 //Informacion de la seccion mitologia
 const DATA_HISTORY = [
@@ -11,18 +11,18 @@ const DATA_HISTORY = [
         img: 'arte_.svg',
         target: '/arte-figura',
         disabled: true,
-        pathBack: '/profile/leccion/orfebreria'
+        pathBack: '/profile/leccion/orfebreria',
+        progress: 0
     },
     {
         title: 'CULTURA',
         img: 'cultura_.svg',
         target: '/cultura-figura',
         disabled: true,
-        pathBack: '/profile/leccion/orfebreria'
+        pathBack: '/profile/leccion/orfebreria',
+        progress: 0
     }
 ]
-
-
 
 //import components
 const Orfebreria = () => {
