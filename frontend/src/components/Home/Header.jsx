@@ -42,6 +42,7 @@ const Header = (props) => {
 
     const handleCerrar = (target) => {
         sessionStorage.removeItem('token');
+        sessionStorage.removeItem('countClick')
         document.getElementById('root').classList.remove('remove_gap');
         history(target);
     }
