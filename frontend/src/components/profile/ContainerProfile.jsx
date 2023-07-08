@@ -13,11 +13,14 @@ import { decodeToken } from 'react-jwt';
 **/
 const ContainerProfile = () => {
 
+    let userId = 0
     //variables
-    const token = sessionStorage.token;
-    const decodedToken = decodeToken(token);
-    const userId = decodedToken.userId;
-
+    if ('token' in sessionStorage) {
+        const token = sessionStorage.token;
+        const decodedToken = decodeToken(token);
+        userId = decodedToken.userId;
+    }
+    
     const [userData, setUserData] = useState({
         name: '',
         apellido: '',
@@ -30,7 +33,7 @@ const ContainerProfile = () => {
             const url = 'http://44.205.85.243:5000/usuario/' + userId;
             const response = await axios.get(url);
             const { nombre, apellido, email , avatar } = response.data;
-            
+            console.log(avatar,'avatar')
             setUserData((prevState) => ({
                 ...prevState,
                 name: nombre,
