@@ -329,6 +329,51 @@ app.put('/usuario_cuestionario/:id', async (req, res) => {
     res.status(500).json({ error: 'Error al actualizar relación usuario-cuestionario' });
   }
 });
+
+// Ruta para verificar el correo
+app.post('/verificar', async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    // Verificar el correo del usuario en la base de datos
+    const result = await pool.query(
+      'SELECT id FROM usuarios WHERE email = $1',
+      [email]
+    );
+
+    if (result.rows.length > 0){
+      res.json({ id: result.rows[0].id });
+    }
+    else{
+      res.json({ mensaje: 'No existe el correo en la bd' });
+    }
+  } catch (error) {
+    console.error('Error al verificar el correo:', error);
+    res.status(500).json({ error: 'Error al verificar el correo' });
+  }
+});
+
+//Ruta para actualizar la contraseña de un usuario
+app.put('/contrasena/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { contraseña } = req.body;
+
+    // Encripta la contraseña
+    const hashedPassword = await bcrypt.hash(contraseña, 10);
+
+    // Actualizar la constraseña del usuario en la base de datos
+    await pool.query(
+      'UPDATE usuarios SET contraseña = $1 WHERE id = $2',
+      [hashedPassword, id]
+    );
+
+    res.json({ mensaje: 'Contraseña actualizada exitosamente' });
+  } catch (error) {
+    console.error('Error al actualizar contraseña:', error);
+    res.status(500).json({ error: 'Error al actualizar contraseña' });
+  }
+});
   
 // Inicia el servidor
 if (require.main === module) {

@@ -1,20 +1,18 @@
-import { View } from "@react-three/drei";
 import React from "react";
-const images_content = require.context("../../assets/avatar/", true);
+import axios from "axios";
+
 
 //component
 const Editar = ({
     open_,
-    SetEdit
+    SetEdit,
+    nombre,
+    apellido
 }) => {
 
     const [ IsOpen , SetOpen ] = React.useState(true)
-    const [ IsView , SetView ] = React.useState(false)
-    const [ data_ , setData ] = React.useState({
-        nombre: '',
-        apellido: '',
-        avatar: ''
-    })
+    const [name, setNombre] = React.useState(nombre)
+    const [lastname, seApellido] = React.useState(apellido)
     const data_img = [0,1,2,3,4,5,6,7,8,9]
 
     //handles
@@ -23,67 +21,12 @@ const Editar = ({
         alert('hola')
     }
 
-    const onChange1 = (e) => {
-        console.log(e.target.value , data_)
-        setData({
-            ...data_,
-            nombre: `${e.target.value}`
-        })
-
-        if (data_.apellido !== '' && data_.avatar !== '' &&
-            (e.target.value).length > 0) {
-            SetOpen(false)
-        }
-        else {
-            SetOpen(true)
-        }
-
-
-    }
-
-    const onChange2 = (e) => {
-        console.log(e.target.value,data_)
-        setData({
-            ...data_,
-            apellido: `${e.target.value}`
-        })
-
-        if (data_.nombre !== '' && data_.avatar !== ''&&
-            (e.target.value).length > 0) {
-            SetOpen(false)
-        }
-        else {
-            SetOpen(true)
-        }
-
+    const onChange = (e) => {
+        console.log(e.target.value)
     }
 
     const onClosee = () => {
         SetEdit(false)
-    }
-
-    const onViewOption = () => {
-        console.log('a4')
-        SetView(!IsView)
-    }
-
-    const onLeaveMouse = () => {
-        SetView(false)
-    }
-
-    const onClickAvatar = (tap) => {
-        setData({
-            ...data_,
-            avatar: `${tap}`
-        })
-        SetView(false)
-
-        if (data_.nombre !== '' && data_.apellido !== '') {
-            SetOpen(false)
-        }
-        else {
-            SetOpen(true)
-        }
     }
 
     return (
@@ -95,32 +38,28 @@ const Editar = ({
                         <form  onSubmit={onSubmit}  className="email_p">
                         <label>Nombre</label>
                         <input 
-                            placeholder="Nombre"
+                            defaultValue={name}
                             type="text"
-                            onChange={onChange1}
+                            onChange={onChange}
                         />
                         <label>Apellido</label>
                         <input 
+                            value={apellido}
                             placeholder="Apellido"
                             type="text"
-                            onChange={onChange2}
+                            onChange={onChange}
                         />
                         <label>Avatar</label>
-                        <div className="container_select">
-                            <div onClick={onViewOption} className="_view_option_more">
-                            <option> { (data_?.avatar !== '')? 'Avatar Selecionado' : 'Selecione un Avatar'}</option>
+                        <select>
+                            <option defaultChecked disabled> Selecione un Avatar</option>
                             {
-                                IsView &&
-                                <div onMouseLeave={onLeaveMouse}  className="container_aux__">
-                                        {data_img?.map( (element,index) => (
-                                            <div onClick={ () => {onClickAvatar(element)}} className="option_select" key={index}>
-                                                <img src={images_content(`./${element}.png`)} />
-                                            </div>
-                                        ))}
-                                </div>
+                                data_img?.map( (element,index) => (
+                                    <option value={index} key={index}>
+                                        {element}
+                                    </option>
+                                ))
                             }
-                            </div>
-                        </div>
+                        </select>
                         <button className={`${IsOpen? 'disabled_': ''}`} disabled={IsOpen} type="submit"> Editar </button>
                         </form>
                 </section>

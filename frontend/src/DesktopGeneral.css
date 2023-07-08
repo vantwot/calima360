@@ -321,6 +321,9 @@ div._text_hover_ p {
     height: 15em;
     border: 3px solid var(--color-black);
     margin-right: 2em;
+    border-radius: 90px;
+    background-color:#f2f2f2 ;
+    transform: translateY(50%);
 }
 
 ._conatiner_info-profile div._container_photo_profile img {
@@ -333,6 +336,7 @@ div._text_hover_ p {
 ._conatiner_info-profile div._conatiner_info_data {
     padding: 1em;
     width: -webkit-fill-available;
+    transform: translateY(25%);
 }
 
 

@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../Home/Header";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 //COMPONENTE
 const OldPassword = () => {
@@ -15,6 +16,7 @@ const OldPassword = () => {
 
     //hanlde subtmit
     const onSubmit = (e) => {
+        // axios.post()
         e.preventDefault()
         SetForm(false)
         SetOpen(true)
@@ -79,7 +81,7 @@ const OldPassword = () => {
                 (<form  onSubmit={onSubmit}  className="email_p">
                    <label>Correo Electronico</label>
                    <input 
-                      placeholder="correo@gmail.com"
+                      placeholder="Escriba aquí su correo electronico"
                       type="email"
                       onChange={onChange}
                    />
