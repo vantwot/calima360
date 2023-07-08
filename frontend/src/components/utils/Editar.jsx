@@ -78,7 +78,7 @@ const Editar = ({
     const onClickAvatar = (tap) => {
         setData({
             ...data_,
-            avatar: `${tap}`
+            avatar: `${tap}` + '.png'
         })
         SetView(false)
 
@@ -92,7 +92,6 @@ const Editar = ({
 
     const handleClick = async (e) => {
         const respuesta = await axios.put('http://44.205.85.243:5000/usuario/' + userId, data_)
-        console.log(respuesta)
     }
 
     return (

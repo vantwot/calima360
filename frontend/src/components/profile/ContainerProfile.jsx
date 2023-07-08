@@ -37,7 +37,7 @@ const ContainerProfile = () => {
                 apellido: apellido,
                 email: email,
                 cuestonario: porcentaje,
-                img_url: (avatar !== null && avatar !== undefined)? avatar + '.png' : '0.png'
+                img_url: (avatar !== null && avatar !== undefined)? avatar : '0.png'
             }));
         }
         catch (error) {
