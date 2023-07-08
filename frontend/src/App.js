@@ -13,6 +13,7 @@ import Quiz from './components/pages/Quiz';
 import Orfebreria from './components/pages/Orfebreria';
 import ArteFigure from './components/pages/ArteFigure';
 import CultureFigure from './components/pages/CultureFigure';
+import OldPassword from './components/pages/OldPassword';
 import {
   BrowserRouter as Router,
   Routes,
@@ -40,6 +41,7 @@ const App = () => {
           <Route path="/profile/leccion/orfebreria" element={<Orfebreria />} />
           <Route path="/arte-figura" element={<ArteFigure />} />
           <Route path="/cultura-figura" element={<CultureFigure />} />
+          <Route path="/oldPassword" element={<OldPassword />} />
         </Routes>
       </Router>
     </>

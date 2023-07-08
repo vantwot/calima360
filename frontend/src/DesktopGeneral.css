@@ -692,6 +692,96 @@ span._progress_ {
     cursor: pointer;
 }
 
+._container_old_password {
+    display: grid;
+    place-content: center;
+    width: -webkit-fill-available;
+    height: auto;
+    min-height: 70vh;
+    overflow: hidden;
+}
+
+._container_old_password
+form.email_p {
+    display: grid;
+    place-items: center;
+    gap: 1em;
+    padding: 0.8em 3em 2em 3em;
+    height: auto;
+    min-height: 12em;
+    width: calc(23em - 6em);
+    background: var(--color-background-secundary);
+    border-radius: 30px;
+    box-shadow: 10px 7px 10px #333333;
+}
+
+._container_old_password
+form.email_p label {
+    color: var(--color-black);
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.7em;
+    text-align: center;
+}
+
+._container_old_password
+form.email_p
+button[type="submit"] {
+    justify-self: center;
+    width: 90%;
+    margin-top: 1em;
+    border-radius: 30px;
+    background: var(--color-secundary-black);
+    color: var(--color-white);
+    border: unset;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.3em;
+    height: 2em;
+    cursor: pointer;
+}
+
+._container_old_password
+form.email_p input[type="email"],
+._container_old_password
+form.email_p input[type="text"] {
+    box-sizing: border-box;
+    border: 3px solid var(--color-black);
+    border-radius: 30px;
+    height: 3em;
+    width: 100%;
+    margin-top: 0.7em;
+    padding-left: 1em;
+}
+
+._container_old_password
+form.email_p 
+input[type="email"]::placeholder  {
+    color: var(--color-black);
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.8em;
+    text-align: left;
+}
+
+.disabled_ {
+    background: #e1e1e1 !important;
+}
+
+._container_old_password
+form.email_p.changePasword label {
+    font-size: 1.4em;
+}
+
+
+._container_old_password
+form.email_p.changePasword 
+button[type="submit"] {
+    width: 100%;
+    font-size: 1.2em;
+}
 
 /*
  * Scrollbar General
