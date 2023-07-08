@@ -18,7 +18,8 @@ const DATA_HISTORY = [
         target: '',
         disabled: true,
         state: true,
-        whoami: 'orfebreria'
+        whoami: 'orfebreria',
+        stateQuestion: true    
     },
     {
         title: 'HISTORIA',
@@ -26,7 +27,8 @@ const DATA_HISTORY = [
         target: '',
         disabled: true,
         state: true,
-        whoami: 'historia'
+        whoami: 'historia',
+        stateQuestion: true
     },
     {
         title: 'MITOLOGÍA',
@@ -34,7 +36,8 @@ const DATA_HISTORY = [
         target: '',
         disabled: true,
         state: true,
-        whoami: 'mitologia'
+        whoami: 'mitologia',
+        stateQuestion: true
     }
 ]
 

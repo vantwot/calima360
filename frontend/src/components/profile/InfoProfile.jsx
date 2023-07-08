@@ -1,7 +1,7 @@
 //importar Librerias
 import React from 'react';
-const images_content = require.context("../../assets/profile/", true);
-
+import Editar from '../utils/Editar';
+const images_content = require.context("../../assets/avatar/", true);
 
 
 const DATA_PROFILE = [
@@ -41,6 +41,13 @@ const InfoProfile = (props) => {
         cuestonario_active: false
     });
 
+    const [isEdit , SetEdit] = React.useState(false)
+
+
+    const onClick = () => {
+        SetEdit(true)
+    }
+
 
     React.useEffect(() => {
 
@@ -51,7 +58,6 @@ const InfoProfile = (props) => {
     }, [cuestonario]);
 
     return (
-
         <div className="_conatiner_info-profile">
             <div className='_container_photo_profile'>
                 <img src={images_content(`./${img_url}`)} alt="profile" />
@@ -99,7 +105,10 @@ const InfoProfile = (props) => {
                   }
                   <a className='_edit_action'>EDITAR</a>
             </div>
-        </div>
+            {
+                isEdit && <Editar open_={isEdit} SetEdit={SetEdit} />
+            }
+        </>
         
     )
 
