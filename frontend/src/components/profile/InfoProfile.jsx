@@ -58,6 +58,7 @@ const InfoProfile = (props) => {
     }, [cuestonario]);
 
     return (
+        
         <div className="_conatiner_info-profile">
             <div className='_container_photo_profile'>
                 <img src={images_content(`./${img_url}`)} alt="profile" />
@@ -103,12 +104,12 @@ const InfoProfile = (props) => {
 
                   </div>
                   }
-                  <a className='_edit_action'>EDITAR</a>
+                  <a onClick={onClick} className='_edit_action'>EDITAR</a>
             </div>
             {
                 isEdit && <Editar open_={isEdit} SetEdit={SetEdit} />
             }
-        </>
+        </div>
         
     )
 
