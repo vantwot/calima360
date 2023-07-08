@@ -54,7 +54,10 @@ const FormLogin = () => {
                <label htmlFor="password" className="_label">Contraseña</label>
                <input type="password" name="password" id="password" />
                <div className="_container_a">
-                   <a onClick={handleSingIn} >¿No tienes cuenta? Registrate</a>
+               <br />
+                    <a onClick={()=> { history('/oldPassword') }}>¿Olvidaste tu contraseña?</a>
+                    <br />
+                    <a onClick={handleSingIn} >¿No tienes cuenta? Registrate</a>
                </div>
                <button 
                     type="submit"
