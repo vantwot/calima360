@@ -132,12 +132,12 @@ app.post('/login', async (req, res) => {
 app.put('/usuario/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const { nombre, apellido } = req.body;
+    const { nombre, apellido, avatar } = req.body;
 
     // Actualizar el usuario en la base de datos
     await pool.query(
-      'UPDATE usuarios SET nombre = $1, apellido = $2 WHERE id = $3',
-      [nombre, apellido, id]
+      'UPDATE usuarios SET nombre = $1, apellido = $2, avatar = $3 WHERE id = $4',
+      [nombre, apellido, avatar, id]
     );
 
     res.json({ mensaje: 'Usuario actualizado exitosamente' });
