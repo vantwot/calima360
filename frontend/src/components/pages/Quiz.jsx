@@ -176,7 +176,7 @@ const Quiz = () => {
                     }
                 })
             })
-           
+    
             setOptionsAll(data);
             setDataAnswer(data[index__])
             setDataAxios(data)

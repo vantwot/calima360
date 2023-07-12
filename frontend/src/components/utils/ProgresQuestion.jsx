@@ -14,9 +14,14 @@ const ProgresQuestion = ({
      const [porcentaje_, setPorcentaje] = React.useState(0);
      const [state, setState] = React.useState(true);
      const [name_, setName] = React.useState('');
-     const [token , setToken ] = React.useState('')
-     const [userId , setUserId ] = React.useState('')
-     const [decodedToken , setDecodedToken ] = React.useState('')
+
+     let userId = 0
+     //variables
+     if ('token' in sessionStorage) {
+        const token = sessionStorage.token;
+        const decodedToken = decodeToken(token);
+        userId = decodedToken.userId;
+     }
 
      const handleMayor = (objeto) => {
 
@@ -37,22 +42,23 @@ const ProgresQuestion = ({
 
      const fetchData = async () => {
         try {
-          
+            
             if (name_ !== "") {
 
             const url_cuestionario = `http://44.205.85.243:5000/usuario_cuestionario/`
             const response_cuestionario = await axios.get(url_cuestionario);
             
-    
+            
             const data___ = {
                 'orfebrería': 33,
                 'historia': 34,
                 'mitología': 35,
             }
             
+           
             const filtroUsuario = response_cuestionario?.data?.filter((item) => item.id_usuario === userId);
             const porcentaje_orfebreria = filtroUsuario?.filter((item) => item.id_cuestionario === data___[name_]);
-    
+           
             
             const porcentaje = handleMayor(porcentaje_orfebreria);
             setPorcentaje(porcentaje?.estado);
@@ -71,7 +77,7 @@ const ProgresQuestion = ({
     }, [state_]);
 
     React.useEffect(() => {
-        //console.log('name', name);
+        
         if (name !== null || name !== undefined) {
             if (type === 1) {
                 setName( (name.toLowerCase()) );
@@ -90,7 +96,6 @@ const ProgresQuestion = ({
                         count_aux++;
                        
                         if (element[1] === 1) {
-                            console.log(element[0], element[1])
                             porcentaje_aux++
                         }
 
@@ -107,6 +112,7 @@ const ProgresQuestion = ({
     }, [name_]);
 
     React.useEffect(() => {
+        
         if (type == 1) {
             fetchData();
         }
@@ -115,16 +121,7 @@ const ProgresQuestion = ({
 
             if (('countClick' in sessionStorage) && name_ !== '') {
                 const countClick =  JSON.parse(sessionStorage.getItem('countClick'))
-
-                console.log(countClick[name_] , 'aaaa456')
             }
-        }
-
-        if ('token' in sessionStorage) {
-            
-            setToken(sessionStorage.token)
-            setDecodedToken(decodeToken(token))
-            setUserId( decodedToken.userId)
         }
       
     }, []);
