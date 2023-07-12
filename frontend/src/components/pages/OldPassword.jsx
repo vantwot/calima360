@@ -119,14 +119,14 @@ const OldPassword = () => {
                     <input 
                         value={passwordNew}
                         placeholder="Contraseña nueva"
-                        type="text"
+                        type="password"                       
                         onChange={onChangePasswordNew}
                         id="newpassword"
                     />
                     <label>Verificar Contraseña </label>
                     <input 
                         placeholder="Verificar Contraseña"
-                        type="text"
+                        type="password"
                         onChange={onChangePasswordVer}
                         id="ver111"
                     />
