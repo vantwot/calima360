@@ -14,7 +14,7 @@ const ProgresQuestion = ({
      const [porcentaje_, setPorcentaje] = React.useState(0);
      const [state, setState] = React.useState(true);
      const [name_, setName] = React.useState('');
-     
+
      let userId = 0
      //variables
      if ('token' in sessionStorage) {
@@ -42,23 +42,23 @@ const ProgresQuestion = ({
 
      const fetchData = async () => {
         try {
-            console.log(name_ === "" , 'name_88999')
+            
             if (name_ !== "") {
 
             const url_cuestionario = `http://44.205.85.243:5000/usuario_cuestionario/`
             const response_cuestionario = await axios.get(url_cuestionario);
             
-            console.log('response_cuestionario', response_cuestionario);
+            
             const data___ = {
                 'orfebrería': 33,
                 'historia': 34,
                 'mitología': 35,
             }
             
-            console.log('userId', userId);
+           
             const filtroUsuario = response_cuestionario?.data?.filter((item) => item.id_usuario === userId);
             const porcentaje_orfebreria = filtroUsuario?.filter((item) => item.id_cuestionario === data___[name_]);
-            console.log('porcentaje_orfebreria', porcentaje_orfebreria);
+           
             
             const porcentaje = handleMayor(porcentaje_orfebreria);
             setPorcentaje(porcentaje?.estado);
@@ -77,10 +77,9 @@ const ProgresQuestion = ({
     }, [state_]);
 
     React.useEffect(() => {
-        console.log('name', name);
+        
         if (name !== null || name !== undefined) {
             if (type === 1) {
-                console.log('aaaaa etrooooo')
                 setName( (name.toLowerCase()) );
                 fetchData();
             }
@@ -97,7 +96,6 @@ const ProgresQuestion = ({
                         count_aux++;
                        
                         if (element[1] === 1) {
-                            console.log(element[0], element[1])
                             porcentaje_aux++
                         }
 
@@ -114,9 +112,8 @@ const ProgresQuestion = ({
     }, [name_]);
 
     React.useEffect(() => {
-        console.log(name, 'nameeee45555')
+        
         if (type == 1) {
-            console.log('name_', 'aa45')
             fetchData();
         }
 
@@ -124,17 +121,8 @@ const ProgresQuestion = ({
 
             if (('countClick' in sessionStorage) && name_ !== '') {
                 const countClick =  JSON.parse(sessionStorage.getItem('countClick'))
-
-                console.log(countClick[name_] , 'aaaa456')
             }
         }
-
-        // if ('token' in sessionStorage) {
-            
-        //     setToken(sessionStorage.token)
-        //     setDecodedToken(decodeToken(token))
-        //     setUserId(decodedToken.userId)
-        // }
       
     }, []);
 
